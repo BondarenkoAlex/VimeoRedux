@@ -1,6 +1,4 @@
-'use strict';
-
-const NODE_ENV           = process.env.NODE_ENV || 'development';
+const project            = require('./project.config');
 //const webpack = require('webpack');
 const path               = require('path');
 const webpack            = require('webpack');
@@ -9,45 +7,47 @@ const ExtractTextPlugin  = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const autoprefixer       = require('autoprefixer');
 
+const __DEV__  = project.env === 'development';
+const __TEST__ = project.env === 'test';
+const __PROD__ = project.env === 'production';
+
 module.exports = {
-  devtool: 'cheap-inline-module-source-map',
-  context: path.resolve(__dirname, '/client/browser/src'),
+  devtool: __DEV__
+    ? 'cheap-inline-module-source-map'
+    : 'source-map',
+  context: path.resolve(project.basePath, project.srcDir),
   entry: {
-    main: './js/index',
+    main: project.main,
+    //vendor: project.vendors,
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/bf-test-react/', //   bf-test-react/
-    filename: 'app.js',
-    //library: "[name]" //модуль, который мы собираем поместится в эту переменную, чтобы можно было использовать его где-то еще
-    //chunks: ["./home", "./about"] //только из этих модулей выносить общую часть
+    path: path.resolve(project.basePath, project.outDir),
+    publicPath: project.publicPath, //   bf-test-react/
+    filename: __DEV__
+      ? '[name].js'
+      : '[name].[chunkhash].js',
+  },
+  externals: project.externals,
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: 1000,
+  },
+  resolve: {
+    modules: [
+      path.resolve(project.basePath, project.srcDir),
+      'node_modules',
+    ],
+    extensions: ['.js', '.jsx', '*', '.json'],
   },
   devServer: {
-    contentBase: './dist',
-    outputPath: path.resolve(__dirname, 'dist'),
-  },
-  /*    resolve: {
-   root: [
-   path.resolve(__dirname),
-   ],
-   modulesDirectories: [
-   'node_modules'
-   ]
-   },*/
-  sassLoader: {
-    includePaths: [
-      path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets'),
-    ],
-  },
-  postcss: function () {
-    return [autoprefixer({
-      browsers: ['last 3 versions'],
-    }),];
+    contentBase: path.resolve(project.basePath, project.outDir),
+    port: 8080,
+    host: 'localhost',
+
+    //hot: true,
+    //poll: true,
   },
 
-  eslint: {
-    configFile: path.resolve(__dirname, '.eslintrc.yml'),
-  },
   module: {
     loaders: [
       {
