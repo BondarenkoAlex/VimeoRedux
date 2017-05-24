@@ -1,11 +1,11 @@
-const project            = require('./project.config');
-//const webpack = require('webpack');
-const path               = require('path');
-const webpack            = require('webpack');
-const CopyWebpackPlugin  = require('copy-webpack-plugin');
-const ExtractTextPlugin  = require('extract-text-webpack-plugin');
+const project = require('./project.config');
+
+const path = require('path');
+const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const autoprefixer       = require('autoprefixer');
+//const autoprefixer = require('autoprefixer');
 
 const __DEV__  = project.env === 'development';
 const __TEST__ = project.env === 'test';
@@ -18,20 +18,15 @@ module.exports = {
   context: path.resolve(project.basePath, project.srcDir),
   entry: {
     main: project.main,
+
     //vendor: project.vendors,
   },
   output: {
-    path: path.resolve(project.basePath, project.outDir),
-    publicPath: project.publicPath, //   bf-test-react/
-    filename: __DEV__
-      ? '[name].js'
-      : '[name].[chunkhash].js',
+    path: path.resolve(project.basePath, `${project.outDir}/js`),
+    publicPath: project.publicPath,
+    filename: __DEV__ ? '[name].js' : '[name].[chunkhash].js',
   },
   externals: project.externals,
-  watchOptions: {
-    aggregateTimeout: 300,
-    poll: 1000,
-  },
   resolve: {
     modules: [
       path.resolve(project.basePath, project.srcDir),
@@ -41,59 +36,62 @@ module.exports = {
   },
   devServer: {
     contentBase: path.resolve(project.basePath, project.outDir),
-    port: 8080,
-    host: 'localhost',
-
-    //hot: true,
-    //poll: true,
+    open: true,
+    //publicPath: project.publicPath,
+    hot: true,
+  },
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: 1000,
   },
 
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loaders: ['babel-loader'],
-      }, {
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+      {
         test: /\.css$/,
-        exclude: /node_modules/,
-        //loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=
-        // [name]__[local]___[hash:base64:5]!resolve-url-loader')
-
-        loader: ExtractTextPlugin.extract('style', 'css!resolve-url-loader'),
-      }, {
-        test: /\.scss$/,
-        //loader: 'style!css?sourceMap!postcss!sass?sourceMap',
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass?sourceMap'),
-        exclude: /node_modules/,
-      }, {
-        test: /\.(jpe?g|jpg|png|gif|svg)$/i,
-        exclude: /node_modules/,
-        loaders: [
-          'file?name=[path][name].[ext]',
-        ],
+        exclude: /(node_modules)/,
+        use: ExtractTextPlugin.extract({
+          //publicPath: '../styles',
+          fallback: 'style-loader',
+          use: 'css-loader',
+        }),
+      },
+      {
+        test: /\.(jpe?g|jpg|png|gif|svg)$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '../images/[name].[ext]',
+          },
+        },
       },
     ],
   },
   plugins: [
-    new webpack.NoErrorsPlugin(),
+    /*new CleanWebpackPlugin(project.outDir, {
+      root: path.resolve(project.basePath),
+      exclude: ['index.html', 'images', 'js']
+    }),*/
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, './src/*.html'),
-        to: path.resolve(__dirname, './dist/[name].[ext]'),
+        from: path.resolve(project.basePath, './public/*.html'),
+        to: path.resolve(project.basePath, `${project.outDir}/[name].[ext]`),
       },
-    ], {
-      // By default, we only copy modified files during
-      // a watch or webpack-dev-server build. Setting this
-      // to `true` copies all files.
-      copyUnmodified: false,
-    }),
-    new ExtractTextPlugin('styles.css', {
+    ]),
+    new ExtractTextPlugin({
+      filename: '../styles/[name].css',
       allChunks: true,
     }),
-    new CleanWebpackPlugin(['dist'], {
-      root: path.resolve(__dirname),
-    }),
   ],
-
-};
+}
+;
