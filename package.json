@@ -1,10 +1,10 @@
 {
   "name": "VimeoRedux",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "webpack.config.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BondarenkoAlex/VimeoRedux.git"
+    "url": "git://github.com/BondarenkoAlex/VimeoRedux.git"
   },
   "author": "Alexey Bondarenko",
   "license": "MIT",
