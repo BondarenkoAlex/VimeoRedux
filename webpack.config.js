@@ -1,10 +1,10 @@
 const project = require('./project.config');
 
-const path = require('path');
-const webpack = require('webpack');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const path               = require('path');
+const webpack            = require('webpack');
+const CopyWebpackPlugin  = require('copy-webpack-plugin');
+const ExtractTextPlugin  = require('extract-text-webpack-plugin');
+//const CleanWebpackPlugin = require('clean-webpack-plugin');
 //const autoprefixer = require('autoprefixer');
 
 const __DEV__  = project.env === 'development';
@@ -18,13 +18,13 @@ module.exports = {
   context: path.resolve(project.basePath, project.srcDir),
   entry: {
     main: project.main,
-
-    //vendor: project.vendors,
   },
   output: {
     path: path.resolve(project.basePath, `${project.outDir}/js`),
     publicPath: project.publicPath,
-    filename: __DEV__ ? '[name].js' : '[name].[chunkhash].js',
+    filename: __DEV__
+      ? '[name].js'
+      : '[name].[chunkhash].js',
   },
   externals: project.externals,
   resolve: {
@@ -32,13 +32,11 @@ module.exports = {
       path.resolve(project.basePath, project.srcDir),
       'node_modules',
     ],
-    extensions: ['.js', '.jsx', '*', '.json'],
+    extensions: ['.js', '.jsx', '.json'],
   },
   devServer: {
     contentBase: path.resolve(project.basePath, project.outDir),
-    open: true,
-    //publicPath: project.publicPath,
-    hot: true,
+    publicPath: `${project.publicPath}js/`,
   },
   watchOptions: {
     aggregateTimeout: 300,
@@ -58,7 +56,6 @@ module.exports = {
         test: /\.css$/,
         exclude: /(node_modules)/,
         use: ExtractTextPlugin.extract({
-          //publicPath: '../styles',
           fallback: 'style-loader',
           use: 'css-loader',
         }),
@@ -76,12 +73,7 @@ module.exports = {
     ],
   },
   plugins: [
-    /*new CleanWebpackPlugin(project.outDir, {
-      root: path.resolve(project.basePath),
-      exclude: ['index.html', 'images', 'js']
-    }),*/
     new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin([
       {
         from: path.resolve(project.basePath, './public/*.html'),
