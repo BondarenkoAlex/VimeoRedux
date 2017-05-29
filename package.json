@@ -27,7 +27,8 @@
     "rimraf": "^2.6.1",
     "style-loader": "^0.18.1",
     "webpack": "^2.5.1",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^2.4.5",
+    "webpack-merge": "^4.1.0"
   },
   "dependencies": {
     "ip": "^1.1.5",
@@ -40,8 +41,8 @@
     "build": "webpack",
     "build:details": "webpack --display-error-details",
     "build:watch": "webpack --watch",
-    "build:dev": "",
-    "build:prod": "",
+    "build:dev": "webpack --env=dev --progress --profile --colors",
+    "build:prod": "webpack --env=prod --progress --profile --colors",
     "start": "npm run clean && npm run build && webpack-dev-server --open --inline --hot",
     "test": ""
   }
