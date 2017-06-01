@@ -1,6 +1,5 @@
-module.exports = function (env) {
-  const environment = env || 'dev';
+module.exports = function (/*env*/) {
+  const environment = process.env.NODE_ENV || 'development';
 
-  const conf = require(`./webpack/webpack.${environment}.config.js`);
-  return conf(env);
+  return require(`./webpack/webpack.${environment}.config.js`);
 };
