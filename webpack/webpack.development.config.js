@@ -7,8 +7,9 @@ module.exports = merge(
   commonConfig,
   {
     devServer: {
-      contentBase: path.resolve(project.basePath, project.outDir+"/js"),
-      publicPath: `${project.publicPath}js/`,
+      contentBase: path.resolve(project.basePath, project.outDir),
+      publicPath: `${project.publicPath}`,
+      port: 9000,
     },
     watchOptions: {
       aggregateTimeout: 300,

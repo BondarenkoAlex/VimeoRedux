@@ -26,7 +26,7 @@ module.exports = merge({
       vendor: project.vendors,
     },
     output: {
-      path: path.resolve(project.basePath, `${project.outDir}/js`),
+      path: path.resolve(project.basePath, `${project.outDir}`),
       publicPath: project.publicPath,
       filename: __DEV__
         ? '[name].js'

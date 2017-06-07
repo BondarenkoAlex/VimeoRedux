@@ -12,7 +12,7 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: '../styles/[name].css',
+      filename: './styles/[name].css',
       allChunks: true,
     })
   ]

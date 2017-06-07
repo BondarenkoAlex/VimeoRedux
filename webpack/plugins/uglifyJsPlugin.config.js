@@ -3,7 +3,7 @@ const webpack = require('webpack');
 module.exports = {
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
-      beautify: false,
+      beautify: true,
       comments: false,
       compress: {
         warnings: false,
