@@ -9,9 +9,9 @@ module.exports = function (config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha'/*, 'sinon-chai'*/],
+    frameworks: ['mocha', 'sinon-chai'],
 
-/*    client: {
+    client: {
       mocha: {
         // change Karma's debug.html to the mocha web reporter
         reporter: 'html',
@@ -28,7 +28,7 @@ module.exports = function (config) {
       chai: {
         includeStack: true,
       },
-    },*/
+    },
 
     // list of files / patterns to load in the browser
     files: [
@@ -36,7 +36,7 @@ module.exports = function (config) {
       //'client/**/*.jsx',
       //'tests/**/*.spec.js',
       'client/browser/src/dir/*.js',
-      'tests/client/browser/src/*.js',
+      'tests/client/browser/src/*.spec.js',
     ],
 
     // list of files to exclude
@@ -52,7 +52,7 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage'],
+    reporters: [/*'progress',*/ 'coverage', 'mocha'],
 
     // optionally, configure the reporter
     coverageReporter: {
