@@ -17,10 +17,7 @@ module.exports = {
   publicPath: NODE_ENV === 'production' ? '/' : '/',
   /** A hash map of keys that the compiler should treat as external to the project */
   externals: {
-  'react/addons': true,
-  'react/lib/ExecutionEnvironment': true,
-  'react/lib/ReactContext': true
-},
+  },
   /** The list of modules to bundle separately from the core application code */
   vendors: [
     'react',

@@ -1,5 +1,6 @@
 // Karma configuration
 // Generated on Wed Jun 07 2017 22:14:30 GMT+0300 (AST)
+const path    = require('path');
 
 module.exports = function (config) {
   config.set({
@@ -45,14 +46,15 @@ module.exports = function (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'client/browser/src/dir/*.js': ['coverage'],
+      'client/browser/src/dir/*.js': ['webpack', 'sourcemap'/*, 'coverage'*/],
+      'tests/client/browser/src/*.spec.js': ['webpack', 'sourcemap'/*, 'coverage'*/],
       //'client/**/*.jsx': ['coverage'],
     },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: [/*'progress',*/ 'coverage', 'mocha'],
+    reporters: ['progress'/*, 'coverage', 'mocha'*/],
 
     // optionally, configure the reporter
     coverageReporter: {
@@ -84,5 +86,42 @@ module.exports = function (config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity,
+
+    webpack: { //kind of a copy of your webpack config
+      devtool: 'inline-source-map', //just do inline source maps instead of the default
+      module: {
+        loaders: [
+          {
+            test: /\.(js|jsx)$/,
+            exclude: path.resolve(__dirname, 'node_modules'),
+            loader: 'babel-loader',
+          }
+        ]
+      },
+      externals: {
+        'cheerio': 'window',
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true
+      }
+    },
+    // webpackServer: {
+    //   noInfo: true //please don't spam the console when running in karma!
+    // },
+
+    plugins: [
+      'karma-webpack',
+      'karma-mocha',
+      'karma-sinon-chai',
+      'karma-sourcemap-loader',
+      'karma-chrome-launcher',
+      //'karma-phantomjs-launcher'
+    ],
+
+    webpackMiddleware: {
+      // webpack-dev-middleware configuration
+      // i. e.
+      stats: 'errors-only'
+    },
   });
 };
