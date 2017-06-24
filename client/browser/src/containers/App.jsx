@@ -2,6 +2,7 @@ import React, {
   Component,
   PropTypes,
 } from 'react';
+import { Link } from 'react-router-dom'
 
 import img from '../logo.svg';
 
@@ -14,8 +15,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Link to={{
+          pathname: '/courses',
+          search: '?sort=name',
+          hash: '#the-hash',
+          state: { fromDashboard: true }
+        }}>Link</Link>
         <div className="App-header">
-          <h2>Welcome to React 18 </h2>
+          <h2>Welcome to React 19 </h2>
           <img src={img} />
           {}
         </div>
