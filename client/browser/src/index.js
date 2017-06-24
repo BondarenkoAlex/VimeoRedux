@@ -1,23 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './containers/App';
+import { render } from 'react-dom';
+import configureStore from './store/configureStore';
+import Root from './containers/Root';
 
 import '../../../styles/style.css';
 
-alert('привет406');
+const store = configureStore();
 
-console.log(process.env.NODE_ENV);
-console.log(process.env.DEBUG);
-if (process.env.NODE_ENV === 'production') {
-  console.log('Welcome to production');
-}
-if (process.env.DEBUG) {
-  console.log('Debugging output');
-}
-
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('root'),
+render(
+  <Root store={store} />,
+  document.getElementById('root')
 );
-
