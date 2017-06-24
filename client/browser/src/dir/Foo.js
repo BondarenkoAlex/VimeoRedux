@@ -10,6 +10,9 @@ class Foo extends React.Component {
   }
 
   render() {
+    let y = {
+      t: 8,
+    };
     return (
       <div className="foo" />
     );

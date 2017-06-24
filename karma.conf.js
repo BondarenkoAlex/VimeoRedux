@@ -12,6 +12,11 @@ module.exports = function (config) {
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['mocha', 'sinon-chai'],
 
+    // list of files / patterns to load in the browser
+    files: [
+      'tests/**/*.spec.js',
+    ],
+
     client: {
       mocha: {
         // change Karma's debug.html to the mocha web reporter
@@ -31,36 +36,54 @@ module.exports = function (config) {
       },
     },
 
-    // list of files / patterns to load in the browser
-    files: [
-      //'client/**/*.js',
-      //'client/**/*.jsx',
-      //'tests/**/*.spec.js',
-      'client/browser/src/dir/*.js',
-      'tests/client/browser/src/*.spec.js',
-    ],
-
-    // list of files to exclude
-    exclude: [],
-
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'client/browser/src/dir/*.js': ['webpack', 'sourcemap'/*, 'coverage'*/],
-      'tests/client/browser/src/*.spec.js': ['webpack', 'sourcemap'/*, 'coverage'*/],
-      //'client/**/*.jsx': ['coverage'],
+      'client/**/*.js': ['webpack', 'sourcemap'/*, 'coverage'*/],
+      //'client/**/*.jsx': ['webpack', 'sourcemap'/*, 'coverage'*/],
+      'tests/**/*.spec.js': ['webpack', 'sourcemap'/*, 'coverage'*/],
+      //'tests/**/*.spec.jsx': ['webpack', 'sourcemap'/*, 'coverage'*/],
+    },
+
+    webpack: { //kind of a copy of your webpack config
+      devtool: 'inline-source-map', //just do inline source maps instead of the default
+      module: {
+        loaders: [
+          {
+            test: /\.(js|jsx)$/,
+            loader: 'babel-loader',
+            exclude: path.resolve(__dirname, 'node_modules'),
+            query: {
+              presets: ['airbnb'],
+            },
+          }
+        ]
+      },
+      externals: {
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true,
+      },
+    },
+
+    webpackServer: {
+      noInfo: true, //please don't spam the console when running in karma!
+    },
+
+    babelPreprocessor: {
+      options: {
+        presets: ['airbnb',
+          {
+            debug: false,
+          },
+        ],
+      },
     },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'/*, 'coverage', 'mocha'*/],
-
-    // optionally, configure the reporter
-    coverageReporter: {
-      type: 'html',
-      dir: 'coverage/',
-    },
+    reporters: ['progress'/*, 'coverage'*/],
 
     // web server port
     port: 9876,
@@ -77,7 +100,7 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'/*, 'PhantomJS'*/],
+    browsers: ['Chrome'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
@@ -87,41 +110,11 @@ module.exports = function (config) {
     // how many browser should be started simultaneous
     concurrency: Infinity,
 
-    webpack: { //kind of a copy of your webpack config
-      devtool: 'inline-source-map', //just do inline source maps instead of the default
-      module: {
-        loaders: [
-          {
-            test: /\.(js|jsx)$/,
-            exclude: path.resolve(__dirname, 'node_modules'),
-            loader: 'babel-loader',
-          }
-        ]
-      },
-      externals: {
-        'cheerio': 'window',
-        'react/addons': true,
-        'react/lib/ExecutionEnvironment': true,
-        'react/lib/ReactContext': true
-      }
-    },
-    // webpackServer: {
-    //   noInfo: true //please don't spam the console when running in karma!
-    // },
-
-    plugins: [
-      'karma-webpack',
-      'karma-mocha',
-      'karma-sinon-chai',
-      'karma-sourcemap-loader',
-      'karma-chrome-launcher',
-      //'karma-phantomjs-launcher'
-    ],
 
     webpackMiddleware: {
       // webpack-dev-middleware configuration
       // i. e.
-      stats: 'errors-only'
+      stats: 'errors-only',
     },
   });
 };
