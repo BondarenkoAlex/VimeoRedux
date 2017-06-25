@@ -2,10 +2,11 @@ import React, {
   Component,
   PropTypes,
 } from 'react';
-import { Link,  } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 import '../../../../styles/style.css';
 import img from '../logo.svg';
+import App2 from './App2.jsx';
 
 class App extends Component {
   constructor(props, context) {
@@ -22,6 +23,7 @@ class App extends Component {
           hash: '#the-hash',
           state: { fromDashboard: true }
         }}>Link</Link>
+        <Route path={'/courses'} component={App2}/>
 
         <div className="App-header">
           <h2>Welcome to React 19 </h2>

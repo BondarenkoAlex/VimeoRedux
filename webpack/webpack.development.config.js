@@ -10,6 +10,8 @@ module.exports = merge(
       contentBase: path.resolve(project.basePath, project.outDir),
       publicPath: `${project.publicPath}`,
       port: 9000,
+      historyApiFallback: true,
+      hot: true
     },
     watchOptions: {
       aggregateTimeout: 300,
