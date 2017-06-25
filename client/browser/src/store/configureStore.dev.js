@@ -1,26 +1,25 @@
-import { createStore, applyMiddleware/*, compose*/ } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { routerMiddleware } from 'react-router-redux';
+import createHistory from 'history/createBrowserHistory';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
-//import DevTools from '../containers/Root/DevTools';
 
 const composeEnhancers = composeWithDevTools({
   // Specify name here, actionsBlacklist, actionsCreators and other options if needed
 });
 
+// Create a history of your choosing (we're using a browser history in this case)
+const history = createHistory();
+
+// Build the middleware for intercepting and dispatching navigation actions
+const routermiddleware = routerMiddleware(history);
+
 const enhancer = composeEnhancers(
-  applyMiddleware(thunk),
+  applyMiddleware(routermiddleware, thunk),
 );
 
 export default function configureStore(initialState) {
-  const store = createStore(rootReducer, initialState, enhancer);
-
-  // if (module.hot) {
-  //   module.hot.accept('../reducers', () =>
-  //     store.replaceReducer(require('../reducers').default)
-  //   );
-  // }
-
-  return store;
+  return createStore(rootReducer, initialState, enhancer);
 }
 

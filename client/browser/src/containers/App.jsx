@@ -2,8 +2,9 @@ import React, {
   Component,
   PropTypes,
 } from 'react';
-import { Link } from 'react-router-dom'
+import { Link,  } from 'react-router-dom';
 
+import '../../../../styles/style.css';
 import img from '../logo.svg';
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
           hash: '#the-hash',
           state: { fromDashboard: true }
         }}>Link</Link>
+
         <div className="App-header">
           <h2>Welcome to React 19 </h2>
           <img src={img} />
