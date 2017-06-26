@@ -5,7 +5,7 @@ import React, {
 
 import '../../../../styles/app.css';
 
-import Header from './Header';
+import HeaderContainer from './HeaderContainer';
 
 class App extends Component {
   constructor(props, context) {
@@ -16,8 +16,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        [Привет]
-        <Header />
+        <HeaderContainer />
       </div>
     );
   }

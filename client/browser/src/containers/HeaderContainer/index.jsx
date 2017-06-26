@@ -4,18 +4,22 @@ import React, {
 } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as HeaderComponent from '../../components/Header';
+import Header from '../../components/Header';
 
-class Header extends Component {
+class HeaderContainer extends Component {
+  constructor(props, context) {
+    super(props, context);
+  }
+
   render() {
     return (
-      <HeaderComponent />
+      <Header />
     );
   }
 }
 
-Header.propTypes    = {};
-Header.defaultProps = {};
+HeaderContainer.propTypes    = {};
+HeaderContainer.defaultProps = {};
 
 const mapStateToProps = (state, ownProps) => ({
 
@@ -27,4 +31,4 @@ const mapDispatchToProps = dispatch => (
   }, dispatch)
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);
