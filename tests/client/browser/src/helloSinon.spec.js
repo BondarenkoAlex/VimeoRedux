@@ -1,7 +1,7 @@
 import chai from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
-import helloSinon from '../../../../client/browser/src/dir/helloSinon.js';
+import helloSinon from '../../../../src/client/browser/src/dir/helloSinon.js';
 
 chai.should();
 chai.use(sinonChai);
