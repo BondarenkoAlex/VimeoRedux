@@ -8,7 +8,7 @@ deploy:
   github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
   on:
     branch: master
-  local_dir: "dist/development"
+  local_dir: "dist/production"
 
 cache:
   directories:
@@ -16,7 +16,7 @@ cache:
   yarn: true
 
 script:
-  - "yarn run build"
+  - "yarn run build:prod"
   - "yarn run test:travis"
 
 
