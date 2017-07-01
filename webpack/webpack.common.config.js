@@ -29,8 +29,8 @@ module.exports = merge({
       path: path.resolve(project.basePath, `${project.outDir}`),
       publicPath: project.publicPath,
       filename: __DEV__
-        ? '[name].js'
-        : '[name].[hash].js',
+        ? '[name].[hash].js'
+        : '[name].js',
     },
     externals: project.externals,
     resolve: {
