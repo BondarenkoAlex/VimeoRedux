@@ -6,7 +6,7 @@ const Logo = (props) => {
   return (
     <div className="nav-header-logo-container nav-header-logo">
       <a href="#">
-        <img src="/src/images/logo-vimeo.svg"/>
+        <img src={require('../../../../../images/logo-vimeo.png')}/>
         <span>vimeoredux</span>
       </a>
     </div>

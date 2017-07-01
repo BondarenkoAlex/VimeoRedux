@@ -7,7 +7,7 @@ const Account = (props) => {
     <li className="nav-header-log-in-out">
       <a className="nav-header-user" href="#">
         <div className="icon-chevron icon-chevron-down">
-          <img src={require('../../../../../images/playlist/596175114_640x427.jpg')}/>
+          <img src={require('../../../../../images/account-logo.jpg')}/>
         </div>
         <span className="nav-header-text">Log Out</span>
       </a>

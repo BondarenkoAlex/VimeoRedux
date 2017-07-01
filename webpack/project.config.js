@@ -6,7 +6,7 @@ module.exports = {
   /** The full path to the project's root directory */
   basePath: `${__dirname}/..`,
   /** The name of the directory containing the application source code */
-  srcDir: './client/browser/src',
+  srcDir: './src/client/browser/src',
 
   publicDir: './public',
   /** The file name of the application's entry point */

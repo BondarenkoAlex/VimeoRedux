@@ -1,17 +1,15 @@
 module.exports = {
   module: {
     rules: [{
-      test: /\.(jpe?g|jpg|png|gif|svg)$/,
+      test: /\.(ttf|eot|woff|woff2|png|ico|jpg|jpeg|gif|svg)$/,
       exclude: /(node_modules)/,
       use: {
         loader: 'file-loader',
         options: {
-          name: './[path][name].[ext]',
-          useRelativePath: process.env.NODE_ENV === "production",
-
-          
+          name: '[path][name].[ext]',
         },
       },
     }],
-  },
-};
+  }
+}
+

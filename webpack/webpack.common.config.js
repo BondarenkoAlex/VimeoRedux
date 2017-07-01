@@ -2,6 +2,7 @@ const project = require('./project.config.js');
 
 const babelLoader        = require('./loaders/babel-loader.config.js');
 const cssLoader          = require('./loaders/css-loader.config.js');
+const scssLoader         = require('./loaders/scss-loader.config.js');
 const imageLoader        = require('./loaders/image-loader.config.js');
 const htmlWebpackPlugin  = require('./plugins/htmlWebpackPlugin.config.js');
 const commonsChunkPlugin = require('./plugins/commonsChunkPlugin.config.js');
@@ -45,8 +46,8 @@ module.exports = merge({
   },
   babelLoader,
   cssLoader,
+  scssLoader,
   imageLoader,
-  //copyWebpackPlugin,
   htmlWebpackPlugin,
   commonsChunkPlugin,
   environmentPlugin

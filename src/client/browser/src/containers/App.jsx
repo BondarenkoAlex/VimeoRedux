@@ -7,6 +7,7 @@ import '../../../../styles/index.scss';
 import '../../../../styles/style.css';
 
 import HeaderContainer from './HeaderContainer';
+import PlayerContainer from './PlayerContainer';
 
 class App extends Component {
   constructor(props, context) {
@@ -18,6 +19,7 @@ class App extends Component {
     return (
       <div>
         <HeaderContainer />
+        <PlayerContainer />
       </div>
     );
   }

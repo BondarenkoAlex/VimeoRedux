@@ -12,7 +12,9 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: './styles/[name].css',
+      filename: process.env.NODE_ENV === "development"
+        ? "./styles/[name].[contenthash].css"
+        : './styles/[name].css',
       allChunks: true,
     })
   ]
