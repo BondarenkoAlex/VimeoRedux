@@ -7,7 +7,6 @@ module.exports = {
         loader: 'file-loader',
         options: {
           name: 'images/[name].[ext]',
-          useRelativePath: process.env.NODE_ENV === "production",
         },
       },
     }],
