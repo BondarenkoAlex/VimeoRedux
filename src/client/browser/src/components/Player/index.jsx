@@ -2,6 +2,8 @@ import React, {
     PropTypes,
 } from 'react';
 
+// заменить на контейнеры т.к. работы будет идти через него
+// можно сделать через плеер самостоятельный, через апи
 function Player(props) {
   return (
       <section className="player clearfix">

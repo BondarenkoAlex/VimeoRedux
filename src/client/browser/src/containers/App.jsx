@@ -6,8 +6,10 @@ import React, {
 import '../../../../styles/index.scss';
 import '../../../../styles/style.css';
 
-import HeaderContainer from './HeaderContainer';
-import PlayerContainer from './PlayerContainer';
+import Header from '../components/Header';
+import Player from '../components/Player';
+import BreadcrumsFilter from '../components/BreadcrumsFilter';
+import MainContent from '../components/MainContent';
 
 class App extends Component {
   constructor(props, context) {
@@ -18,14 +20,16 @@ class App extends Component {
   render() {
     return (
       <div>
-        <HeaderContainer />
-        <PlayerContainer />
+        <Header />
+        <Player />
+        <BreadcrumsFilter />
+        {/*<MainContent />*/}
       </div>
     );
   }
 }
 
-App.propTypes = {};
+App.propTypes    = {};
 App.defaultProps = {};
 
 export default App;

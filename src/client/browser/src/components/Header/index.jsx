@@ -6,6 +6,7 @@ import Account from './Account';
 import Favorite from './Favorite';
 import Search from './Search';
 
+// заменить на контейнеры т.к. работы будет идти через него
 const Header = (props) => {
   return (
     <header className="nav-header clearfix">
