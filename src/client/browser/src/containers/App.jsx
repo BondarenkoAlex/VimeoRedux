@@ -23,7 +23,7 @@ class App extends Component {
         <Header />
         <Player />
         <BreadcrumsFilter />
-        {/*<MainContent />*/}
+        <MainContent />
       </div>
     );
   }

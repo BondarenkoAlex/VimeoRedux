@@ -3,10 +3,10 @@ import React, {
 } from 'react';
 
 //заменить на контейнер
-import CategoryPreviewListItem from './CategoryPreviewListItem';
+import CategoryListItem from './Category/CategoryListItem';
 
 function MainContent(props) {
-  let list               = [
+  let list = [
     {
       title: 'Animation',
       logo: 'animation',
@@ -24,6 +24,7 @@ function MainContent(props) {
 
     },
   ];
+
   const currentMenuTitle = 'Categories';
   return (
     <main className="site-main clearfix">
@@ -33,10 +34,7 @@ function MainContent(props) {
             <h2>{currentMenuTitle}</h2>
           </div>
         </div>
-        <div className="categories-container">
-          <CategoryPreviewListItem list={list}/>
-
-        </div>
+        <CategoryListItem list={list}/>
       </div>
     </main>
   );

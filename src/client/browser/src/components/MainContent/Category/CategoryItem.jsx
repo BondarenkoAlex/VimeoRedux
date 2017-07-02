@@ -2,7 +2,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-function CategoryPreviewItem(props) {
+function CategoryItem(props) {
   let {
         title,
         logo,
@@ -13,11 +13,11 @@ function CategoryPreviewItem(props) {
       <a href="#">
         <img
           className="category-preview"
-          src={require('../../../../../images/category-logo/' + preview + '.jpg')}/>
+          src={require('../../../../../../images/' + preview + '.png')}/>
         <div className="category-logo-title">
           <img
             className="category-logo"
-            src={require('../../../../../images/category-logo/' + logo + '.jpg')}/>
+            src={require('../../../../../../images/category-logo/' + logo + '.png')}/>
           <p className="category-title">
             {title}
           </p>
@@ -27,7 +27,7 @@ function CategoryPreviewItem(props) {
   );
 }
 
-CategoryPreviewItem.propTypes    = {};
-CategoryPreviewItem.defaultProps = {};
+CategoryItem.propTypes    = {};
+CategoryItem.defaultProps = {};
 
-export default CategoryPreviewItem;
+export default CategoryItem;

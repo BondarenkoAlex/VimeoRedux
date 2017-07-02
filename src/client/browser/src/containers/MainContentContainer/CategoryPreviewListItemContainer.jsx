@@ -3,7 +3,7 @@ import React, {
   PropTypes,
 } from 'react';
 import autoBind from 'react-autobind';
-import CategoryPreviewListItem from '../../components/MainContent/CategoryPreviewListItem';
+import CategoryPreviewListItem from '../../components/MainContent/Category/CategoryListItem';
 
 class CategoryPreviewListItemContainer extends Component {
   constructor(props, context) {
