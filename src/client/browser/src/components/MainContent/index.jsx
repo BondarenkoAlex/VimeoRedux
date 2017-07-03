@@ -4,12 +4,13 @@ import React, {
 
 //заменить на контейнер
 import CategoryListItem from './Category/CategoryListItem';
+import CategoryListItemContainer from '../../containers/MainContentContainer/CategoryListItemContainer';
 
 function MainContent(props) {
   let list = [
     {
       title: 'Animation',
-      logo: 'animation',
+      logo: 'animation_logo',
       preview: 'animation',
 
     }, {
@@ -35,6 +36,7 @@ function MainContent(props) {
           </div>
         </div>
         <CategoryListItem list={list}/>
+        <CategoryListItemContainer />
       </div>
     </main>
   );

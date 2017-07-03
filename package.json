@@ -65,7 +65,7 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "webpack",
+    "build": "npm run clean && webpack",
     "build:details": "webpack --display-error-details",
     "build:watch": "webpack --watch",
     "build:dev": "cross-env NODE_ENV=development webpack --progress --profile --colors",

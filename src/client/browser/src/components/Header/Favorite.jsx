@@ -7,7 +7,7 @@ const Favorite = (props) => {
     <li className="nav-header-favorite">
       <a href="#">
         <div>
-          <img src={require('../../../../../images/favorite.png')}/>
+          <img src={require('../../../../../images/favorite_header.png')}/>
         </div>
         <span className="nav-header-text">Favorite</span>
         <span className="nav-header-badge">100</span>
