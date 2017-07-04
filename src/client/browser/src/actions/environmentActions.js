@@ -1,4 +1,4 @@
-import { CHANGE_IS_MOBILE } from '../constants';
+import { CHANGE_IS_MOBILE } from '../constants/common';
 
 function changeIsMobile(isMobile) {
   return {

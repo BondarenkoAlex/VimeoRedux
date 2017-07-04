@@ -5,7 +5,7 @@ import React, {
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import autoBind from 'react-autobind';
-import CategoryListItem from '../../components/MainContent/Category/CategoryListItem';
+import CategoryListItem from '../../components/Content/Category/CategoryListItem';
 import { getAllCategories } from '../../actions';
 
 class CategoryListItemContainer extends Component {
@@ -15,24 +15,26 @@ class CategoryListItemContainer extends Component {
   }
 
   componentWillMount() {
-    debugger;
     this.props.getAllCategories();
   }
 
   render() {
+    const { categories } = this.props;
     return (
-      /*<CategoryListItem />*/
-      null
+      <CategoryListItem categories={categories} />
     );
   }
 }
 
 CategoryListItemContainer.propTypes = {
   getAllCategories: PropTypes.func.isRequired,
+  categories: PropTypes.object.isRequired,
 };
 CategoryListItemContainer.defaultProps = {};
 
-const mapStateToProps = (state /*,ownProps*/) => ({});
+const mapStateToProps = (state /*,ownProps*/) => ({
+  categories: state.categories,
+});
 
 const mapDispatchToProps = (dispatch /*,ownProps*/) => (
   bindActionCreators({

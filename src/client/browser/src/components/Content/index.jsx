@@ -3,10 +3,10 @@ import React, {
 } from 'react';
 
 //заменить на контейнер
-import CategoryListItem from './Category/CategoryListItem';
-import CategoryListItemContainer from '../../containers/MainContentContainer/CategoryListItemContainer';
+//import CategoryListItem from './Category/CategoryListItem';
+import CategoryListItemContainer from '../../containers/ContentContainer/CategoryListItemContainer';
 
-function MainContent(props) {
+function Content(props) {
   let list = [
     {
       title: 'Animation',
@@ -35,14 +35,13 @@ function MainContent(props) {
             <h2>{currentMenuTitle}</h2>
           </div>
         </div>
-        <CategoryListItem list={list}/>
         <CategoryListItemContainer />
       </div>
     </main>
   );
 }
 
-MainContent.propTypes    = {};
-MainContent.defaultProps = {};
+Content.propTypes    = {};
+Content.defaultProps = {};
 
-export default MainContent;
+export default Content;

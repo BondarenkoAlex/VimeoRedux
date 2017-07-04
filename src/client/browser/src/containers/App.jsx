@@ -8,7 +8,7 @@ import '../../../../styles/index.scss';
 import Header from '../components/Header';
 import Player from '../components/Player';
 import BreadcrumsFilter from '../components/BreadcrumsFilter';
-import MainContent from '../components/MainContent';
+import Content from '../components/Content';
 import Footer from '../components/Footer';
 
 class App extends Component {
@@ -23,7 +23,7 @@ class App extends Component {
         <Header />
         <Player />
         <BreadcrumsFilter />
-        <MainContent />
+        <Content />
         <Footer />
       </div>
     );
