@@ -11,24 +11,13 @@
 
   .responsive-wrapper-iframe {
     margin: 0 auto;
-    /*width: 80%;*/
 
-    .h_iframe {
-      position: relative;
-
-      .ratio {
-        display: block;
-        height: auto;
-        width: 100%;
-      }
-
-      iframe {
-        height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-      }
+    iframe {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
     }
   }
 }

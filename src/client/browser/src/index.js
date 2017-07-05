@@ -1,10 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import configureStore from './store/configureStore';
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
-import App from './containers/App';
+import { renderRoutes } from 'react-router-config';
+import configureStore from './store/configureStore';
+import routes from './routes';
 
 const store = configureStore();
 const history = createHistory();
@@ -12,7 +13,7 @@ const history = createHistory();
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <App />
+      {renderRoutes(routes)}
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
