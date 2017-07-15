@@ -1,13 +1,12 @@
 import React, {
-    Component,
+  Component,
 } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import autoBind from 'react-autobind';
-import Player  from '../../components/Player';
 
-class PlayerContainer extends Component {
+class PlaylistContainer extends Component {
   constructor(props, context) {
     super(props, context);
     autoBind(this);
@@ -15,18 +14,18 @@ class PlayerContainer extends Component {
 
   render() {
     return (
-        <Player/>
+      <div>[*Component is PlaylistContainer*]</div>
     );
   }
 }
 
-PlayerContainer.propTypes    = {};
-PlayerContainer.defaultProps = {};
+PlaylistContainer.propTypes = {};
+PlaylistContainer.defaultProps = {};
 
 const mapStateToProps = (state /*,ownProps*/) => ({});
 
 const mapDispatchToProps = (dispatch /*,ownProps*/) => (
-    bindActionCreators({}, dispatch)
+  bindActionCreators({}, dispatch)
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlayerContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(PlaylistContainer);

@@ -1,7 +1,7 @@
 import {
-  CATEGORIES_GET_FAILURE,
-  CATEGORIES_GET_REQUEST,
-  CATEGORIES_GET_SUCCESS
+  SUBCATEGORIES_GET_REQUEST,
+  SUBCATEGORIES_GET_SUCCESS,
+  SUBCATEGORIES_GET_FAILURE,
 } from '../constants/categories';
 
 const initialState = {
@@ -12,23 +12,26 @@ const initialState = {
 
 export default function categories(state = initialState, action) {
   switch (action.type) {
-    case CATEGORIES_GET_REQUEST: {
+    case SUBCATEGORIES_GET_REQUEST: {
       return {
         ...state,
         isFetching: true,
       };
     }
 
-    case CATEGORIES_GET_SUCCESS: {
+    case SUBCATEGORIES_GET_SUCCESS: {
       return {
         ...state,
         isFetching: false,
         error: null,
-        items: action.payload,
+        items: {
+          ...state.items,
+          ...action.payload,
+        },
       };
     }
 
-    case CATEGORIES_GET_FAILURE: {
+    case SUBCATEGORIES_GET_FAILURE: {
       return {
         ...state,
         isFetching: false,

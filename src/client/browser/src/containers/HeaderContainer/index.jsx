@@ -1,7 +1,7 @@
 import React, {
   Component,
-  PropTypes,
 } from 'react';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Header from '../../components/Header';
@@ -10,6 +10,8 @@ class HeaderContainer extends Component {
   constructor(props, context) {
     super(props, context);
   }
+
+
 
   render() {
     return (

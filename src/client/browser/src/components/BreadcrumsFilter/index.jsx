@@ -1,6 +1,5 @@
-import React, {
-  PropTypes,
-} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import BreadcrumsContainer from '../../containers/BreadcrumsFilterContainer/BreadcrumsContainer';
 import FilterContainer from '../../containers/BreadcrumsFilterContainer/FilterContainer';
 

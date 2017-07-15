@@ -1,16 +1,18 @@
-import React, {
-  PropTypes,
-} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import CategoryItem from './CategoryItem';
 
 function CategoryListItem(props) {
-  const { categories } = props;
-  const keys = Object.keys(categories.items);
+  const {
+          categories,
+          url,
+        } = props;
+  const keys = Object.keys(categories);
   return (
     <div className="categories-container">
       {keys.map(key => (
         <CategoryItem
-          category={categories.items[key]}
+          category={categories[key]}
           key={key}
         />
       ))}
@@ -20,6 +22,7 @@ function CategoryListItem(props) {
 
 CategoryListItem.propTypes = {
   categories: PropTypes.object.isRequired,
+  url: PropTypes.string.isRequired,
 };
 CategoryListItem.defaultProps = {};
 

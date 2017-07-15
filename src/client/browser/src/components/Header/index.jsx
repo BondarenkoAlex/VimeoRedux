@@ -1,6 +1,5 @@
-import React, {
-  PropTypes,
-} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Logo from './Logo';
 import Account from './Account';
 import Favorite from './Favorite';

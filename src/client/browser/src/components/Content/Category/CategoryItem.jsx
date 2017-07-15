@@ -1,21 +1,23 @@
-import React, {
-  PropTypes,
-} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 function CategoryItem(props) {
-  let {
+  const {
         category: {
+          uri,
           name,
           pictures,
           icon,
         },
       } = props;
+  const subpath = uri.split('/').pop(); // last subpath
   debugger;
   return (
     <div className="category">
       <div className="ratio ratio16-9">
         <div className="ratio-content">
-          <a href="#">
+          <Link to={`${subpath}`}>
             <img
               className="category-preview"
               src={pictures.sizes[3].link}/>
@@ -27,7 +29,7 @@ function CategoryItem(props) {
                 {name}
               </p>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

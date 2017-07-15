@@ -1,6 +1,5 @@
-import React, {
-  PropTypes,
-} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import FilterItem from './FilterItem';
 
 function FilterListItem(props) {

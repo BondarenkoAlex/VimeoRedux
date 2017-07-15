@@ -3,6 +3,7 @@ import {
   AUTHORIZATION,
   HOST,
 } from '../constants/config';
+import { consoleCustom } from './consoleCustom';
 
 class FetchService {
   get _host() {
@@ -121,7 +122,7 @@ class FetchService {
       if (/^\/\//.test(url) || /http(s)?:\/\//.test(url)) {
         return url;
       } else if (url.charAt(0) === '/') {
-        return `${this._host}${url.slice(1)}`;
+        return `${this._host}${url}`;
       } else if (url.charAt(0) === '.' && url.charAt(1) === '/') {
         return `${this._host}${this._namespace}${url.slice(1)}`;
       } else if (url.charAt(0) !== '.' && url.charAt(0) !== '/') {
@@ -207,7 +208,7 @@ class FetchService {
     }
 
     catch (e) {
-      console.error(e);
+      consoleCustom.error(e);
     }
 
     return fetch(url, options)

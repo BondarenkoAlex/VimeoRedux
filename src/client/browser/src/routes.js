@@ -1,15 +1,19 @@
 //eslint indent: "error"
 //jscs:disable validateIndentation
 import AppLayout from './components/layout/AppLayout';
-import PlayerBreadContentLayout from './components/layout/PlayerBreadContentLayout';
+import CategoryContainer from './containers/ContentContainer/CategoryContainer';
+import SubcategoryContainer from './containers/ContentContainer/SubcategoryContainer';
+import PlaylistContainer from './containers/ContentContainer/PlaylistContainer';
+import VideoContainer from './containers/ContentContainer/VideoContainer';
+//import PlayerBreadContentLayout from './components/layout/PlayerBreadContentLayout';
 
 const routes = [{
     component: AppLayout,
-    routes: [/*{
+    routes: [{
         path: '/',
         exact: true,
-        component: PlayerBreadContentLayout,
-    }, */ {
+        component: CategoryContainer,
+    }, {
         path: '/search',
         exact: true,
         component: null,
@@ -27,16 +31,20 @@ const routes = [{
             component: null,
         }, ],
     },{
-        path: '/:categories?/:subcategories?/:idVideo?',
-        component: PlayerBreadContentLayout,
-        routes: [{
-            path: '/:categories/:subcategories',
-            component: null,
-            routes: [{
-                path: '/:categories/:subcategories/:idVideo',
-                component: null,
-            }, ],
-        }, ],
+        path: '/:category/:subcategory/:idVideo',
+        exact: true,
+        component: VideoContainer,
+        routes: [],
+    },{
+        path: '/:category/:subcategory',
+        exact: true,
+        component: PlaylistContainer,
+        routes: [],
+      },{
+        path: '/:category',
+        exact: true,
+        component: SubcategoryContainer,
+        routes: [],
     }, ],
 }, ];
 
