@@ -50,7 +50,7 @@ class SubcategoryContainer extends Component {
     return (
       <Category
         title={title}
-        categories={items}
+        items={items}
         url={url}
       />
     );

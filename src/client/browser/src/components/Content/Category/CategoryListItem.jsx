@@ -4,15 +4,15 @@ import CategoryItem from './CategoryItem';
 
 function CategoryListItem(props) {
   const {
-          categories,
+          items,
           url,
         } = props;
-  const keys = Object.keys(categories);
+  const keys = Object.keys(items);
   return (
     <div className="categories-container">
       {keys.map(key => (
         <CategoryItem
-          category={categories[key]}
+          category={items[key]}
           key={key}
           url={url}
         />
@@ -22,7 +22,7 @@ function CategoryListItem(props) {
 }
 
 CategoryListItem.propTypes = {
-  categories: PropTypes.object.isRequired,
+  items: PropTypes.object.isRequired,
   url: PropTypes.string.isRequired,
 };
 CategoryListItem.defaultProps = {};

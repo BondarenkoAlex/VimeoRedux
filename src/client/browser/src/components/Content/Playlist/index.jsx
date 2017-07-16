@@ -2,29 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CategoryPlaylistWrap from '../CategoryPlaylistWrap';
 
-import CategoryListItem from './CategoryListItem';
+import PlaylistListItem from './PlaylistListItem';
 
-function Category(props) {
+function Playlist(props) {
   const {
           items,
           title,
-          url,
+          //url,
         } = props;
   return (
     <CategoryPlaylistWrap title={title}>
-      <CategoryListItem
+      <PlaylistListItem
         items={items}
-        url={url}
+
       />
     </CategoryPlaylistWrap>
   );
 }
 
-Category.propTypes = {
+Playlist.propTypes = {
   title: PropTypes.string.isRequired,
-  items: PropTypes.object.isRequired,
-  url: PropTypes.string.isRequired,
+  items: PropTypes.array.isRequired,
+  //url: PropTypes.string.isRequired,
 };
-Category.defaultProps = {};
+Playlist.defaultProps = {};
 
-export default Category;
+export default Playlist;

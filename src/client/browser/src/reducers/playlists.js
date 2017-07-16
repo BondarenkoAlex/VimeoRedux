@@ -20,13 +20,25 @@ export default function playlists(state = initialState, action) {
     }
 
     case PLAYLISTS_GET_SUCCESS: {
+      const { key } = action.payload.playlist;
+
+      const data = action.payload.playlist[key];
+      const items = data.data;
+      delete data.data;
+
+      const stateBykey = state.items[key] || {};
+      const itemsByKey = stateBykey.items || [];
+
       return {
         ...state,
         isFetching: false,
         error: null,
         items: {
-          ...state.items,
-          ...action.payload,
+          [key]: {
+            ...stateBykey,
+            ...data,
+            items: [...itemsByKey, ...items],
+          },
         },
       };
     }

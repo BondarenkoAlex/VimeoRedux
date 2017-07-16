@@ -8,7 +8,7 @@ import autoBind from 'react-autobind';
 import { isEmpty } from '../../../utils/check';
 import { consoleCustom } from '../../../utils/consoleCustom';
 import { getPlaylistIfNeed } from '../../../actions';
-import Category from '../../../components/Content/Category';
+import Playlist from '../../../components/Content/Playlist';
 
 class PlaylistContainer extends Component {
   constructor(props, context) {
@@ -27,19 +27,48 @@ class PlaylistContainer extends Component {
   }
 
   render() {
-    debugger;
+    const {
+            videos,
+            subcategories,
+            playlists,
+            match,
+          } = this.props;
+    const { url, params: { category, subcategory } } = match;
+
+    let title = '';
+    let items = [];
+
+    const categoryByKey = subcategories.items[category];
+    if (!isEmpty(categoryByKey)) {
+      title = categoryByKey[subcategory].name;
+    }
+
+    const key = `${category}|${subcategory}`;
+    const playlistKeys = playlists.items[key];
+    if (!isEmpty(playlistKeys)) {
+      items = playlistKeys.items.map(key => videos[key]);
+    }
+
     return (
-      <div>[*Component is PlaylistContainer*]</div>
+      <Playlist
+        title={title}
+        items={items}
+      />
     );
   }
 }
 
-PlaylistContainer.propTypes = {};
+PlaylistContainer.propTypes = {
+  videos: PropTypes.object.isRequired,
+  subcategories: PropTypes.object.isRequired,
+  playlists: PropTypes.object.isRequired,
+  getPlaylistIfNeed: PropTypes.func.isRequired,
+};
 PlaylistContainer.defaultProps = {};
 
 const mapStateToProps = (state /*,ownProps*/) => ({
-  //categories: state.categories,
-  //subcategories: state.subcategories,
+  videos: state.videos,
+  subcategories: state.subcategories,
   playlists: state.playlists,
 });
 

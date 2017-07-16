@@ -16,3 +16,12 @@ export const categorySchema = new schema.Entity('category',
 );
 
 // ///////////////////////////////////////////////////////////////////////////
+const videoSchema = new schema.Entity('videos', {},
+  { idAttribute: item => item.uri.split('/').pop() },
+);
+export const videoListSchema = new schema.Entity('videosByCategory',
+  { data: [videoSchema] },
+  { idAttribute: 'page' },
+);
+
+// ///////////////////////////////////////////////////////////////////////////

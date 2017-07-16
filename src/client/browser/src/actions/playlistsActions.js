@@ -5,7 +5,7 @@ import {
   PLAYLISTS_GET_SUCCESS,
 } from '../constants/playlists';
 import { getSubcategoriesIfNeed } from './categoriesActions';
-//import { categoryListSchema, categorySchema } from '../normalize';
+import { videoListSchema } from '../normalize';
 import fetchService from '../utils/fetchService';
 import { isEmpty } from '../utils/check';
 
@@ -49,7 +49,6 @@ export function getPlaylistIfNeed(keyCat, keySubcat) {
 function loadPlaylist(key, uri) {
   return (dispatch, getState) => {
     //new Promise((resolve) => {
-    debugger;
     const { playlists: { items } } = getState();
     const playlist = items[key];
 
@@ -59,10 +58,15 @@ function loadPlaylist(key, uri) {
       fetchService.get(uri)
         .then(
           (data) => {
-            debugger;
-            const normalizedData = [];//normalize(data.data, categoryListSchema);
-            dispatch(action(PLAYLISTS_GET_SUCCESS, normalizedData.entities.categories));
-            resolve(normalizedData.entities.categories);
+            const normalizedData = normalize(data, videoListSchema);
+            const payload = {
+              playlist: {
+                key,
+                [key]: normalizedData.entities.videosByCategory[normalizedData.result],
+              },
+              videos: normalizedData.entities.videos,
+            };
+            dispatch(action(PLAYLISTS_GET_SUCCESS, payload));
           },
 
           (error) => {

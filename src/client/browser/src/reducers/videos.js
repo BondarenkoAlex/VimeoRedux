@@ -1,40 +1,40 @@
 import {
-  CATEGORIES_GET_FAILURE,
-  CATEGORIES_GET_REQUEST,
-  CATEGORIES_GET_SUCCESS
-} from '../constants/categories';
+  //PLAYLISTS_GET_FAILURE,
+  //PLAYLISTS_GET_REQUEST,
+  PLAYLISTS_GET_SUCCESS,
+} from '../constants/playlists';
 
-const initialState = {
-  isFetching: false,
-  error: null,
-  items: {},
-};
+const initialState = {};
 
 export default function videos(state = initialState, action) {
   switch (action.type) {
-    case CATEGORIES_GET_REQUEST: {
+    // case CATEGORIES_GET_REQUEST: {
+    //   return {
+    //     ...state,
+    //     isFetching: true,
+    //   };
+    // }
+
+    case PLAYLISTS_GET_SUCCESS: {
       return {
         ...state,
-        isFetching: true,
+        ...action.payload.videos,
+        //isFetching: false,
+        //error: null,
+        // items: {
+        //   ...state.items
+        //   action.payload
+        // },
       };
     }
 
-    case CATEGORIES_GET_SUCCESS: {
-      return {
-        ...state,
-        isFetching: false,
-        error: null,
-        items: action.payload,
-      };
-    }
-
-    case CATEGORIES_GET_FAILURE: {
-      return {
-        ...state,
-        isFetching: false,
-        error: action.payload,
-      };
-    }
+    // case CATEGORIES_GET_FAILURE: {
+    //   return {
+    //     ...state,
+    //     isFetching: false,
+    //     error: action.payload,
+    //   };
+    // }
 
     default:
       return state;

@@ -17,8 +17,6 @@ function CategoryItem(props) {
   const path = (url.slice(-1) === '/')
     ? url.slice(0, -1)
     : url;
-  //url.charAt(0) === '.'
-  //{url.slice(1)}
   return (
     <div className="category">
       <div className="ratio ratio16-9">
