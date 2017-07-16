@@ -32,7 +32,7 @@ export function getCategoriesIfNeed() {
       if (isEmpty(items)) {
         dispatch(request(CATEGORIES_GET_REQUEST));
 
-        fetchService.get('./categories')
+        fetchService.get('/categories')
           .then(
             (data) => {
               const normalizedData = normalize(data.data, categoryListSchema);
@@ -48,45 +48,58 @@ export function getCategoriesIfNeed() {
     });
 }
 
-export function getSubcategoryIfNeed(key) {
-  return (dispatch, getState) => {
-    const { categories: { items } } = getState();
+export function getSubcategoriesIfNeed(key) {
+  return (dispatch, getState) =>
+    new Promise((resolve) => {
+      const { categories: { items } } = getState();
 
-    if (isEmpty(items)) {
-      dispatch(getCategoriesIfNeed())
-        .then((items) => {
-          const uri = items[key].uri;
-          dispatch(loadSubcategories(key, uri));
-        });
-    } else {
+      if (isEmpty(items)) {
+        dispatch(getCategoriesIfNeed())
+          .then((items) => {
+            getCategiries(items, dispatch)
+              .then(data => resolve(data));
+          });
+      } else {
+        getCategiries(items, dispatch)
+          .then(data => resolve(data));
+      }
+    });
+
+  function getCategiries(items, dispatch) {
+    return new Promise((resolve) => {
       const uri = items[key].uri;
-      dispatch(loadSubcategories(key, uri));
-    }
-  };
+      dispatch(loadSubcategories(key, uri))
+        .then(data => resolve(data));
+    });
+  }
 }
 
 function loadSubcategories(key, uri) {
-  return (dispatch, getState) => {
-    const { subcategories: { items } } = getState();
-    const subcategory = items[key];
-    if (isEmpty(subcategory)) {
-      dispatch(request(SUBCATEGORIES_GET_REQUEST));
+  return (dispatch, getState) =>
+    new Promise((resolve) => {
+      const { subcategories: { items } } = getState();
+      const subcategory = items[key];
+      if (isEmpty(subcategory)) {
+        dispatch(request(SUBCATEGORIES_GET_REQUEST));
 
-      fetchService.get(`${uri}/subcategories`)
-        .then(
-          (data) => {
-            const normalizedData = normalize(data.data, categoryListSchema);
-            const payload = {
-              [key]: normalizedData.entities.categories,
-            };
-            dispatch(action(SUBCATEGORIES_GET_SUCCESS, payload));
-          },
+        fetchService.get(`${uri}/subcategories`)
+          .then(
+            (data) => {
+              const normalizedData = normalize(data.data, categoryListSchema);
+              const payload = {
+                [key]: normalizedData.entities.categories,
+              };
+              dispatch(action(SUBCATEGORIES_GET_SUCCESS, payload));
+              resolve(normalizedData.entities.categories);
+            },
 
-          (error) => {
-            dispatch(action(SUBCATEGORIES_GET_FAILURE, error));
-          },
-        );
-    }
-  };
+            (error) => {
+              dispatch(action(SUBCATEGORIES_GET_FAILURE, error));
+              return [];
+            },
+          );
+      }
+    });
+
 }
 

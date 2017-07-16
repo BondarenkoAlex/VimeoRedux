@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux';
 import autoBind from 'react-autobind';
 import { isEmpty } from '../../../utils/check';
 import { consoleCustom } from '../../../utils/consoleCustom';
-import { getSubcategoryIfNeed } from '../../../actions';
+import { getSubcategoriesIfNeed } from '../../../actions';
 import Category from '../../../components/Content/Category';
 
 class SubcategoryContainer extends Component {
@@ -20,7 +20,7 @@ class SubcategoryContainer extends Component {
     const { match } = this.props;
     const { params: { category } } = match;
     if (category !== undefined) {
-      this.props.getSubcategoryIfNeed(category);
+      this.props.getSubcategoriesIfNeed(category);
     } else {
       consoleCustom.error(`The category in ${match.url} is does not find`);
     }
@@ -35,7 +35,7 @@ class SubcategoryContainer extends Component {
     const { url, params: { category: categoryParam } } = match;
 
     let title = '';
-    let items = [];
+    let items = {};
 
     const category = categories.items[categoryParam];
     if (!isEmpty(category)) {
@@ -58,7 +58,7 @@ class SubcategoryContainer extends Component {
 }
 
 SubcategoryContainer.propTypes = {
-  getSubcategoryIfNeed: PropTypes.func.isRequired,
+  getSubcategoriesIfNeed: PropTypes.func.isRequired,
   categories: PropTypes.object.isRequired,
   subcategories: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
@@ -72,7 +72,7 @@ const mapStateToProps = (state /*,ownProps*/) => ({
 
 const mapDispatchToProps = (dispatch /*,ownProps*/) => (
   bindActionCreators({
-    getSubcategoryIfNeed,
+    getSubcategoriesIfNeed,
   }, dispatch)
 );
 

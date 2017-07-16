@@ -14,6 +14,7 @@ function CategoryListItem(props) {
         <CategoryItem
           category={categories[key]}
           key={key}
+          url={url}
         />
       ))}
     </div>
