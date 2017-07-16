@@ -50,38 +50,43 @@ export function getCategoriesIfNeed() {
 
 export function getSubcategoryIfNeed(key) {
   return (dispatch, getState) => {
-    const {
-            categories: { items: itemsCat },
-            subcategories: { items: itemsSubcat },
-          } = getState();
+    const { categories: { items } } = getState();
 
-    if (isEmpty(itemsCat)) {
+    if (isEmpty(items)) {
       dispatch(getCategoriesIfNeed())
-        .then(categories => dispatch(loadSubcategories(categories[key].uri)));
-    } else if (itemsSubcat[key] === undefined) {
-      dispatch(loadSubcategories(itemsCat[key].uri));
+        .then((items) => {
+          const uri = items[key].uri;
+          dispatch(loadSubcategories(key, uri));
+        });
+    } else {
+      const uri = items[key].uri;
+      dispatch(loadSubcategories(key, uri));
     }
   };
 }
 
-function loadSubcategories(uri) {
+function loadSubcategories(key, uri) {
   return (dispatch, getState) => {
-    dispatch(request(SUBCATEGORIES_GET_REQUEST));
-    fetchService.get(uri)
-      .then(
-        (data) => {
-          const normalizedData = normalize(data, categorySchema);
-          const { category, subcategories } = normalizedData.entities;
-          Object.keys(category).forEach((key) => {
-            category[key].subcategories = subcategories;
-          });
-          dispatch(action(SUBCATEGORIES_GET_SUCCESS, normalizedData.entities.category));
-        },
+    const { subcategories: { items } } = getState();
+    const subcategory = items[key];
+    if (isEmpty(subcategory)) {
+      dispatch(request(SUBCATEGORIES_GET_REQUEST));
 
-        (error) => {
-          dispatch(action(SUBCATEGORIES_GET_FAILURE, error));
-        },
-      );
+      fetchService.get(`${uri}/subcategories`)
+        .then(
+          (data) => {
+            const normalizedData = normalize(data.data, categoryListSchema);
+            const payload = {
+              [key]: normalizedData.entities.categories,
+            };
+            dispatch(action(SUBCATEGORIES_GET_SUCCESS, payload));
+          },
+
+          (error) => {
+            dispatch(action(SUBCATEGORIES_GET_FAILURE, error));
+          },
+        );
+    }
   };
 }
 

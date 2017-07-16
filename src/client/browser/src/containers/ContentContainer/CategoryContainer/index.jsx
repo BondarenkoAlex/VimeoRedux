@@ -20,10 +20,11 @@ class CategoryContainer extends Component {
 
   render() {
     const {
-            categories: { items },
+            categories,
             match: { url },
           } = this.props;
     const title = 'Categories';
+    const { items } = categories;
     return (
       <Category
         title={title}

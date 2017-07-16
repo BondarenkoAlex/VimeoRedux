@@ -28,17 +28,23 @@ class SubcategoryContainer extends Component {
 
   render() {
     const {
+            categories,
             subcategories,
             match,
           } = this.props;
-    const { url, params: { category } } = match;
+    const { url, params: { category: categoryParam } } = match;
 
     let title = '';
     let items = [];
-    const cat = subcategories.items[category];
-    if (cat !== undefined) {
-      title = cat.name;
-      items = cat.subcategories;
+
+    const category = categories.items[categoryParam];
+    if (!isEmpty(category)) {
+      title = category.name;
+    }
+
+    const subcategory = subcategories.items[categoryParam];
+    if (!isEmpty(subcategory)) {
+      items = subcategory;
     }
 
     return (
@@ -53,12 +59,14 @@ class SubcategoryContainer extends Component {
 
 SubcategoryContainer.propTypes = {
   getSubcategoryIfNeed: PropTypes.func.isRequired,
+  categories: PropTypes.object.isRequired,
   subcategories: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
 };
 SubcategoryContainer.defaultProps = {};
 
 const mapStateToProps = (state /*,ownProps*/) => ({
+  categories: state.categories,
   subcategories: state.subcategories,
 });
 
