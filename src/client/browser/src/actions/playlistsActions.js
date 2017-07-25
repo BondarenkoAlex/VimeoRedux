@@ -4,7 +4,7 @@ import {
   PLAYLISTS_GET_REQUEST,
   PLAYLISTS_GET_SUCCESS,
 } from '../constants/playlists';
-import { getSubcategoriesIfNeed } from './categoriesActions';
+import { getSubcategoriesIfNeed } from './subcategoriesActions';
 import { videoListSchema } from '../normalize';
 import fetchService from '../utils/fetchService';
 import { isEmpty } from '../utils/check';
@@ -25,8 +25,8 @@ function action(type, payload) {
 export function getPlaylistIfNeed(keyCat, keySubcat) {
   return (dispatch, getState) => {
 
-    const { subcategories: { items } } = getState();
-    const subcategoriesByKey = items[keyCat];
+    const { subcategories } = getState();
+    const subcategoriesByKey = subcategories[keyCat];
 
     if (isEmpty(subcategoriesByKey)) {
       dispatch(getSubcategoriesIfNeed(keyCat))
@@ -49,8 +49,8 @@ export function getPlaylistIfNeed(keyCat, keySubcat) {
 function loadPlaylist(key, uri) {
   return (dispatch, getState) => {
     //new Promise((resolve) => {
-    const { playlists: { items } } = getState();
-    const playlist = items[key];
+    const { playlists: { itemsByKey } } = getState();
+    const playlist = itemsByKey[key];
 
     if (isEmpty(playlist)) {
       dispatch(request(PLAYLISTS_GET_REQUEST));

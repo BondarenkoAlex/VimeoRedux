@@ -1,30 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CategoryPlaylistWrap from '../CategoryPlaylistWrap';
-
 import CategoryListItem from './CategoryListItem';
+import Loading from '../../Loading';
 
-function Category(props) {
-  const {
-          items,
-          title,
-          url,
-        } = props;
+function Category({
+  itemsByKey,
+  title,
+  url,
+  isLoading,
+}) {
   return (
     <CategoryPlaylistWrap title={title}>
-      <CategoryListItem
-        items={items}
-        url={url}
-      />
-    </CategoryPlaylistWrap>
-  );
+      {{
+        true: (
+          <Loading />),
+        false: (
+          <CategoryListItem
+            itemsByKey={itemsByKey}
+            url={url}
+          />),
+      }[isLoading]}
+    </CategoryPlaylistWrap>);
 }
 
 Category.propTypes = {
   title: PropTypes.string.isRequired,
-  items: PropTypes.object.isRequired,
   url: PropTypes.string.isRequired,
+  itemsByKey: PropTypes.object,
+  isLoading: PropTypes.bool,
 };
-Category.defaultProps = {};
+Category.defaultProps = {
+  isFetching: true,
+  itemsByKey: {},
+};
 
 export default Category;

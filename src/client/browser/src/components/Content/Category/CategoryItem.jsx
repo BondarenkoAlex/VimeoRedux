@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-function CategoryItem(props) {
+function CategoryItem({
+  category,
+  url,
+}) {
   const {
-          category: {
-            uri,
-            name,
-            pictures,
-            icon,
-          },
-          url,
-        } = props;
+          uri,
+          name,
+          pictures,
+          icon,
+        } = category;
   let subpath = uri.split('/').pop(); // last subpath
   subpath = `/${subpath}`;
   const path = (url.slice(-1) === '/')

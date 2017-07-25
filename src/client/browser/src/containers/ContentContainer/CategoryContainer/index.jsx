@@ -20,15 +20,15 @@ class CategoryContainer extends Component {
 
   render() {
     const {
+            title,
             categories,
             match: { url },
           } = this.props;
-    const title = 'Categories';
-    const { items } = categories;
     return (
       <Category
         title={title}
-        items={items}
+        itemsByKey={categories.itemsByKey}
+        isLoading={categories.isFetching}
         url={url}
       />
     );
@@ -39,8 +39,12 @@ CategoryContainer.propTypes = {
   getCategoriesIfNeed: PropTypes.func.isRequired,
   categories: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
+  title: PropTypes.string,
 };
-CategoryContainer.defaultProps = {};
+CategoryContainer.defaultProps = {
+  title: 'Categories',
+
+};
 
 const mapStateToProps = (state /*,ownProps*/) => ({
   categories: state.categories,

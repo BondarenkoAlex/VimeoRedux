@@ -15,7 +15,7 @@ class HeaderContainer extends Component {
 
   render() {
     return (
-      <Header />
+      <Header key="header" />
     );
   }
 }

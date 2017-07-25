@@ -7,7 +7,7 @@ import {
 const initialState = {
   isFetching: false,
   error: null,
-  items: {},
+  itemsByKey: {},
 };
 
 export default function playlists(state = initialState, action) {
@@ -26,14 +26,14 @@ export default function playlists(state = initialState, action) {
       const items = data.data;
       delete data.data;
 
-      const stateBykey = state.items[key] || {};
-      const itemsByKey = stateBykey.items || [];
+      const stateBykey = state.itemsByKey[key] || {};
+      const itemsByKey = stateBykey.itemsByKey || [];
 
       return {
         ...state,
         isFetching: false,
         error: null,
-        items: {
+        itemsByKey: {
           [key]: {
             ...stateBykey,
             ...data,

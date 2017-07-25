@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import toTime from '../../../utils/toTime';
 
 function PlaylistItem(props) {
   const {
-          playlist: {
+          item: {
             //uri,
             name,
             user,
@@ -18,6 +19,7 @@ function PlaylistItem(props) {
   // const path = (url.slice(-1) === '/')
   //   ? url.slice(0, -1)
   //   : url;
+  const dur = toTime(duration);
   return (
     <div className="video-preview">
       <div className="preview">
@@ -27,7 +29,7 @@ function PlaylistItem(props) {
             src={pictures.sizes[3].link}
           />
           <span className="duration">
-            {duration}
+            {dur}
           </span>
         </a>
       </div>
@@ -63,7 +65,7 @@ function PlaylistItem(props) {
 }
 
 PlaylistItem.propTypes = {
-  playlist: PropTypes.object.isRequired,
+  item: PropTypes.object.isRequired,
   //url: PropTypes.string.isRequired,
 };
 PlaylistItem.defaultProps = {};

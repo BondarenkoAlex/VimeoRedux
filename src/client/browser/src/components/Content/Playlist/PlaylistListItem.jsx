@@ -12,7 +12,7 @@ function PlaylistListItem(props) {
     <div className="playlist-container">
       {items.map(item => (
         <PlaylistItem
-          playlist={item}
+          item={item}
           key={item.resource_key}
         />
       ))}

@@ -7,7 +7,7 @@ import {
 const initialState = {
   isFetching: false,
   error: null,
-  items: {},
+  itemsByKey: {},
 };
 
 export default function categories(state = initialState, action) {
@@ -24,7 +24,7 @@ export default function categories(state = initialState, action) {
         ...state,
         isFetching: false,
         error: null,
-        items: action.payload,
+        itemsByKey: action.payload,
       };
     }
 
@@ -33,6 +33,7 @@ export default function categories(state = initialState, action) {
         ...state,
         isFetching: false,
         error: action.payload,
+        itemsByKey: {},
       };
     }
 
