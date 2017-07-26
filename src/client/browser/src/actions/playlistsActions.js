@@ -34,7 +34,7 @@ export function getPlaylistIfNeed(keyCat, keySubcat) {
           getVideos(items, keyCat, keySubcat, dispatch);
         });
     } else {
-      getVideos(subcategoriesByKey, keyCat, keySubcat, dispatch);
+      getVideos(subcategoriesByKey.itemsByKey, keyCat, keySubcat, dispatch);
     }
   };
 
