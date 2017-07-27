@@ -9,6 +9,10 @@ import fetchService from '../utils/fetchService';
 import { isEmpty } from '../utils/check';
 import { getCategoriesIfNeed } from './categoriesActions';
 
+import {
+  getSubcategoryByCategoryParam,
+} from '../selectors';
+
 function request(type, key = null) {
   return {
     type,
@@ -24,37 +28,69 @@ function action(type, payload, key = null) {
   };
 }
 
-export function getSubcategoriesIfNeed(key) {
+// export function getSubcategoriesIfNeed(key) {
+//   return (dispatch, getState) =>
+//     new Promise((resolve) => {
+//       debugger;
+//       const { categories: { itemsByKey } } = getState();
+//
+//       if (isEmpty(itemsByKey)) {
+//         dispatch(getCategoriesIfNeed())
+//           .then((items) => {
+//             getCategiries(items, key, dispatch)
+//               .then(data => resolve(data));
+//           });
+//       } else {
+//         getCategiries(itemsByKey, key, dispatch)
+//           .then(data => resolve(data));
+//       }
+//     });
+//
+//   function getCategiries(itemsByKey, key, dispatch) {
+//     return new Promise((resolve) => {
+//       const uri = itemsByKey[key].uri;
+//       dispatch(loadSubcategories(key, uri))
+//         .then(data => resolve(data));
+//     });
+//   }
+// }
+
+export function getSubcategoriesIfNeed(params) {
   return (dispatch, getState) =>
     new Promise((resolve) => {
-      const { categories: { itemsByKey } } = getState();
+      debugger;
+      const state = getState();
+      const { categories: { itemsByKey } } = state;
+      const subcategory = getSubcategoryByCategoryParam(state, params);
 
-      if (isEmpty(itemsByKey)) {
+      if (isEmpty(subcategory)) {
         dispatch(getCategoriesIfNeed())
-          .then((items) => {
-            getCategiries(items, key, dispatch)
-              .then(data => resolve(data));
-          });
+          .then(items => dispatch(loadSubcategories(items, params.category)))
+          .then(data => resolve(data));
       } else {
-        getCategiries(itemsByKey, key, dispatch)
+        dispatch(loadSubcategories(subcategory.itemsByKey, params.category))
           .then(data => resolve(data));
       }
     });
 
-  function getCategiries(itemsByKey, key, dispatch) {
-    return new Promise((resolve) => {
-      const uri = itemsByKey[key].uri;
-      dispatch(loadSubcategories(key, uri))
-        .then(data => resolve(data));
-    });
-  }
+  // function getCategiries(itemsByKey, key, dispatch) {
+  //   return new Promise((resolve) => {
+  //     const uri = itemsByKey[key].uri;
+  //     dispatch(loadSubcategories(key, uri))
+  //       .then(data => resolve(data));
+  //   });
+  // }
 }
 
-function loadSubcategories(key, uri) {
+function loadSubcategories(itemsByKey, key) {
   return (dispatch, getState) =>
     new Promise((resolve) => {
+      debugger;
+      const uri = itemsByKey[key].uri;
+
       const { subcategories } = getState();
       const subcategory = subcategories[key];
+
       if (isEmpty(subcategory)) {
         dispatch(request(SUBCATEGORIES_GET_REQUEST, key));
 

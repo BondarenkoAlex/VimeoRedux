@@ -34,6 +34,7 @@ export default function playlists(state = initialState, action) {
         isFetching: false,
         error: null,
         itemsByKey: {
+          ...state.itemsByKey,
           [key]: {
             ...stateBykey,
             ...data,

@@ -41,6 +41,8 @@ export function getCategoriesIfNeed() {
               dispatch(action(CATEGORIES_GET_FAILURE, error));
             },
           );
+      } else {
+        resolve();
       }
     });
 }
