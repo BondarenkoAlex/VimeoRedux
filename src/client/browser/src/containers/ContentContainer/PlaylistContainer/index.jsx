@@ -10,6 +10,11 @@ import { isEmpty } from '../../../utils/check';
 import { consoleCustom } from '../../../utils/consoleCustom';
 import { getPlaylistIfNeed } from '../../../actions';
 import Playlist from '../../../components/Content/Playlist';
+import {
+  getSubcategoryTitle,
+  getVideosSubcategory,
+} from '../../../selectors';
+import { Param } from '../../../constants/common';
 
 class PlaylistContainer extends Component {
   constructor(props, context) {
@@ -18,13 +23,8 @@ class PlaylistContainer extends Component {
   }
 
   componentWillMount() {
-    const { match } = this.props;
-    const { params: { category, subcategory } } = match;
-    if (category !== undefined && subcategory !== undefined) {
-      this.props.getPlaylistIfNeed(category, subcategory);
-    } else {
-      consoleCustom.error(`The category and subcategory in ${match.url} are do not find`);
-    }
+    const { match: { params } } = this.props;
+    this.props.getPlaylistIfNeed(params[Param.CATEGORY], params[Param.SUBCATEGORY]);
   }
 
   render() {
@@ -46,48 +46,22 @@ class PlaylistContainer extends Component {
 
 PlaylistContainer.propTypes = {
   isLoading: PropTypes.bool.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   videos: PropTypes.array.isRequired,
+  match: PropTypes.object.isRequired,
   getPlaylistIfNeed: PropTypes.func.isRequired,
 };
 PlaylistContainer.defaultProps = {
   title: '',
 };
 
-const getParams = (_, props) => props.match.params;
-const getSubcategories = state => state.subcategories;
-const getPlaylists = state => state.playlists;
-const getVideos = state => state.videos;
-
-const getTitleSubcategory = createSelector(
-  [getSubcategories, getParams],
-  (subcategories, params) => {
-    const { category: categoryUrl, subcategory: subcategoryUrl } = params;
-    const category = subcategories[categoryUrl];
-    const subcategiry = category && category.itemsByKey[subcategoryUrl];
-    return subcategiry && subcategiry.name; // undefined or name
-  },
-);
-
-const getVideosSubcategory = createSelector(
-  [getPlaylists, getVideos, getParams],
-  (playlists, videos, params) => {
-    const { category, subcategory } = params;
-    const key = `${category}|${subcategory}`;
-    const playlistSubcategory = playlists.itemsByKey[key];
-    const playlistKeys = (playlistSubcategory && playlistSubcategory.items) || [];
-    const videosSubcategory = playlistKeys.map(k => videos[k]);
-    return videosSubcategory;
-  },
-);
-
 const mapStateToProps = (state, ownProps) => ({
   isLoading: state.playlists.isFetching,
-  title: getTitleSubcategory(state, ownProps),
+  title: getSubcategoryTitle(state, ownProps),
   videos: getVideosSubcategory(state, ownProps),
 });
 
-const mapDispatchToProps = (dispatch /*,ownProps*/) => (
+const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
     getPlaylistIfNeed,
   }, dispatch)

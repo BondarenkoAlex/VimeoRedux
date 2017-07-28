@@ -14,6 +14,7 @@ import {
   getCategoryTitle,
   getSubcategoryByCategoryParam,
 } from '../../../selectors';
+import { Param } from '../../../constants/common';
 
 class SubcategoryContainer extends Component {
   constructor(props, context) {
@@ -22,14 +23,8 @@ class SubcategoryContainer extends Component {
   }
 
   componentWillMount() {
-    // const { match: { params: { category } } } = this.props;
-    // if (category !== undefined) {
-    //   this.props.getSubcategoriesIfNeed(category);
-    // } else {
-    //   consoleCustom.error(`The category in ${match.url} is does not find`);
-    // }
     const { match: { params } } = this.props;
-    this.props.getSubcategoriesIfNeed(params);
+    this.props.getSubcategoriesIfNeed(params[Param.CATEGORY]);
   }
 
   render() {
@@ -61,8 +56,8 @@ SubcategoryContainer.defaultProps = {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  title: getCategoryTitle(state, ownProps.match.params),
-  subcategory: getSubcategoryByCategoryParam(state, ownProps.match.params),
+  title: getCategoryTitle(state, ownProps),
+  subcategory: getSubcategoryByCategoryParam(state, ownProps),
 });
 
 const mapDispatchToProps = (dispatch /*,ownProps*/) => (

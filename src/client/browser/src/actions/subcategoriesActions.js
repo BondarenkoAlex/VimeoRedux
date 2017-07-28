@@ -8,10 +8,10 @@ import { categoryListSchema } from '../normalize';
 import fetchService from '../utils/fetchService';
 import { isEmpty } from '../utils/check';
 import { getCategoriesIfNeed } from './categoriesActions';
-
 import {
   getSubcategoryByCategoryParam,
 } from '../selectors';
+import { Param } from '../constants/common';
 
 function request(type, key = null) {
   return {
@@ -28,91 +28,44 @@ function action(type, payload, key = null) {
   };
 }
 
-// export function getSubcategoriesIfNeed(key) {
-//   return (dispatch, getState) =>
-//     new Promise((resolve) => {
-//       debugger;
-//       const { categories: { itemsByKey } } = getState();
-//
-//       if (isEmpty(itemsByKey)) {
-//         dispatch(getCategoriesIfNeed())
-//           .then((items) => {
-//             getCategiries(items, key, dispatch)
-//               .then(data => resolve(data));
-//           });
-//       } else {
-//         getCategiries(itemsByKey, key, dispatch)
-//           .then(data => resolve(data));
-//       }
-//     });
-//
-//   function getCategiries(itemsByKey, key, dispatch) {
-//     return new Promise((resolve) => {
-//       const uri = itemsByKey[key].uri;
-//       dispatch(loadSubcategories(key, uri))
-//         .then(data => resolve(data));
-//     });
-//   }
-// }
-
-export function getSubcategoriesIfNeed(params) {
+export function getSubcategoriesIfNeed(categoryParam) {
   return (dispatch, getState) =>
     new Promise((resolve) => {
-      debugger;
-      const state = getState();
-      const { categories: { itemsByKey } } = state;
-      const subcategory = getSubcategoryByCategoryParam(state, params);
+      const props = { match: { params: { [Param.CATEGORY]: categoryParam } } };
+      const subcategory = getSubcategoryByCategoryParam(getState(), props);
 
       if (isEmpty(subcategory)) {
         dispatch(getCategoriesIfNeed())
-          .then(items => dispatch(loadSubcategories(items, params.category)))
-          .then(data => resolve(data));
+          .then((categories) => {
+            const categoryObj = categories[categoryParam];
+            const uri = categoryObj.uri;
+            return dispatch(loadSubcategories(uri, categoryParam));
+          })
+          .then(itemsByKey => resolve(itemsByKey));
       } else {
-        dispatch(loadSubcategories(subcategory.itemsByKey, params.category))
-          .then(data => resolve(data));
+        resolve(subcategory.itemsByKey);
       }
     });
-
-  // function getCategiries(itemsByKey, key, dispatch) {
-  //   return new Promise((resolve) => {
-  //     const uri = itemsByKey[key].uri;
-  //     dispatch(loadSubcategories(key, uri))
-  //       .then(data => resolve(data));
-  //   });
-  // }
 }
 
-function loadSubcategories(itemsByKey, key) {
-  return (dispatch, getState) =>
+function loadSubcategories(uri, key) {
+  return (dispatch /*, getState*/) =>
     new Promise((resolve) => {
-      debugger;
-      const uri = itemsByKey[key].uri;
+      dispatch(request(SUBCATEGORIES_GET_REQUEST, key));
 
-      const { subcategories } = getState();
-      const subcategory = subcategories[key];
+      fetchService.get(`${uri}/subcategories`)
+        .then(
+          (data) => {
+            const normalizedData = normalize(data.data, categoryListSchema);
+            const payload = normalizedData.entities.categories;
+            dispatch(action(SUBCATEGORIES_GET_SUCCESS, payload, key));
+            resolve(normalizedData.entities.categories);
+          },
 
-      if (isEmpty(subcategory)) {
-        dispatch(request(SUBCATEGORIES_GET_REQUEST, key));
-
-        fetchService.get(`${uri}/subcategories`)
-          .then(
-            (data) => {
-              const normalizedData = normalize(data.data, categoryListSchema);
-              // const payload = {
-              //   [key]: normalizedData.entities.categories,
-              // };
-              const payload = normalizedData.entities.categories;
-              dispatch(action(SUBCATEGORIES_GET_SUCCESS, payload, key));
-              resolve(normalizedData.entities.categories);
-            },
-
-            (error) => {
-              dispatch(action(SUBCATEGORIES_GET_FAILURE, error, key));
-              return [];
-            },
-          );
-      }
+          (error) => {
+            dispatch(action(SUBCATEGORIES_GET_FAILURE, error, key));
+          },
+        );
     });
-
 }
 

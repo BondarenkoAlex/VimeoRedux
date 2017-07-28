@@ -42,7 +42,7 @@ export function getCategoriesIfNeed() {
             },
           );
       } else {
-        resolve();
+        resolve(itemsByKey);
       }
     });
 }
