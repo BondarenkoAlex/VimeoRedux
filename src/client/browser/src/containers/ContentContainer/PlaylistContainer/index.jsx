@@ -5,9 +5,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import autoBind from 'react-autobind';
-import { createSelector } from 'reselect';
-import { isEmpty } from '../../../utils/check';
-import { consoleCustom } from '../../../utils/consoleCustom';
 import { getPlaylistIfNeed } from '../../../actions';
 import Playlist from '../../../components/Content/Playlist';
 import {
@@ -39,6 +36,7 @@ class PlaylistContainer extends Component {
       <Playlist
         title={title}
         items={videos}
+        isLoading={isLoading}
       />
     );
   }
@@ -61,7 +59,7 @@ const mapStateToProps = (state, ownProps) => ({
   videos: getVideosSubcategory(state, ownProps),
 });
 
-const mapDispatchToProps = (dispatch) => (
+const mapDispatchToProps = dispatch => (
   bindActionCreators({
     getPlaylistIfNeed,
   }, dispatch)

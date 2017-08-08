@@ -17,6 +17,8 @@ function CategoryItem({
   const path = (url.slice(-1) === '/')
     ? url.slice(0, -1)
     : url;
+  const pictureLink = (pictures && pictures.sizes && pictures.sizes[3].link) || '';
+  const iconLink = (icon && icon.sizes && icon.sizes[0].link) || '';
   return (
     <div className="category">
       <div className="ratio ratio16-9">
@@ -25,14 +27,14 @@ function CategoryItem({
             <img
               alt={name}
               className="category-preview"
-              src={pictures.sizes[3].link}
+              src={pictureLink}
             />
             <div className="category-logo-title">
               {(icon !== undefined) &&
               <img
                 alt={name}
                 className="category-logo"
-                src={icon.sizes[0].link}
+                src={iconLink}
               />
               }
               <p className="category-title">

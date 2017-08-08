@@ -50,10 +50,9 @@ const mapStateToProps = (state /*,ownProps*/) => ({
   categories: state.categories,
 });
 
-const mapDispatchToProps = (dispatch /*,ownProps*/) => (
+const mapDispatchToProps = dispatch =>
   bindActionCreators({
     getCategoriesIfNeed,
-  }, dispatch)
-);
+  }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryContainer);

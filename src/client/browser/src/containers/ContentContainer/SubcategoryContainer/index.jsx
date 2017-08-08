@@ -5,9 +5,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import autoBind from 'react-autobind';
-import { createSelector } from 'reselect';
-import { isEmpty } from '../../../utils/check';
-import { consoleCustom } from '../../../utils/consoleCustom';
 import { getSubcategoriesIfNeed } from '../../../actions';
 import Category from '../../../components/Content/Category';
 import {
@@ -29,7 +26,7 @@ class SubcategoryContainer extends Component {
 
   render() {
     const {
-            match : { url },
+            match: { url },
             title,
             subcategory,
           } = this.props;
@@ -47,7 +44,7 @@ class SubcategoryContainer extends Component {
 SubcategoryContainer.propTypes = {
   getSubcategoriesIfNeed: PropTypes.func.isRequired,
   title: PropTypes.string,
-  subcategories: PropTypes.object,
+  subcategory: PropTypes.object,
   match: PropTypes.object.isRequired,
 };
 SubcategoryContainer.defaultProps = {
@@ -60,10 +57,9 @@ const mapStateToProps = (state, ownProps) => ({
   subcategory: getSubcategoryByCategoryParam(state, ownProps),
 });
 
-const mapDispatchToProps = (dispatch /*,ownProps*/) => (
+const mapDispatchToProps = dispatch =>
   bindActionCreators({
     getSubcategoriesIfNeed,
-  }, dispatch)
-);
+  }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubcategoryContainer);

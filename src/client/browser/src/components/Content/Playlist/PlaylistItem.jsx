@@ -20,13 +20,15 @@ function PlaylistItem(props) {
   //   ? url.slice(0, -1)
   //   : url;
   const dur = toTime(duration);
+  const pictureLink = (pictures && pictures.sizes && pictures.sizes[3].link) || '';
+  const userPictureLink = (user && user.pictures && user.pictures.sizes[1].link) || '';
   return (
     <div className="video-preview">
       <div className="preview">
         <a href="#">
           <img
             className="preview"
-            src={pictures.sizes[3].link}
+            src={pictureLink}
           />
           <span className="duration">
             {dur}
@@ -42,9 +44,7 @@ function PlaylistItem(props) {
         <ul className="author-favorite">
           <li className="author">
             <a href="#">
-              {(user.pictures !== null) &&
-              <img src={user.pictures.sizes[1].link}/>
-              }
+              <img src={userPictureLink}/>
               <span>
                 {user.name}
               </span>
