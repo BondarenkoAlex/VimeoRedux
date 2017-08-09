@@ -29,5 +29,5 @@ export const toTime = function toTime(sec) {
 
 export const lastSubPath = function lastSubPath(path) {
   return path.split('/').pop();
-}
+};
 
