@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import toTime from '../../../utils/toTime';
+import { toTime } from '../../../utils/helpers';
 
 function PlaylistItem(props) {
   const {
