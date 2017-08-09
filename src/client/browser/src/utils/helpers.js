@@ -1,4 +1,4 @@
-const toTime = function toTime(sec) {
+export const toTime = function toTime(sec) {
   const secNum = parseInt(sec, 10);
 
   let hours = Math.floor(secNum / 3600);
@@ -27,4 +27,7 @@ const toTime = function toTime(sec) {
   return time;
 };
 
-export default toTime;
+export const lastSubPath = function lastSubPath(path) {
+  return path.split('/').pop();
+}
+
