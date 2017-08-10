@@ -31,3 +31,4 @@ export const lastSubPath = function lastSubPath(path) {
   return path.split('/').pop();
 };
 
+
