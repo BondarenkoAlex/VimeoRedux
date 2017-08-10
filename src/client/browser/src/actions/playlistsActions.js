@@ -44,6 +44,7 @@ export function getPlaylistIfNeed(categoryParam, subcategoryParam) {
           .then((categories) => {
             const subcategoryObj = categories[subcategoryParam];
             const uri = subcategoryObj.metadata.connections.videos.uri;
+
             // #todo сделать шаблон ключа
             const key = `${categoryParam}|${subcategoryParam}`;
             return dispatch(loadPlaylist(uri, key));

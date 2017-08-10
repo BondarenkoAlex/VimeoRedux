@@ -21,9 +21,10 @@ export const isEmpty = function isEmpty(obj) {
     return obj.length === 0;
   } else if (obj && typeof obj === 'object' && obj.constructor === Object) {
     return (Object.getOwnPropertyNames(obj).length === 0);
-  } else if (typeof obj == 'string' || (typeof obj == 'object' && obj.constructor === String)) {
+  } else if (typeof obj === 'string' || (typeof obj === 'object' && obj.constructor === String)) {
     return obj.length === 0;
   }
+
   /*isNumber*/
   else if (String(parseFloat(obj, 10)) === String(obj)) {
     return obj === 0;
