@@ -113,32 +113,21 @@
           color: white;
           text-decoration: none;
         }
-        img {
+        svg {
+          width: 2rem;
+          height: 2rem;
+          display: inline;
           vertical-align: middle;
-          width: 32px;
-          height: 32px;
-          border-radius: 16px;
         }
         &:hover span.nav-header-text {
           color: $reduxColor;
           text-decoration: underline;
-        }
-        &:hover img {
-          background-color: $reduxColor;
         }
       }
     }
     li.nav-header-log-in-out {
       a {
         div {
-          &.icon-chevron{
-            svg {
-              width: 2rem;
-              height: 2rem;
-              display: inline;
-              vertical-align: middle;
-            }
-          }
           &.icon-chevron:after {
             color: white;
             font-size: 0.375rem;

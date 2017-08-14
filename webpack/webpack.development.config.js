@@ -12,7 +12,7 @@ module.exports = merge(
       port: 9002,
       historyApiFallback: true,
       hot: true,
-      host: '127.0.0.25',
+      //host: '127.0.0.25',
     },
     watchOptions: {
       aggregateTimeout: 300,
