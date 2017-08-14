@@ -1,3 +1,4 @@
+/* eslint-disable prefer-template */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -13,7 +14,6 @@ function CategoryItem({
           pictures,
           icon,
         } = category;
-  debugger;
   const subpath = '/' + lastSubPath(uri);
   const path = (url.slice(-1) === '/')
     ? url.slice(0, -1)

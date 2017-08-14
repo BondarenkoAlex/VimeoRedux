@@ -8,18 +8,21 @@
   //logo style
   .nav-header-logo-container {
     float: left;
-    padding: 2px 0;
+    padding: 4px 0;
     a {
       text-decoration: none;
       outline: none;
       color: #fff;
       display: block;
     }
-    img {
+    svg {
+      width: 2.5rem;
+      height: 2.5rem;
+      display: inline;
       vertical-align: middle;
     }
     span {
-      vertical-align: middle;
+      vertical-align: sub;
       text-transform: uppercase;
       padding-left: 0.5rem;
     }

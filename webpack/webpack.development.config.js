@@ -1,7 +1,7 @@
-const project      = require('./project.config.js');
-const merge        = require('webpack-merge');
+const project = require('./project.config.js');
+const merge = require('webpack-merge');
 const commonConfig = require('./webpack.common.config.js');
-const path         = require('path');
+const path = require('path');
 
 module.exports = merge(
   commonConfig,
@@ -9,14 +9,15 @@ module.exports = merge(
     devServer: {
       contentBase: path.resolve(project.basePath, project.outDir),
       publicPath: `${project.publicPath}`,
-      port: 9000,
+      port: 9002,
       historyApiFallback: true,
-      hot: true
+      hot: true,
+      host: '127.0.0.25',
     },
     watchOptions: {
       aggregateTimeout: 300,
       poll: 1000,
-    }
+    },
   }
 );
 

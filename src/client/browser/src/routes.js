@@ -1,5 +1,4 @@
-//eslint indent: "error"
-//jscs:disable validateIndentation
+// jscs:disable requireSpaceAfterComma
 import AppLayout from './components/layout/AppLayout';
 import CategoryContainer from './containers/ContentContainer/CategoryContainer';
 import SubcategoryContainer from './containers/ContentContainer/SubcategoryContainer';
@@ -8,6 +7,7 @@ import VideoContainer from './containers/ContentContainer/VideoContainer';
 import { Param } from './constants/common';
 
 const project = require('../../../../webpack/project.config.js');
+
 const publicPath = project.publicPath;
 
 const routes = [{

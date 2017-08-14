@@ -11,7 +11,7 @@ const Header = (props) => {
     <header className="nav-header clearfix">
       <div className="container">
         <div className="wrap-container">
-          <nav className="nav-header-navigation">
+          <nav className="nav-header-navigation clearfix">
             <Logo />
             <label
               className="label-for-checkbox"
@@ -31,7 +31,7 @@ const Header = (props) => {
   );
 };
 
-Header.propTypes    = {};
+Header.propTypes = {};
 Header.defaultProps = {};
 
 export default Header;
