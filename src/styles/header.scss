@@ -131,6 +131,14 @@
     li.nav-header-log-in-out {
       a {
         div {
+          &.icon-chevron{
+            svg {
+              width: 2rem;
+              height: 2rem;
+              display: inline;
+              vertical-align: middle;
+            }
+          }
           &.icon-chevron:after {
             color: white;
             font-size: 0.375rem;

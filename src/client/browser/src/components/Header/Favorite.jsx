@@ -1,21 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { Heart } from '../Svg/Heart';
 
 const Favorite = (props) => {
   return (
     <li className="nav-header-favorite">
-      <a href="#">
+      <Link to="/">
         <div>
-          <img src={require('../../../../../images/favorite_header.png')}/>
+          <Heart />
         </div>
         <span className="nav-header-text">Favorite</span>
         <span className="nav-header-badge">100</span>
-      </a>
+      </Link>
     </li>
   );
 };
 
-Favorite.propTypes    = {};
+Favorite.propTypes = {};
 Favorite.defaultProps = {};
 
 export default Favorite;
