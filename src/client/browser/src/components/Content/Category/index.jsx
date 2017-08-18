@@ -8,10 +8,11 @@ function Category({
   itemsByKey,
   title,
   url,
-  isLoading,
+  isLoading, onClick,
 }) {
   return (
     <CategoryPlaylistWrap title={title}>
+      <button onClick={onClick}>Click</button>
       {{
         true: (
           <Loading />),

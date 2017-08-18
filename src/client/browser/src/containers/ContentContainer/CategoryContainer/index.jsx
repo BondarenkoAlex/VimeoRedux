@@ -12,24 +12,33 @@ class CategoryContainer extends Component {
   constructor(props, context) {
     super(props, context);
     autoBind(this);
+    this.state = { counter: 1 }
   }
 
   componentWillMount() {
     this.props.getCategoriesIfNeed();
   }
 
+  onClick() {
+    this.setState({
+      counter: ++this.state.counter,
+    })
+  }
+
   render() {
     const {
-            title,
+
             categories,
             match: { url },
           } = this.props;
+    let title = "my title " + this.state.counter;
     return (
       <Category
         title={title}
         itemsByKey={categories.itemsByKey}
         isLoading={categories.isFetching}
         url={url}
+        onClick={this.onClick}
       />
     );
   }
