@@ -31,4 +31,14 @@ export const lastSubPath = function lastSubPath(path) {
   return path.split('/').pop();
 };
 
+export const buildKeyVideoStore = function buildKeyVideoStore(obj) {
+  const {
+    category = '',
+    subcategory = '',
+    showby = '',
+    duration = '',
+    period = '',
+  } = obj;
+  return (`${category}|${subcategory}|${showby}|${duration}|${period}`);
+};
 
