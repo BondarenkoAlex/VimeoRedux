@@ -11,7 +11,8 @@ import {
   getSubcategoryTitle,
   getVideosSubcategory,
 } from '../../../selectors';
-import { Param } from '../../../constants/common';
+import { PARAM } from '../../../constants/common';
+import queryToObject from '../../../utils/queryToObject';
 
 class PlaylistContainer extends Component {
   constructor(props, context) {
@@ -21,16 +22,21 @@ class PlaylistContainer extends Component {
 
   componentWillMount() {
     const { match: { params } } = this.props;
-    this.props.getPlaylistIfNeed(params[Param.CATEGORY], params[Param.SUBCATEGORY]);
+    const { location: { search } } = this.props;
+    debugger;
+    if (search !== '') {
+      const queryObject = queryToObject(search);
+    }
+    this.props.getPlaylistIfNeed(params[PARAM.CATEGORY], params[PARAM.SUBCATEGORY]);
   }
 
   render() {
     const {
-            title,
-            videos,
-            isLoading,
-            match,
-          } = this.props;
+      title,
+      videos,
+      isLoading,
+      match,
+    } = this.props;
 
     return (
       <Playlist
@@ -47,6 +53,7 @@ PlaylistContainer.propTypes = {
   title: PropTypes.string,
   videos: PropTypes.array.isRequired,
   match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
   getPlaylistIfNeed: PropTypes.func.isRequired,
 };
 PlaylistContainer.defaultProps = {

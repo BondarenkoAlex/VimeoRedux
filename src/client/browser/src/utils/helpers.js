@@ -32,13 +32,22 @@ export const lastSubPath = function lastSubPath(path) {
 };
 
 export const buildKeyVideoStore = function buildKeyVideoStore(obj) {
-  const {
-    category = '',
-    subcategory = '',
-    showby = '',
-    duration = '',
-    period = '',
+  let {
+    category,
+    subcategory,
+    showby,
+    duration,
+    period,
   } = obj;
+  category = category || '';
+  subcategory = subcategory || '';
+  showby = showby
+    ? parseInt(showby, 10)
+    : '';
+  duration = duration || '';
+  period = period
+    ? parseInt(period, 10)
+    : '';
   return (`${category}|${subcategory}|${showby}|${duration}|${period}`);
 };
 

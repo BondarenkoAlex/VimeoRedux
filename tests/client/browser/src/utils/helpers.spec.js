@@ -45,6 +45,28 @@ describe('helpers', () => {
       const result = 'animation||10|long|7';
       expect(exp).to.equal(result);
     });
+
+    it('showby=null, duration=null, period=null. should be ||||', () => {
+      const obj = {
+        showby: null,
+        duration: null,
+        period: null,
+      };
+      const exp = buildKeyVideoStore(obj);
+      const result = '||||';
+      expect(exp).to.equal(result);
+    });
+
+    it('showby="10", duration=null, period="7". should be ||10||7', () => {
+      const obj = {
+        showby: "10",
+        duration: null,
+        period: "7",
+      };
+      const exp = buildKeyVideoStore(obj);
+      const result = '||10||7';
+      expect(exp).to.equal(result);
+    });
   });
   describe('lastSubPath', () => {
     it('path', () => {
