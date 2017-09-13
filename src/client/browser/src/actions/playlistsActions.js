@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import { normalize } from 'normalizr';
 import {
   PLAYLISTS_GET_FAILURE,
@@ -11,7 +12,8 @@ import { getSubcategoriesIfNeed } from './subcategoriesActions';
 import {
   getVideosSubcategory,
 } from '../selectors';
-import { Param } from '../constants/common';
+import { PARAM } from '../constants/common';
+import { buildKeyVideoStore } from '../utils/helpers';
 
 function request(type) {
   return {
@@ -26,14 +28,14 @@ function action(type, payload) {
   };
 }
 
-export function getPlaylistIfNeed(categoryParam, subcategoryParam) {
+export function getPlaylistIfNeed(categoryParam, subcategoryParam, showby = null, duration = null, period = null) {
   return (dispatch, getState) =>
     new Promise((resolve) => {
       const props = {
         match: {
           params: {
-            [Param.CATEGORY]: categoryParam,
-            [Param.SUBCATEGORY]: subcategoryParam,
+            [PARAM.CATEGORY]: categoryParam,
+            [PARAM.SUBCATEGORY]: subcategoryParam,
           },
         },
       };
@@ -46,7 +48,13 @@ export function getPlaylistIfNeed(categoryParam, subcategoryParam) {
             const uri = subcategoryObj.metadata.connections.videos.uri;
 
             // #todo сделать шаблон ключа
-            const key = `${categoryParam}|${subcategoryParam}`;
+            const key = buildKeyVideoStore({
+              category: categoryParam,
+              subcategory: subcategoryParam,
+              showby,
+              duration,
+              period,
+            });
             return dispatch(loadPlaylist(uri, key));
           })
           .then(itemsByKey => resolve(itemsByKey));
@@ -55,30 +63,6 @@ export function getPlaylistIfNeed(categoryParam, subcategoryParam) {
       }
     });
 }
-
-// export function getPlaylistIfNeed(categoryParam, subcategoryParam) {
-//   return (dispatch, getState) => {
-//
-//     const { subcategories } = getState();
-//     const subcategoriesByKey = subcategories[keyCat];
-//
-//     if (isEmpty(subcategoriesByKey)) {
-//       dispatch(getSubcategoriesIfNeed(keyCat))
-//         .then((items) => {
-//           getVideos(items, keyCat, keySubcat, dispatch);
-//         });
-//     } else {
-//       getVideos(subcategoriesByKey.itemsByKey, keyCat, keySubcat, dispatch);
-//     }
-//   };
-//
-//   function getVideos(subcategories, keyCat, keySubcat, dispatch) {
-//     const key = `${keyCat}|${keySubcat}`;
-//     const subcategory = subcategories[keySubcat];
-//     const uri = subcategory.metadata.connections.videos.uri;
-//     dispatch(loadPlaylist(key, uri));
-//   }
-// }
 
 function loadPlaylist(uri, key) {
   return (dispatch, getState) =>

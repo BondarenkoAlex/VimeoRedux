@@ -11,7 +11,7 @@ import { getCategoriesIfNeed } from './categoriesActions';
 import {
   getSubcategoryByCategoryParam,
 } from '../selectors';
-import { Param } from '../constants/common';
+import { PARAM } from '../constants/common';
 
 function request(type, key = null) {
   return {
@@ -31,7 +31,7 @@ function action(type, payload, key = null) {
 export function getSubcategoriesIfNeed(categoryParam) {
   return (dispatch, getState) =>
     new Promise((resolve) => {
-      const props = { match: { params: { [Param.CATEGORY]: categoryParam } } };
+      const props = { match: { params: { [PARAM.CATEGORY]: categoryParam } } };
       const subcategory = getSubcategoryByCategoryParam(getState(), props);
 
       if (isEmpty(subcategory)) {

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import CategoryPlaylistWrap from '../CategoryPlaylistWrap';
 import CategoryListItem from './CategoryListItem';
 import Loading from '../../Loading';
+import { Link } from 'react-router-dom';
 
 function Category({
   itemsByKey,
@@ -13,6 +14,14 @@ function Category({
   return (
     <CategoryPlaylistWrap title={title}>
       <button onClick={onClick}>Click</button>
+      <Link
+        to={{
+          pathname: '/animation/2d',
+          search: '?showby=10&duration=short&period=7',
+        }}
+      >
+        Link
+      </Link>
       {{
         true: (
           <Loading />),

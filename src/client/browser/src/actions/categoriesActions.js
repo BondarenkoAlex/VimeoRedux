@@ -23,7 +23,7 @@ function action(type, payload) {
 
 export function getCategoriesIfNeed() {
   return (dispatch, getState) =>
-    new Promise((resolve) => {
+    new Promise((resolve, reject) => {
       const { categories: { itemsByKey } } = getState();
 
       if (isEmpty(itemsByKey)) {
@@ -33,12 +33,13 @@ export function getCategoriesIfNeed() {
           .then(
             (data) => {
               const normalizedData = normalize(data.data, categoryListSchema);
-              dispatch(action(CATEGORIES_GET_SUCCESS, normalizedData.entities.categories));
               resolve(normalizedData.entities.categories);
+              dispatch(action(CATEGORIES_GET_SUCCESS, normalizedData.entities.categories));
             },
 
             (error) => {
               dispatch(action(CATEGORIES_GET_FAILURE, error));
+              reject(error);
             },
           );
       } else {

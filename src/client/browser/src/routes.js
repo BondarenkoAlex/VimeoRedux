@@ -4,7 +4,7 @@ import CategoryContainer from './containers/ContentContainer/CategoryContainer';
 import SubcategoryContainer from './containers/ContentContainer/SubcategoryContainer';
 import PlaylistContainer from './containers/ContentContainer/PlaylistContainer';
 import VideoContainer from './containers/ContentContainer/VideoContainer';
-import { Param } from './constants/common';
+import { PARAM } from './constants/common';
 
 const project = require('../../../../webpack/project.config.js');
 
@@ -34,17 +34,17 @@ const routes = [{
       component: null,
     },],
   }, {
-    path: `${publicPath}:${Param.CATEGORY}/:${Param.SUBCATEGORY}/:${Param.ID_VIDEO}`,
+    path: `${publicPath}:${PARAM.CATEGORY}/:${PARAM.SUBCATEGORY}/:${PARAM.ID_VIDEO}`,
     exact: true,
     component: VideoContainer,
     routes: [],
   }, {
-    path: `${publicPath}:${Param.CATEGORY}/:${Param.SUBCATEGORY}`,
+    path: `${publicPath}:${PARAM.CATEGORY}/:${PARAM.SUBCATEGORY}`,
     exact: true,
     component: PlaylistContainer,
     routes: [],
   }, {
-    path: `${publicPath}:${Param.CATEGORY}`,
+    path: `${publicPath}:${PARAM.CATEGORY}`,
     exact: true,
     component: SubcategoryContainer,
     routes: [],

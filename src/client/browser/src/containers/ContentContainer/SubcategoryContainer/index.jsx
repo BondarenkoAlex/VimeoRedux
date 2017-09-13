@@ -11,7 +11,7 @@ import {
   getCategoryTitle,
   getSubcategoryByCategoryParam,
 } from '../../../selectors';
-import { Param } from '../../../constants/common';
+import { PARAM } from '../../../constants/common';
 
 class SubcategoryContainer extends Component {
   constructor(props, context) {
@@ -21,7 +21,7 @@ class SubcategoryContainer extends Component {
 
   componentWillMount() {
     const { match: { params } } = this.props;
-    this.props.getSubcategoriesIfNeed(params[Param.CATEGORY]);
+    this.props.getSubcategoriesIfNeed(params[PARAM.CATEGORY]);
   }
 
   render() {
