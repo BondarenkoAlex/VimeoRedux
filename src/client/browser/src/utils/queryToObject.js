@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 export default function (query) {
   let output = {};
   let split = query.split('?')[1];
