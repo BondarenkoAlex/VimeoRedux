@@ -12,7 +12,7 @@ class CategoryContainer extends Component {
   constructor(props, context) {
     super(props, context);
     autoBind(this);
-    this.state = { counter: 1 }
+    this.state = { counter: 1 };
   }
 
   componentWillMount() {
@@ -22,7 +22,7 @@ class CategoryContainer extends Component {
   onClick() {
     this.setState({
       counter: ++this.state.counter,
-    })
+    });
   }
 
   render() {
@@ -31,7 +31,7 @@ class CategoryContainer extends Component {
             categories,
             match: { url },
           } = this.props;
-    let title = "my title " + this.state.counter;
+    let title = 'my title ' + this.state.counter;
     return (
       <Category
         title={title}
@@ -52,7 +52,6 @@ CategoryContainer.propTypes = {
 };
 CategoryContainer.defaultProps = {
   title: 'Categories',
-
 };
 
 const mapStateToProps = (state /*,ownProps*/) => ({
