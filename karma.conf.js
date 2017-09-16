@@ -1,6 +1,7 @@
 // Karma configuration
 // Generated on Wed Jun 07 2017 22:14:30 GMT+0300 (AST)
-const path    = require('path');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = function (config) {
   config.set({
@@ -56,14 +57,19 @@ module.exports = function (config) {
             query: {
               presets: ['airbnb'],
             },
-          }
-        ]
+          },
+        ],
       },
       externals: {
         'react/addons': true,
         'react/lib/ExecutionEnvironment': true,
         'react/lib/ReactContext': true,
       },
+      plugins: [
+        new webpack.ProvidePlugin({
+          Promise: 'es6-promise',
+        }),
+      ],
     },
 
     webpackServer: {
@@ -92,7 +98,8 @@ module.exports = function (config) {
     colors: true,
 
     // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN ||
+    // config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
 
     // enable / disable watching file and executing tests whenever any file changes
@@ -109,7 +116,6 @@ module.exports = function (config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity,
-
 
     webpackMiddleware: {
       // webpack-dev-middleware configuration

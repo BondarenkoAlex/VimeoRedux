@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define,import/prefer-default-export */
 import { normalize } from 'normalizr';
 import {
   SUBCATEGORIES_GET_REQUEST,
@@ -49,7 +50,7 @@ export function getSubcategoriesIfNeed(categoryParam) {
 }
 
 function loadSubcategories(uri, key) {
-  return (dispatch /*, getState*/) =>
+  return dispatch =>
     new Promise((resolve) => {
       dispatch(request(SUBCATEGORIES_GET_REQUEST, key));
 

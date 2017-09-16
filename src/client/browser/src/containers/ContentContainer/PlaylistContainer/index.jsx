@@ -23,7 +23,6 @@ class PlaylistContainer extends Component {
   componentWillMount() {
     const { match: { params } } = this.props;
     const { location: { search } } = this.props;
-    debugger;
     if (search !== '') {
       const queryObject = queryToObject(search);
     }

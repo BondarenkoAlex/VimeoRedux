@@ -97,7 +97,9 @@ class FetchService {
   request(url, options, params = {}) {
     const baseUrl = this._getBaseUrl(url);
     const q = this.objectToQuery(params);
-    const query = (q === '') ? '' : `?${q}`;
+    const query = (q === '')
+      ? ''
+      : `?${q}`;
     const requestUrl = `${baseUrl}${query}`;
     const opt = {
       ...this._options,
@@ -152,7 +154,11 @@ class FetchService {
     r20 = /%20/g;
     add = function (key, value) {
       // If value is a function, invoke it and return its value
-      value = (typeof value == 'function') ? value() : (value == null ? '' : value);
+      value = (typeof value == 'function')
+        ? value()
+        : (value == null
+          ? ''
+          : value);
       s[s.length] = encode
         ? encodeURIComponent(key) + '=' + encodeURIComponent(value)
         : `${key}=${value}`;
@@ -180,7 +186,9 @@ class FetchService {
         if (rbracket.test(prefix)) {
           add(prefix, obj[i]);
         } else {
-          this._buildParams(prefix + '[' + (typeof obj[i] === 'object' ? i : '') + ']', obj[i], add);
+          this._buildParams(prefix + '[' + (typeof obj[i] === 'object'
+            ? i
+            : '') + ']', obj[i], add);
         }
       }
     } else if (typeof obj == 'object') {
@@ -216,10 +224,10 @@ class FetchService {
         (response) => {
           if (response.status >= 200 && response.status < 300) {
             if (response.status === 204) {
-              //No content
+              // No content
               return response.text();
             } else {
-              let contentType = response.headers.get('Content-Type');
+              const contentType = response.headers.get('Content-Type');
               if (contentType !== null
                 && contentType.indexOf('json') >= 0) {
                 return response.json();

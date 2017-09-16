@@ -7,5 +7,4 @@ export default function (query) {
     : query.split('&');
   split.map((elem) => elem.split('=').reduce((name, value) => output[name] = value));
   return output;
-
 }
