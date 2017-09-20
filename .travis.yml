@@ -11,8 +11,8 @@ deploy:
   local_dir: "dist/production"
 
 cache:
-  directories:
-    - node_modules
+  # directories:
+  #  - node_modules
   yarn: true
 
 script:
