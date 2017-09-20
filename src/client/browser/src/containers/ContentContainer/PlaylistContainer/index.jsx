@@ -1,7 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
-import React, {
-  Component,
-} from 'react';
+import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -14,8 +12,8 @@ import {
 } from '../../../selectors';
 import {
   getParamsFromProps,
+  getQueryFromProps,
 } from '../../../utils/getParams';
-import queryToObject from '../../../utils/queryToObject';
 
 class PlaylistContainer extends Component {
   constructor(props, context) {
@@ -25,9 +23,7 @@ class PlaylistContainer extends Component {
 
   componentWillMount() {
     const params = getParamsFromProps(this.props);
-
-    const { location: { search } } = this.props;
-    const queryObject = queryToObject(search);
+    const queryObject = getQueryFromProps(this.props);
 
     const obj = {
       ...params,
@@ -42,7 +38,6 @@ class PlaylistContainer extends Component {
             title,
             videos,
             isLoading,
-            match,
           } = this.props;
 
     return (
@@ -59,8 +54,6 @@ PlaylistContainer.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   title: PropTypes.string,
   videos: PropTypes.array.isRequired,
-  match: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
   getPlaylistIfNeed: PropTypes.func.isRequired,
 };
 PlaylistContainer.defaultProps = {
@@ -69,10 +62,11 @@ PlaylistContainer.defaultProps = {
 
 const mapStateToProps = (state, ownProps) => {
   const params = getParamsFromProps(ownProps);
+  const query = getQueryFromProps(ownProps);
   return ({
     isLoading: state.playlists.isFetching,
     title: getSubcategoryTitle(state, params),
-    videos: getVideosSubcategory(state, params),
+    videos: getVideosSubcategory(state, { ...params, ...query }),
   });
 };
 

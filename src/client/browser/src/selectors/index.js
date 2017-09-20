@@ -1,23 +1,28 @@
 import { createSelector } from 'reselect';
-import { PARAM } from '../constants/common';
+import {
+  PARAM,
+  PARAM_QUERY,
+  EMPTY_OBJECT,
+} from '../constants/common';
 import { buildKeyVideoStore } from '../utils/helpers';
 import {
   getCategory,
   getSubcategory,
   getIdVideo,
+  getDuration,
+  getPeriod,
+  getShowby,
 } from '../utils/getParams';
-
-// export const getCategoryParam = (_, props) => props.match.params[PARAM.CATEGORY];
-// export const getSubcategoryParam = (_, props) => props.match.params[PARAM.SUBCATEGORY];
-// export const getIdVideoParam = (_, props) => props.match.params[PARAM.ID_VIDEO];
 
 export const getCategoryParam = (_, params) => getCategory(params);
 export const getSubcategoryParam = (_, params) => getSubcategory(params);
 export const getIdVideoParam = (_, params) => getIdVideo(params);
 
-// export const getCategoryParam = (_, category) => category;
-// export const getSubcategoryParam = (_, subcategory) => subcategory;
-// export const getIdVideoParam = (_, idVideo) => idVideo;
+// export const getParams = (_, props) => getParamsFromProps(props);
+// export const getQuery = (_, props) => getQueryFromProps(props);
+export const getDurationQuery = (_, obj) => getDuration(obj);
+export const getPeriodQuery = (_, obj) => getPeriod(obj);
+export const getShowbyQuery = (_, obj) => getShowby(obj);
 
 export const getCategoriesState = state => state.categories;
 export const getSubcategoriesState = state => state.subcategories;
@@ -47,17 +52,39 @@ export const getSubcategoryTitle = createSelector(
 );
 
 export const getVideosSubcategory = createSelector(
-  [getPlaylistsState, getVideosState, getCategoryParam, getSubcategoryParam],
-  (playlistsState, videosState, categoryParam, subcategoryParam) => {
+  [
+    getPlaylistsState,
+    getVideosState,
+    getCategoryParam,
+    getSubcategoryParam,
+    getDurationQuery,
+    getPeriodQuery,
+    getShowbyQuery,
+  ],
+  (playlistsState,
+   videosState,
+   categoryParam,
+   subcategoryParam,
+   duration,
+   period,
+   showby) => {
     const key = buildKeyVideoStore({
-      category: categoryParam,
-      subcategory: subcategoryParam,
-      showby: '',
-      duration: '',
-      period: '',
+      [PARAM.CATEGORY]: categoryParam,
+      [PARAM.SUBCATEGORY]: subcategoryParam,
+      [PARAM_QUERY.DURATION]: duration,
+      [PARAM_QUERY.PERIOD]: period,
+      [PARAM_QUERY.SHOWBY]: showby,
     });
     const playlistSubcategory = playlistsState.itemsByKey[key];
     const playlistKeys = (playlistSubcategory && playlistSubcategory.items) || [];
-    return playlistKeys.map(k => videosState[k]);
+    return playlistKeys.map(k => videosState.itemsByKey[k]);
+  },
+);
+
+export const getVideo = createSelector(
+  [getVideosState, getIdVideoParam],
+  (videosState, idVideoParam) => {
+    const video = videosState.itemsByKey[idVideoParam];
+    return video || EMPTY_OBJECT; // video object or empty object
   },
 );

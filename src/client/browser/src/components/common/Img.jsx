@@ -4,11 +4,12 @@ import { EMPTY_STRING } from '../../constants/common';
 
 class Img extends PureComponent {
   render() {
-    const { src, alt } = this.props;
+    const { src, alt, className } = this.props;
     return (
       <img
         src={src}
         alt={alt}
+        className={className}
       />
     );
   }
@@ -17,10 +18,12 @@ class Img extends PureComponent {
 Img.propTypes = {
   src: PropTypes.string,
   alt: PropTypes.string,
+  className: PropTypes.string,
 };
 Img.defaultProps = {
   src: EMPTY_STRING,
   alt: EMPTY_STRING,
+  className: EMPTY_STRING,
 };
 
 export default Img;

@@ -15,7 +15,7 @@ import {
 import { buildKeyVideoStore } from '../utils/helpers';
 import {
   getSubcategory,
-  getQueryObject,
+  getQueryFromObject,
   getParamsFromParams,
 } from '../utils/getParams';
 
@@ -47,7 +47,7 @@ export default function getPlaylistIfNeed(obj) {
 
             const key = buildKeyVideoStore({
               ...params,
-              ...getQueryObject(obj),
+              ...getQueryFromObject(obj),
             });
 
             return dispatch(loadPlaylist(uri, key));

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import autoBind from 'react-autobind';
-import { getSubcategoriesIfNeed } from '../../../actions';
+import { getSubcategoriesIfNeed } from '../../../actions/subcategoriesActions';
 import Category from '../../../components/Content/Category';
 import { getParamsFromProps } from '../../../utils/getParams';
 import {

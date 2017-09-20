@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { lastSubPath } from '../../../utils/helpers';
+import Img from '../../common/Img';
 
 class CategoryItem extends PureComponent {
   render() {
@@ -27,14 +28,14 @@ class CategoryItem extends PureComponent {
         <div className="ratio ratio16-9">
           <div className="ratio-content">
             <Link to={`${path}${subpath}`}>
-              <img
+              <Img
                 alt={name}
                 className="category-preview"
                 src={pictureLink}
               />
               <div className="category-logo-title">
                 {(iconLink !== null) &&
-                <img
+                <Img
                   alt={name}
                   className="category-logo"
                   src={iconLink}
