@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { pure } from 'recompose';
 import CategoryItem from './CategoryItem';
 
 function CategoryListItem({
@@ -25,4 +26,4 @@ CategoryListItem.propTypes = {
 };
 CategoryListItem.defaultProps = {};
 
-export default CategoryListItem;
+export default pure(CategoryListItem);

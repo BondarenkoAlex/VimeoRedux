@@ -4,6 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { pure } from 'recompose';
 import autoBind from 'react-autobind';
 import { getCategoriesIfNeed } from '../../../actions';
 import Category from '../../../components/Content/Category';

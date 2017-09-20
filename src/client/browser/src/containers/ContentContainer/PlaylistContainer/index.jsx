@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import autoBind from 'react-autobind';
-import { getPlaylistIfNeed } from '../../../actions';
+import { getPlaylistIfNeed } from '../../../actions/playlistsActions';
 import Playlist from '../../../components/Content/Playlist';
 import {
   getSubcategoryTitle,

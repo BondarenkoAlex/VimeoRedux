@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { pure } from 'recompose';
 import { lastSubPath } from '../../../utils/helpers';
 
 function CategoryItem({
@@ -55,4 +56,4 @@ CategoryItem.propTypes = {
 };
 CategoryItem.defaultProps = {};
 
-export default CategoryItem;
+export default pure(CategoryItem);
