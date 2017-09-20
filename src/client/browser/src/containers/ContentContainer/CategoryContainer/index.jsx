@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
   compose,
-  lifecycle,
 } from 'recompose';
+import { withCategories } from '../../enhance';
 import autoBind from 'react-autobind';
 import { getCategoriesIfNeed } from '../../../actions';
 import Category from '../../../components/Content/Category';
@@ -58,7 +58,7 @@ CategoryContainer.defaultProps = {
   title: 'Categories',
 };
 
-const mapStateToProps = (state /*,ownProps*/) => ({
+const mapStateToProps = state => ({
   categories: state.categories,
 });
 
@@ -66,8 +66,6 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators({
     getCategoriesIfNeed,
   }, dispatch);
-
-
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),

@@ -5,6 +5,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import autoBind from 'react-autobind';
+import {
+  compose,
+} from 'recompose';
+import { withSubcategories } from '../../enhance';
 import { getSubcategoriesIfNeed } from '../../../actions';
 import Category from '../../../components/Content/Category';
 import {
@@ -19,10 +23,10 @@ class SubcategoryContainer extends Component {
     autoBind(this);
   }
 
-  componentWillMount() {
-    const { match: { params } } = this.props;
-    this.props.getSubcategoriesIfNeed(params[PARAM.CATEGORY]);
-  }
+  // componentWillMount() {
+  //   const { match: { params } } = this.props;
+  //   this.props.getSubcategoriesIfNeed(params[PARAM.CATEGORY]);
+  // }
 
   render() {
     const {
@@ -42,7 +46,7 @@ class SubcategoryContainer extends Component {
 }
 
 SubcategoryContainer.propTypes = {
-  getSubcategoriesIfNeed: PropTypes.func.isRequired,
+  //getSubcategoriesIfNeed: PropTypes.func.isRequired,
   title: PropTypes.string,
   subcategory: PropTypes.object,
   match: PropTypes.object.isRequired,
@@ -62,4 +66,7 @@ const mapDispatchToProps = dispatch =>
     getSubcategoriesIfNeed,
   }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(SubcategoryContainer);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withSubcategories,
+)(SubcategoryContainer);
