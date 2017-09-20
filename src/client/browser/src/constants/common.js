@@ -5,3 +5,5 @@ export const PARAM = {
   SUBCATEGORY: 'subcategory',
   ID_VIDEO: 'idVideo',
 };
+
+export const EMPTY_STRING = '';

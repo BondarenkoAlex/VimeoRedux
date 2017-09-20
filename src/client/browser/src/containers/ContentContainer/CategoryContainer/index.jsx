@@ -67,11 +67,7 @@ const mapDispatchToProps = dispatch =>
     getCategoriesIfNeed,
   }, dispatch);
 
-const withCategories = lifecycle({
-  componentWillMount() {
-    this.props.getCategoriesIfNeed();
-  },
-});
+
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
