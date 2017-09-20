@@ -6,4 +6,13 @@ export const PARAM = {
   ID_VIDEO: 'idVideo',
 };
 
+export const PARAM_QUERY = {
+  SHOWBY: 'SHOWBY',
+  DURATION: 'DURATION',
+  PERIOD: 'PERIOD',
+};
+
+export const CATEGORIES_TITLE = 'Categories';
+
 export const EMPTY_STRING = '';
+export const EMPTY_OBJECT = {};

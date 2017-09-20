@@ -25,20 +25,24 @@ const routes = [{
       component: null,
       //можно подключать разные контейнеры и спускать в компоненты нужные данные
       // из раутера (Route) мы коннектимся к нужным данным и спускаем дальше
-    },],
+    }],
   }, {
     path: `${publicPath}favorites`,
     component: null,
     routes: [{
       path: `${publicPath}favorites/????`,
       component: null,
-    },],
+    }],
   }, {
+    path: `${publicPath}videos/:${PARAM.ID_VIDEO}`,
+    component: VideoContainer,
+    routes: [],
+  }, /* {
     path: `${publicPath}:${PARAM.CATEGORY}/:${PARAM.SUBCATEGORY}/:${PARAM.ID_VIDEO}`,
     exact: true,
     component: VideoContainer,
     routes: [],
-  }, {
+  }, */ {
     path: `${publicPath}:${PARAM.CATEGORY}/:${PARAM.SUBCATEGORY}`,
     exact: true,
     component: PlaylistContainer,
@@ -48,8 +52,8 @@ const routes = [{
     exact: true,
     component: SubcategoryContainer,
     routes: [],
-  },],
-},];
+  }],
+}];
 
 // const routes = [{
 //   component: AppLayout,

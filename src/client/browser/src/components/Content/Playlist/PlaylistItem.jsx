@@ -1,67 +1,56 @@
-import React from 'react';
+/* eslint-disable react/forbid-prop-types */
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import Favorite from '../../common/Favorite';
+import Author from '../../common/Author';
+import TitleVideo from '../../common/TitleVideo';
+import PreviewVideo from '../../common/PreviewVideo';
+import { lastSubPath } from '../../../utils/helpers';
 import { toTime } from '../../../utils/helpers';
 
-function PlaylistItem(props) {
-  const {
-          item: {
-            //uri,
-            name,
-            user,
-            pictures,
-            duration,
-          },
-          //url,
-        } = props;
-  // let subpath = uri.split('/').pop(); // last subpath
-  // subpath = `/${subpath}`;
-  // const path = (url.slice(-1) === '/')
-  //   ? url.slice(0, -1)
-  //   : url;
-  const dur = toTime(duration);
-  const pictureLink = (pictures && pictures.sizes && pictures.sizes[3].link) || '';
-  const userPictureLink = (user && user.pictures && user.pictures.sizes[1].link) || '';
-  return (
-    <div className="video-preview">
-      <div className="preview">
-        <a href="#">
-          <img
-            className="preview"
-            src={pictureLink}
+class PlaylistItem extends PureComponent {
+  render() {
+    const {
+            item: {
+              uri,
+              name,
+              user,
+              pictures,
+              duration,
+            },
+          } = this.props;
+    const dur = toTime(duration);
+    const pictureLink = (pictures && pictures.sizes && pictures.sizes[3].link) || '';
+    const userPictureLink = (user && user.pictures && user.pictures.sizes[1].link) || '';
+    const idVideo = lastSubPath(uri);
+    return (
+      <div className="video-preview">
+        <div className="preview">
+          <PreviewVideo
+            idVideo={idVideo}
+            pictureUrl={pictureLink}
+            duration={dur}
           />
-          <span className="duration">
-            {dur}
-          </span>
-        </a>
-      </div>
-      <div className="title-container">
-        <div className="title">
-          <a href="#">
-            {name}
-          </a>
         </div>
-        <ul className="author-favorite">
-          <li className="author">
-            <a href="#">
-              <img src={userPictureLink}/>
-              <span>
-                {user.name}
-              </span>
-            </a>
-          </li>
-          <li className="favorite">
-            <a href="#">
-              <img
-                className="preview"
-                src={require('../../../../../../images/favorite-small.png')}
+        <div className="title-container">
+          <div className="title">
+            <TitleVideo title={name} />
+          </div>
+          <ul className="author-favorite">
+            <li className="author">
+              <Author
+                pictureUrl={userPictureLink}
+                name={user.name}
               />
-            </a>
-          </li>
-        </ul>
+            </li>
+            <li className="favorite">
+              <Favorite />
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 PlaylistItem.propTypes = {

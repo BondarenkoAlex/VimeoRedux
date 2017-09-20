@@ -1,25 +1,13 @@
+/* eslint-disable import/prefer-default-export,no-use-before-define */
 import { normalize } from 'normalizr';
 import {
+  CATEGORIES_GET_FAILURE,
   CATEGORIES_GET_REQUEST,
   CATEGORIES_GET_SUCCESS,
-  CATEGORIES_GET_FAILURE,
 } from '../constants/categories';
 import { categoryListSchema } from '../normalize';
 import fetchService from '../utils/fetchService';
 import { isEmpty } from '../utils/check';
-
-function request(type) {
-  return {
-    type,
-  };
-}
-
-function action(type, payload) {
-  return {
-    type,
-    payload,
-  };
-}
 
 export function getCategoriesIfNeed() {
   return (dispatch, getState) =>
@@ -46,5 +34,18 @@ export function getCategoriesIfNeed() {
         resolve(itemsByKey);
       }
     });
+}
+
+function request(type) {
+  return {
+    type,
+  };
+}
+
+function action(type, payload) {
+  return {
+    type,
+    payload,
+  };
 }
 

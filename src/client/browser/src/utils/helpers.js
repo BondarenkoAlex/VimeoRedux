@@ -1,3 +1,5 @@
+import { isInteger } from './check';
+
 export const toTime = function toTime(sec) {
   const secNum = parseInt(sec, 10);
 
@@ -28,17 +30,20 @@ export const toTime = function toTime(sec) {
 };
 
 export const lastSubPath = function lastSubPath(path) {
-  return path.split('/').pop();
+  const last = path.split('/').pop();
+  return (isInteger(last))
+    ? parseInt(last, 10)
+    : last;
 };
 
 export const buildKeyVideoStore = function buildKeyVideoStore(obj) {
   let {
-    category,
-    subcategory,
-    showby,
-    duration,
-    period,
-  } = obj;
+        category,
+        subcategory,
+        showby,
+        duration,
+        period,
+      } = obj;
   category = category || '';
   subcategory = subcategory || '';
   showby = showby

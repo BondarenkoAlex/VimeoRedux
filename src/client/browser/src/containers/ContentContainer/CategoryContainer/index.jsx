@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React, {
   Component,
 } from 'react';
@@ -11,6 +12,7 @@ import { withCategoriesActions } from '../../enhance';
 import autoBind from 'react-autobind';
 import { getCategoriesIfNeed } from '../../../actions';
 import Category from '../../../components/Content/Category';
+import { CATEGORIES_TITLE } from '../../../constants/common';
 
 class CategoryContainer extends Component {
   constructor(props, context) {
@@ -31,14 +33,14 @@ class CategoryContainer extends Component {
 
   render() {
     const {
-
+            title,
             categories,
             match: { url },
           } = this.props;
-    let title = 'my title ' + this.state.counter;
+    let title1 = title + this.state.counter;
     return (
       <Category
-        title={title}
+        title={title1}
         itemsByKey={categories.itemsByKey}
         isLoading={categories.isFetching}
         url={url}
@@ -55,7 +57,7 @@ CategoryContainer.propTypes = {
   title: PropTypes.string,
 };
 CategoryContainer.defaultProps = {
-  title: 'Categories',
+  title: CATEGORIES_TITLE,
 };
 
 const mapStateToProps = state => ({

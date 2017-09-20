@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React, {
   Component,
 } from 'react';
@@ -5,17 +6,17 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import autoBind from 'react-autobind';
-import {
-  compose,
-} from 'recompose';
-import { withSubcategoriesActions } from '../../enhance';
-//import { getSubcategoriesIfNeed } from '../../../actions';
+import { getSubcategoriesIfNeed } from '../../../actions/subcategoriesActions';
 import Category from '../../../components/Content/Category';
+import { getParamsFromProps } from '../../../utils/getParams';
 import {
   getCategoryTitle,
   getSubcategoryByCategoryParam,
 } from '../../../selectors';
-import { PARAM } from '../../../constants/common';
+import {
+  EMPTY_STRING,
+  EMPTY_OBJECT
+} from '../../../constants/common';
 
 class SubcategoryContainer extends Component {
   constructor(props, context) {
@@ -23,10 +24,10 @@ class SubcategoryContainer extends Component {
     autoBind(this);
   }
 
-  // componentWillMount() {
-  //   const { match: { params } } = this.props;
-  //   this.props.getSubcategoriesIfNeed(params[PARAM.CATEGORY]);
-  // }
+  componentWillMount() {
+    const params = getParamsFromProps(this.props);
+    this.props.getSubcategoriesIfNeed(params);
+  }
 
   render() {
     const {
@@ -46,27 +47,27 @@ class SubcategoryContainer extends Component {
 }
 
 SubcategoryContainer.propTypes = {
-  //getSubcategoriesIfNeed: PropTypes.func.isRequired,
+  getSubcategoriesIfNeed: PropTypes.func.isRequired,
   title: PropTypes.string,
   subcategory: PropTypes.object,
   match: PropTypes.object.isRequired,
 };
 SubcategoryContainer.defaultProps = {
-  title: '',
-  subcategory: {},
+  title: EMPTY_STRING,
+  subcategory: EMPTY_OBJECT,
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  title: getCategoryTitle(state, ownProps),
-  subcategory: getSubcategoryByCategoryParam(state, ownProps),
-});
+const mapStateToProps = (state, ownProps) => {
+  const params = getParamsFromProps(ownProps);
+  return ({
+    title: getCategoryTitle(state, params),
+    subcategory: getSubcategoryByCategoryParam(state, params),
+  });
+};
 
-// const mapDispatchToProps = dispatch =>
-//   bindActionCreators({
-//     getSubcategoriesIfNeed,
-//   }, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({
+    getSubcategoriesIfNeed,
+  }, dispatch);
 
-export default compose(
-  connect(mapStateToProps/*, mapDispatchToProps*/),
-  withSubcategoriesActions,
-)(SubcategoryContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SubcategoryContainer);
