@@ -9,7 +9,7 @@ import {
   compose,
 } from 'recompose';
 import { withSubcategories } from '../../enhance';
-import { getSubcategoriesIfNeed } from '../../../actions';
+//import { getSubcategoriesIfNeed } from '../../../actions';
 import Category from '../../../components/Content/Category';
 import {
   getCategoryTitle,
@@ -61,12 +61,12 @@ const mapStateToProps = (state, ownProps) => ({
   subcategory: getSubcategoryByCategoryParam(state, ownProps),
 });
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({
-    getSubcategoriesIfNeed,
-  }, dispatch);
+// const mapDispatchToProps = dispatch =>
+//   bindActionCreators({
+//     getSubcategoriesIfNeed,
+//   }, dispatch);
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps/*, mapDispatchToProps*/),
   withSubcategories,
 )(SubcategoryContainer);
