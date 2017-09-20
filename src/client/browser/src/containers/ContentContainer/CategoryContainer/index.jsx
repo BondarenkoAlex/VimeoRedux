@@ -4,7 +4,10 @@ import React, {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { pure } from 'recompose';
+import {
+  compose,
+  lifecycle,
+} from 'recompose';
 import autoBind from 'react-autobind';
 import { getCategoriesIfNeed } from '../../../actions';
 import Category from '../../../components/Content/Category';
@@ -16,9 +19,9 @@ class CategoryContainer extends Component {
     this.state = { counter: 1 };
   }
 
-  componentWillMount() {
-    this.props.getCategoriesIfNeed();
-  }
+  // componentWillMount() {
+  //   this.props.getCategoriesIfNeed();
+  // }
 
   onClick() {
     this.setState({
@@ -64,4 +67,13 @@ const mapDispatchToProps = dispatch =>
     getCategoriesIfNeed,
   }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryContainer);
+const withCategories = lifecycle({
+  componentWillMount() {
+    this.props.getCategoriesIfNeed();
+  },
+});
+
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withCategories,
+)(CategoryContainer);
