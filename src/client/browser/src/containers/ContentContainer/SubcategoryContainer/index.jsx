@@ -8,7 +8,7 @@ import autoBind from 'react-autobind';
 import {
   compose,
 } from 'recompose';
-import { withSubcategories } from '../../enhance';
+import { withSubcategoriesActions } from '../../enhance';
 //import { getSubcategoriesIfNeed } from '../../../actions';
 import Category from '../../../components/Content/Category';
 import {
@@ -68,5 +68,5 @@ const mapStateToProps = (state, ownProps) => ({
 
 export default compose(
   connect(mapStateToProps/*, mapDispatchToProps*/),
-  withSubcategories,
+  withSubcategoriesActions,
 )(SubcategoryContainer);
