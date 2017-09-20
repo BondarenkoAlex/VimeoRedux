@@ -12,7 +12,7 @@ import { getCategoriesIfNeed } from './categoriesActions';
 import {
   getSubcategoryByCategoryParam,
 } from '../selectors';
-import { PARAM } from '../constants/common';
+import { getCategory } from '../utils/getParams';
 
 function request(type, key = null) {
   return {
@@ -29,11 +29,11 @@ function action(type, payload, key = null) {
   };
 }
 
-export function getSubcategoriesIfNeed(categoryParam) {
+export function getSubcategoriesIfNeed(params) {
   return (dispatch, getState) =>
     new Promise((resolve) => {
-      const props = { match: { params: { [PARAM.CATEGORY]: categoryParam } } };
-      const subcategory = getSubcategoryByCategoryParam(getState(), props);
+      const subcategory = getSubcategoryByCategoryParam(getState(), params);
+      const categoryParam = getCategory(params);
 
       if (isEmpty(subcategory)) {
         dispatch(getCategoriesIfNeed())

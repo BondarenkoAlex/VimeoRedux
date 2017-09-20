@@ -1,10 +1,23 @@
 import { createSelector } from 'reselect';
 import { PARAM } from '../constants/common';
 import { buildKeyVideoStore } from '../utils/helpers';
+import {
+  getCategory,
+  getSubcategory,
+  getIdVideo,
+} from '../utils/getParams';
 
-export const getCategoryParam = (_, props) => props.match.params[PARAM.CATEGORY];
-export const getSubcategoryParam = (_, props) => props.match.params[PARAM.SUBCATEGORY];
-export const getIdVideoParam = (_, props) => props.match.params[PARAM.ID_VIDEO];
+// export const getCategoryParam = (_, props) => props.match.params[PARAM.CATEGORY];
+// export const getSubcategoryParam = (_, props) => props.match.params[PARAM.SUBCATEGORY];
+// export const getIdVideoParam = (_, props) => props.match.params[PARAM.ID_VIDEO];
+
+export const getCategoryParam = (_, params) => getCategory(params);
+export const getSubcategoryParam = (_, params) => getSubcategory(params);
+export const getIdVideoParam = (_, params) => getIdVideo(params);
+
+// export const getCategoryParam = (_, category) => category;
+// export const getSubcategoryParam = (_, subcategory) => subcategory;
+// export const getIdVideoParam = (_, idVideo) => idVideo;
 
 export const getCategoriesState = state => state.categories;
 export const getSubcategoriesState = state => state.subcategories;

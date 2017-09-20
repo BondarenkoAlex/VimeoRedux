@@ -1,23 +1,26 @@
-import React from 'react';
+/* eslint-disable react/forbid-prop-types */
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import PlaylistItem from './PlaylistItem';
 
-function PlaylistListItem(props) {
-  const {
-          items,
-          //url,
-        } = props;
-  //const keys = Object.keys(items);
-  return (
-    <div className="playlist-container">
-      {items.map(item => (
-        <PlaylistItem
-          item={item}
-          key={item.resource_key}
-        />
-      ))}
-    </div>
-  );
+class PlaylistListItem extends PureComponent {
+  render() {
+    const {
+            items,
+            //url,
+          } = this.props;
+    // const keys = Object.keys(items);
+    return (
+      <div className="playlist-container">
+        {items.map(item => (
+          <PlaylistItem
+            item={item}
+            key={item.resource_key}
+          />
+        ))}
+      </div>
+    );
+  }
 }
 
 PlaylistListItem.propTypes = {
@@ -27,3 +30,4 @@ PlaylistListItem.propTypes = {
 PlaylistListItem.defaultProps = {};
 
 export default PlaylistListItem;
+

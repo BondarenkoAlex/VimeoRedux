@@ -1,8 +1,9 @@
+/* eslint-disable import/prefer-default-export */
 import { normalize } from 'normalizr';
 import {
+  CATEGORIES_GET_FAILURE,
   CATEGORIES_GET_REQUEST,
   CATEGORIES_GET_SUCCESS,
-  CATEGORIES_GET_FAILURE,
 } from '../constants/categories';
 import { categoryListSchema } from '../normalize';
 import fetchService from '../utils/fetchService';

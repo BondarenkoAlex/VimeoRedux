@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React, {
   Component,
 } from 'react';
@@ -7,11 +8,15 @@ import { bindActionCreators } from 'redux';
 import autoBind from 'react-autobind';
 import { getSubcategoriesIfNeed } from '../../../actions';
 import Category from '../../../components/Content/Category';
+import { getParamsFromProps } from '../../../utils/getParams';
 import {
   getCategoryTitle,
   getSubcategoryByCategoryParam,
 } from '../../../selectors';
-import { PARAM } from '../../../constants/common';
+import {
+  EMPTY_STRING,
+  EMPTY_OBJECT
+} from '../../../constants/common';
 
 class SubcategoryContainer extends Component {
   constructor(props, context) {
@@ -20,8 +25,8 @@ class SubcategoryContainer extends Component {
   }
 
   componentWillMount() {
-    const { match: { params } } = this.props;
-    this.props.getSubcategoriesIfNeed(params[PARAM.CATEGORY]);
+    const params = getParamsFromProps(this.props);
+    this.props.getSubcategoriesIfNeed(params);
   }
 
   render() {
@@ -48,14 +53,17 @@ SubcategoryContainer.propTypes = {
   match: PropTypes.object.isRequired,
 };
 SubcategoryContainer.defaultProps = {
-  title: '',
-  subcategory: {},
+  title: EMPTY_STRING,
+  subcategory: EMPTY_OBJECT,
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  title: getCategoryTitle(state, ownProps),
-  subcategory: getSubcategoryByCategoryParam(state, ownProps),
-});
+const mapStateToProps = (state, ownProps) => {
+  const params = getParamsFromProps(ownProps);
+  return ({
+    title: getCategoryTitle(state, params),
+    subcategory: getSubcategoryByCategoryParam(state, params),
+  });
+};
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({

@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React, {
   Component,
 } from 'react';
@@ -5,13 +6,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import autoBind from 'react-autobind';
-import { getPlaylistIfNeed } from '../../../actions';
+import getPlaylistIfNeed from '../../../actions/playlistsActions';
 import Playlist from '../../../components/Content/Playlist';
 import {
   getSubcategoryTitle,
   getVideosSubcategory,
 } from '../../../selectors';
-import { PARAM } from '../../../constants/common';
+import {
+  getParamsFromProps,
+} from '../../../utils/getParams';
 import queryToObject from '../../../utils/queryToObject';
 
 class PlaylistContainer extends Component {
@@ -21,21 +24,26 @@ class PlaylistContainer extends Component {
   }
 
   componentWillMount() {
-    const { match: { params } } = this.props;
+    const params = getParamsFromProps(this.props);
+
     const { location: { search } } = this.props;
-    if (search !== '') {
-      const queryObject = queryToObject(search);
-    }
-    this.props.getPlaylistIfNeed(params[PARAM.CATEGORY], params[PARAM.SUBCATEGORY]);
+    const queryObject = queryToObject(search);
+
+    const obj = {
+      ...params,
+      ...queryObject,
+    };
+
+    this.props.getPlaylistIfNeed(obj);
   }
 
   render() {
     const {
-      title,
-      videos,
-      isLoading,
-      match,
-    } = this.props;
+            title,
+            videos,
+            isLoading,
+            match,
+          } = this.props;
 
     return (
       <Playlist
@@ -59,11 +67,14 @@ PlaylistContainer.defaultProps = {
   title: '',
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  isLoading: state.playlists.isFetching,
-  title: getSubcategoryTitle(state, ownProps),
-  videos: getVideosSubcategory(state, ownProps),
-});
+const mapStateToProps = (state, ownProps) => {
+  const params = getParamsFromProps(ownProps);
+  return ({
+    isLoading: state.playlists.isFetching,
+    title: getSubcategoryTitle(state, params),
+    videos: getVideosSubcategory(state, params),
+  });
+};
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({

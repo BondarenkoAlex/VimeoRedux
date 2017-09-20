@@ -12,8 +12,12 @@ import { getSubcategoriesIfNeed } from './subcategoriesActions';
 import {
   getVideosSubcategory,
 } from '../selectors';
-import { PARAM } from '../constants/common';
 import { buildKeyVideoStore } from '../utils/helpers';
+import {
+  getSubcategory,
+  getQueryObject,
+  getParamsFromParams,
+} from '../utils/getParams';
 
 function request(type) {
   return {
@@ -28,33 +32,24 @@ function action(type, payload) {
   };
 }
 
-export function getPlaylistIfNeed(categoryParam, subcategoryParam, showby = null, duration = null, period = null) {
+export default function getPlaylistIfNeed(obj) {
   return (dispatch, getState) =>
     new Promise((resolve) => {
-      const props = {
-        match: {
-          params: {
-            [PARAM.CATEGORY]: categoryParam,
-            [PARAM.SUBCATEGORY]: subcategoryParam,
-          },
-        },
-      };
-      const videos = getVideosSubcategory(getState(), props); // array
+      const videos = getVideosSubcategory(getState(), obj); // array
+      const subcategoryParam = getSubcategory(obj);
+      const params = getParamsFromParams(obj);
 
       if (isEmpty(videos)) {
-        dispatch(getSubcategoriesIfNeed(categoryParam))
+        dispatch(getSubcategoriesIfNeed(params))
           .then((categories) => {
             const subcategoryObj = categories[subcategoryParam];
             const uri = subcategoryObj.metadata.connections.videos.uri;
 
-            // #todo сделать шаблон ключа
             const key = buildKeyVideoStore({
-              category: categoryParam,
-              subcategory: subcategoryParam,
-              showby,
-              duration,
-              period,
+              ...params,
+              ...getQueryObject(obj),
             });
+
             return dispatch(loadPlaylist(uri, key));
           })
           .then(itemsByKey => resolve(itemsByKey));
@@ -65,7 +60,7 @@ export function getPlaylistIfNeed(categoryParam, subcategoryParam, showby = null
 }
 
 function loadPlaylist(uri, key) {
-  return (dispatch, getState) =>
+  return dispatch =>
     new Promise((resolve) => {
       dispatch(request(PLAYLISTS_GET_REQUEST));
 
