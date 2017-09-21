@@ -2,13 +2,27 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { EMPTY_OBJECT } from '../../../constants/common';
+import { isEmpty } from '../../../utils/check';
+import Author from '../../common/Author';
+import Favorite from '../../common/Favorite';
+import { Calendar } from '../../Svg/Calendar';
+import { View } from '../../Svg/View';
+import { Comment } from '../../Svg/Comment';
+import Tags from './Tags';
 
 class Video extends PureComponent {
   render() {
+    debugger;
     const { video } = this.props;
+    if (isEmpty(video)) return null;
     const {
             name,
+            user,
+            tags,
           } = video;
+    const { name: userName, pictures: userPictures } = user;
+    const userPictureUrl = userPictures && userPictures.sizes && userPictures.sizes[1].link;
+    // const tags =
     return (
       <main className="site-main clearfix">
         <div className="container">
@@ -20,27 +34,32 @@ class Video extends PureComponent {
                 </h1>
               </div>
               <div className="author">
-                <a href="#">
-                  <img src="/vm/src/images/account-logo.jpg" /><span>Steve Cutts</span>
-                </a>
+                <Author
+                  name={userName}
+                  pictureUrl={userPictureUrl}
+                />
               </div>
               <ul className="clip-statistics clearfix">
                 <li className="date">
-                  <img src="/vm/src/images/tags-icon/date.png" /><span>25 JUN 17</span></li>
-                <li className="view"><img src="/vm/src/images/tags-icon/view.png" />
+                  <Calendar />
+                  <span>25 JUN 17</span>
+                </li>
+                <li className="view">
+                  <View />
                   <span>236</span>
                 </li>
                 <li className="comment">
-                  <img src="/vm/src/images/tags-icon/comment.png" /><span>12</span></li>
-                <li className="tags"><img src="/vm/src/images/tags-icon/tags.png" />
-                  <ul>
-                    <li><a href="#"><span>Comedy</span></a></li>
-                    <li><a href="#"><span>Sport</span></a></li>
-                    <li><a href="#"><span>Snow</span></a></li>
-                  </ul>
+                  <Comment />
+                  <img src="/vm/src/images/tags-icon/comment.png" />
+                  <span>12</span></li>
+                <li className="tags">
+                  <Tags
+                    tags={tags}
+                  />
                 </li>
                 <li className="favorite">
-                  <a href="#"><img src="/vm/src/images/tags-icon/favorite.png" /></a></li>
+                  <Favorite />
+                </li>
               </ul>
               <section className="comments clearfix"><h2>Comments</h2>
                 <article className="comments-container">
@@ -50,8 +69,10 @@ class Video extends PureComponent {
                       </div>
                       <div className="body-wrapper">
                         <div className="body">
-                          <header><a className="author-comment"
-                                     href="#">Nice Cat
+                          <header><a
+                            className="author-comment"
+                            href="#"
+                          >Nice Cat
                             Media</a><span className="date-ago">1 week ago</span>
                           </header>
                           <section className="text"><p>This is amazing. The animation is
@@ -67,8 +88,10 @@ class Video extends PureComponent {
                           <img src="/vm/src/images/account-logo.jpg" /></div>
                         <div className="body-wrapper">
                           <div className="body">
-                            <header><a className="author-comment"
-                                       href="#">Dana
+                            <header><a
+                              className="author-comment"
+                              href="#"
+                            >Dana
                               Sink</a><span className="date-ago">1 month ago</span>
                             </header>
                             <section className="text"><p>Spela, this is great,</p>
@@ -85,8 +108,10 @@ class Video extends PureComponent {
                           <img src="/vm/src/images/account-logo.jpg" /></div>
                         <div className="body-wrapper">
                           <div className="body">
-                            <header><a className="author-comment"
-                                       href="#">Thewoken
+                            <header><a
+                              className="author-comment"
+                              href="#"
+                            >Thewoken
                               Everscorn</a><span className="date-ago">2 month ago</span>
                             </header>
                             <section className="text"><p>Looooovvvveeeeeee this! Such a
@@ -97,8 +122,10 @@ class Video extends PureComponent {
                       </div>
                     </div>
                     <div className="button-wrapper text-align-right">
-                      <button className="btn-as-text"
-                              type="button">Reply
+                      <button
+                        className="btn-as-text"
+                        type="button"
+                      >Reply
                       </button>
                     </div>
                   </div>
@@ -108,8 +135,10 @@ class Video extends PureComponent {
                       </div>
                       <div className="body-wrapper">
                         <div className="body">
-                          <header><a className="author-comment"
-                                     href="#">Nice Cat
+                          <header><a
+                            className="author-comment"
+                            href="#"
+                          >Nice Cat
                             Media</a><span className="date-ago">1 week ago</span>
                           </header>
                           <section className="text"><p>This is amazing. The animation is
@@ -125,8 +154,10 @@ class Video extends PureComponent {
                           <img src="/vm/src/images/account-logo.jpg" /></div>
                         <div className="body-wrapper">
                           <div className="body">
-                            <header><a className="author-comment"
-                                       href="#">Dana
+                            <header><a
+                              className="author-comment"
+                              href="#"
+                            >Dana
                               Sink</a><span className="date-ago">1 month ago</span>
                             </header>
                             <section className="text"><p>Spela, this is great,</p>
@@ -143,8 +174,10 @@ class Video extends PureComponent {
                           <img src="/vm/src/images/account-logo.jpg" /></div>
                         <div className="body-wrapper">
                           <div className="body">
-                            <header><a className="author-comment"
-                                       href="#">Thewoken
+                            <header><a
+                              className="author-comment"
+                              href="#"
+                            >Thewoken
                               Everscorn</a><span className="date-ago">2 month ago</span>
                             </header>
                             <section className="text"><p>Looooovvvveeeeeee this! Such a
@@ -160,16 +193,24 @@ class Video extends PureComponent {
                           <img src="/vm/src/images/account-logo.jpg" /></div>
                         <div className="body-wrapper">
                           <div className="body">
-                            <form className="comment"
-                                  name="commentForm">
-                                                <textarea placeholder="New reply"
-                                                          rows="4"></textarea>
+                            <form
+                              className="comment"
+                              name="commentForm"
+                            >
+                              <textarea
+                                placeholder="New reply"
+                                rows="4"
+                              />
                               <div className="button-wrapper text-align-right">
-                                <button className="btn-default"
-                                        type="button">Cancel
+                                <button
+                                  className="btn-default"
+                                  type="button"
+                                >Cancel
                                 </button>
-                                <button className="btn-default"
-                                        type="submit">Reply
+                                <button
+                                  className="btn-default"
+                                  type="submit"
+                                >Reply
                                 </button>
                               </div>
                             </form>
@@ -184,8 +225,10 @@ class Video extends PureComponent {
                       </div>
                       <div className="body-wrapper">
                         <div className="body">
-                          <header><a className="author-comment"
-                                     href="#">Thewoken
+                          <header><a
+                            className="author-comment"
+                            href="#"
+                          >Thewoken
                             Everscorn</a><span className="date-ago">2 month ago</span>
                           </header>
                           <section className="text"><p>Looooovvvveeeeeee this! Such a
@@ -195,8 +238,10 @@ class Video extends PureComponent {
                       </div>
                     </div>
                     <div className="button-wrapper text-align-right">
-                      <button className="btn-as-text"
-                              type="button">Reply
+                      <button
+                        className="btn-as-text"
+                        type="button"
+                      >Reply
                       </button>
                     </div>
                   </div>
@@ -206,8 +251,10 @@ class Video extends PureComponent {
                       </div>
                       <div className="body-wrapper">
                         <div className="body">
-                          <header><a className="author-comment"
-                                     href="#">Dana
+                          <header><a
+                            className="author-comment"
+                            href="#"
+                          >Dana
                             Sink</a><span className="date-ago">1 month ago</span>
                           </header>
                           <section className="text"><p>Spela, this is great,</p>
@@ -218,8 +265,10 @@ class Video extends PureComponent {
                       </div>
                     </div>
                     <div className="button-wrapper text-align-right">
-                      <button className="btn-as-text"
-                              type="button">Reply
+                      <button
+                        className="btn-as-text"
+                        type="button"
+                      >Reply
                       </button>
                     </div>
                   </div>
@@ -229,12 +278,18 @@ class Video extends PureComponent {
                       </div>
                       <div className="body-wrapper">
                         <div className="body">
-                          <form className="comment"
-                                name="commentForm"><textarea placeholder="New comment"
-                                                             rows="4"></textarea>
+                          <form
+                            className="comment"
+                            name="commentForm"
+                          ><textarea
+                            placeholder="New comment"
+                            rows="4"
+                          />
                             <div className="button-wrapper text-align-right">
-                              <button className="btn-default"
-                                      type="submit">Add comment
+                              <button
+                                className="btn-default"
+                                type="submit"
+                              >Add comment
                               </button>
                             </div>
                           </form>

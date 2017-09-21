@@ -23,9 +23,10 @@ export const isEmpty = function isEmpty(obj) {
     return (Object.getOwnPropertyNames(obj).length === 0);
   } else if (typeof obj === 'string' || (typeof obj === 'object' && obj.constructor === String)) {
     return obj.length === 0;
+  } else if (typeof obj === 'object' && Object.getOwnPropertyNames(obj).length === 0) {
+    return true;
   }
-
-  /*isNumber*/
+  /* isInteger */
   else if (String(parseFloat(obj, 10)) === String(obj)) {
     return obj === 0;
   } else if (!obj) {
