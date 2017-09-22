@@ -8,9 +8,10 @@ function FilterListItem(props) {
         list,
       } = props;
   const subClassName = title.toLowerCase().replace(' ', '');
+  // className='filter-items-container-open' у li
   return (
     <li
-      className={`filter-items-container filter-items-container-${subClassName} filter-items-container-open`}>
+      className={`filter-items-container filter-items-container-${subClassName} `}>
       <a
         className="filter-items-container-title icon-chevron icon-chevron-down"
         href="#"
