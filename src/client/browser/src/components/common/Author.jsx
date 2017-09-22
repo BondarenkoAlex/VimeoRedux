@@ -7,13 +7,13 @@ import { EMPTY_STRING } from '../../constants/common';
 class Author extends PureComponent {
   render() {
     const {
-            pictureUrl,
+            src,
             name,
           } = this.props;
     return (
       <Link to="#">
         <Img
-          src={pictureUrl}
+          src={src}
           alt="dsdfs"
         />
         <span>
@@ -25,7 +25,7 @@ class Author extends PureComponent {
 }
 
 Author.propTypes = {
-  pictureUrl: PropTypes.string,
+  src: PropTypes.string,
   name: PropTypes.string,
 };
 Author.defaultProps = {

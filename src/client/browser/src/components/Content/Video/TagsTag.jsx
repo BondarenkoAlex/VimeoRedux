@@ -5,7 +5,7 @@ import { Tag as TagLabel } from '../../Svg/Tag';
 import Tag from './Tag';
 import { EMPTY_ARRAY } from '../../../constants/common';
 
-function Tags({ tags }) {
+function TagsTag({ tags }) {
   return (
     <div>
       <TagLabel />
@@ -20,11 +20,11 @@ function Tags({ tags }) {
   );
 }
 
-Tags.propTypes = {
+TagsTag.propTypes = {
   tags: PropTypes.array,
 };
-Tags.defaultProps = {
+TagsTag.defaultProps = {
   tags: EMPTY_ARRAY,
 };
 
-export default Tags;
+export default TagsTag;

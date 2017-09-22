@@ -5,10 +5,12 @@ import { EMPTY_OBJECT } from '../../../constants/common';
 import { isEmpty } from '../../../utils/check';
 import Author from '../../common/Author';
 import Favorite from '../../common/Favorite';
-import { Calendar } from '../../Svg/Calendar';
-import { View } from '../../Svg/View';
-import { Comment } from '../../Svg/Comment';
-import Tags from './Tags';
+import TagsTag from './TagsTag';
+import CalendarTag from './CalendarTag';
+import ViewTag from './ViewTag';
+import CommentTag from './CommentTag';
+import ClipStatistics from './ClipStatistics';
+import Comment from './Comment';
 
 class Video extends PureComponent {
   render() {
@@ -19,10 +21,13 @@ class Video extends PureComponent {
             name,
             user,
             tags,
+            created_time: createdTime,
+            metadata,
           } = video;
     const { name: userName, pictures: userPictures } = user;
     const userPictureUrl = userPictures && userPictures.sizes && userPictures.sizes[1].link;
-    // const tags =
+    const { connections: { comments: { total: commentsTotal } } } = metadata;
+    const { connections: { likes: { total: likesTotal } } } = metadata;
     return (
       <main className="site-main clearfix">
         <div className="container">
@@ -36,267 +41,40 @@ class Video extends PureComponent {
               <div className="author">
                 <Author
                   name={userName}
-                  pictureUrl={userPictureUrl}
+                  src={userPictureUrl}
                 />
               </div>
-              <ul className="clip-statistics clearfix">
-                <li className="date">
-                  <Calendar />
-                  <span>25 JUN 17</span>
-                </li>
-                <li className="view">
-                  <View />
-                  <span>236</span>
-                </li>
-                <li className="comment">
-                  <Comment />
-                  <img src="/vm/src/images/tags-icon/comment.png" />
-                  <span>12</span></li>
-                <li className="tags">
-                  <Tags
-                    tags={tags}
-                  />
-                </li>
-                <li className="favorite">
-                  <Favorite />
-                </li>
-              </ul>
+              <ClipStatistics
+                tags={tags}
+                commentsTotal={commentsTotal}
+                createdTime={createdTime}
+                likesTotal={likesTotal}
+              />
+              {/*                   <ul className="clip-statistics clearfix">
+                            <li className="date">
+                              <CalendarTag ago={createdTime} />
+                            </li>
+                            <li className="view">
+                              <ViewTag number={likesTotal} />
+                            </li>
+                            <li className="comment">
+                              <CommentTag number={commentsTotal} />
+                            </li>
+                            <li className="tags">
+                              <TagsTag
+                                tags={tags}
+                              />
+                            </li>
+                            <li className="favorite">
+                              <Favorite />
+                            </li>
+                          </ul> */}
               <section className="comments clearfix"><h2>Comments</h2>
                 <article className="comments-container">
-                  <div className="comment clearfix">
-                    <div className="comment-wrapper clearfix">
-                      <div className="author-logo"><img src="/vm/src/images/account-logo.jpg" />
-                      </div>
-                      <div className="body-wrapper">
-                        <div className="body">
-                          <header><a
-                            className="author-comment"
-                            href="#"
-                          >Nice Cat
-                            Media</a><span className="date-ago">1 week ago</span>
-                          </header>
-                          <section className="text"><p>This is amazing. The animation is
-                            perfect and the light setups are stunning. Also the
-                            narrative is great, it reminds me the films from
-                            Alexandr Sokurov in some ways.</p></section>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="comment clearfix">
-                      <div className="comment-wrapper clearfix">
-                        <div className="author-logo">
-                          <img src="/vm/src/images/account-logo.jpg" /></div>
-                        <div className="body-wrapper">
-                          <div className="body">
-                            <header><a
-                              className="author-comment"
-                              href="#"
-                            >Dana
-                              Sink</a><span className="date-ago">1 month ago</span>
-                            </header>
-                            <section className="text"><p>Spela, this is great,</p>
-                              <p>Excellent work indeed,</p>
-                              <p>Lovely story and great execution,</p>
-                              <p>I really like that.</p></section>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="comment clearfix">
-                      <div className="comment-wrapper clearfix">
-                        <div className="author-logo">
-                          <img src="/vm/src/images/account-logo.jpg" /></div>
-                        <div className="body-wrapper">
-                          <div className="body">
-                            <header><a
-                              className="author-comment"
-                              href="#"
-                            >Thewoken
-                              Everscorn</a><span className="date-ago">2 month ago</span>
-                            </header>
-                            <section className="text"><p>Looooovvvveeeeeee this! Such a
-                              great quality and aesthetic.</p>
-                              <p>cute all the way.</p></section>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="button-wrapper text-align-right">
-                      <button
-                        className="btn-as-text"
-                        type="button"
-                      >Reply
-                      </button>
-                    </div>
-                  </div>
-                  <div className="comment clearfix">
-                    <div className="comment-wrapper clearfix">
-                      <div className="author-logo"><img src="/vm/src/images/account-logo.jpg" />
-                      </div>
-                      <div className="body-wrapper">
-                        <div className="body">
-                          <header><a
-                            className="author-comment"
-                            href="#"
-                          >Nice Cat
-                            Media</a><span className="date-ago">1 week ago</span>
-                          </header>
-                          <section className="text"><p>This is amazing. The animation is
-                            perfect and the light setups are stunning. Also the
-                            narrative is great, it reminds me the films from
-                            Alexandr Sokurov in some ways.</p></section>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="comment clearfix">
-                      <div className="comment-wrapper clearfix">
-                        <div className="author-logo">
-                          <img src="/vm/src/images/account-logo.jpg" /></div>
-                        <div className="body-wrapper">
-                          <div className="body">
-                            <header><a
-                              className="author-comment"
-                              href="#"
-                            >Dana
-                              Sink</a><span className="date-ago">1 month ago</span>
-                            </header>
-                            <section className="text"><p>Spela, this is great,</p>
-                              <p>Excellent work indeed,</p>
-                              <p>Lovely story and great execution,</p>
-                              <p>I really like that.</p></section>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="comment clearfix">
-                      <div className="comment-wrapper clearfix">
-                        <div className="author-logo">
-                          <img src="/vm/src/images/account-logo.jpg" /></div>
-                        <div className="body-wrapper">
-                          <div className="body">
-                            <header><a
-                              className="author-comment"
-                              href="#"
-                            >Thewoken
-                              Everscorn</a><span className="date-ago">2 month ago</span>
-                            </header>
-                            <section className="text"><p>Looooovvvveeeeeee this! Such a
-                              great quality and aesthetic.</p>
-                              <p>cute all the way.</p></section>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="comment comment-add-reply-wrapper clearfix">
-                      <div className="comment-wrapper clearfix">
-                        <div className="author-logo">
-                          <img src="/vm/src/images/account-logo.jpg" /></div>
-                        <div className="body-wrapper">
-                          <div className="body">
-                            <form
-                              className="comment"
-                              name="commentForm"
-                            >
-                              <textarea
-                                placeholder="New reply"
-                                rows="4"
-                              />
-                              <div className="button-wrapper text-align-right">
-                                <button
-                                  className="btn-default"
-                                  type="button"
-                                >Cancel
-                                </button>
-                                <button
-                                  className="btn-default"
-                                  type="submit"
-                                >Reply
-                                </button>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="comment clearfix">
-                    <div className="comment-wrapper clearfix">
-                      <div className="author-logo"><img src="/vm/src/images/account-logo.jpg" />
-                      </div>
-                      <div className="body-wrapper">
-                        <div className="body">
-                          <header><a
-                            className="author-comment"
-                            href="#"
-                          >Thewoken
-                            Everscorn</a><span className="date-ago">2 month ago</span>
-                          </header>
-                          <section className="text"><p>Looooovvvveeeeeee this! Such a
-                            great quality and aesthetic.</p>
-                            <p>cute all the way.</p></section>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="button-wrapper text-align-right">
-                      <button
-                        className="btn-as-text"
-                        type="button"
-                      >Reply
-                      </button>
-                    </div>
-                  </div>
-                  <div className="comment clearfix">
-                    <div className="comment-wrapper clearfix">
-                      <div className="author-logo"><img src="/vm/src/images/account-logo.jpg" />
-                      </div>
-                      <div className="body-wrapper">
-                        <div className="body">
-                          <header><a
-                            className="author-comment"
-                            href="#"
-                          >Dana
-                            Sink</a><span className="date-ago">1 month ago</span>
-                          </header>
-                          <section className="text"><p>Spela, this is great,</p>
-                            <p>Excellent work indeed,</p>
-                            <p>Lovely story and great execution,</p>
-                            <p>I really like that.</p></section>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="button-wrapper text-align-right">
-                      <button
-                        className="btn-as-text"
-                        type="button"
-                      >Reply
-                      </button>
-                    </div>
-                  </div>
-                  <div className="comment comment-add-reply-wrapper clearfix">
-                    <div className="comment-wrapper clearfix">
-                      <div className="author-logo"><img src="/vm/src/images/account-logo.jpg" />
-                      </div>
-                      <div className="body-wrapper">
-                        <div className="body">
-                          <form
-                            className="comment"
-                            name="commentForm"
-                          ><textarea
-                            placeholder="New comment"
-                            rows="4"
-                          />
-                            <div className="button-wrapper text-align-right">
-                              <button
-                                className="btn-default"
-                                type="submit"
-                              >Add comment
-                              </button>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <Comment
+                    name="Пупкин"
+                    authorSrc="https://i.vimeocdn.com/portrait/9341504_75x75"
+                  />
                 </article>
               </section>
             </div>
