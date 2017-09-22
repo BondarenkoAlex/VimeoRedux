@@ -1,5 +1,9 @@
+// jscs:disable requirePaddingNewLinesBeforeLineComments
+// jscs:disable requireTrailingComma
 // jscs:disable requireSpaceAfterComma
-import AppLayout from './components/layout/AppLayout';
+
+// import AppLayout from './components/layout/AppLayout';
+import App from './components/App';
 import CategoryContainer from './containers/ContentContainer/CategoryContainer';
 import SubcategoryContainer from './containers/ContentContainer/SubcategoryContainer';
 import PlaylistContainer from './containers/ContentContainer/PlaylistContainer';
@@ -11,7 +15,7 @@ const project = require('../../../../webpack/project.config.js');
 const publicPath = project.publicPath;
 
 const routes = [{
-  component: AppLayout,
+  component: App,
   routes: [{
     path: `${publicPath}`,
     exact: true,
@@ -37,12 +41,12 @@ const routes = [{
     path: `${publicPath}videos/:${PARAM.ID_VIDEO}`,
     component: VideoContainer,
     routes: [],
-  }, /* {
+  }, {
     path: `${publicPath}:${PARAM.CATEGORY}/:${PARAM.SUBCATEGORY}/:${PARAM.ID_VIDEO}`,
     exact: true,
     component: VideoContainer,
     routes: [],
-  }, */ {
+  }, {
     path: `${publicPath}:${PARAM.CATEGORY}/:${PARAM.SUBCATEGORY}`,
     exact: true,
     component: PlaylistContainer,

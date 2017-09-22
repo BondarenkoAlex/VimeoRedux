@@ -11,10 +11,10 @@ import ViewTag from './ViewTag';
 import CommentTag from './CommentTag';
 import ClipStatistics from './ClipStatistics';
 import Comments from './Comments';
+import RelatedVideos from './RelatedVideos';
 
 class Video extends PureComponent {
   render() {
-    //debugger;
     const { video } = this.props;
     if (isEmpty(video)) return null;
     const {
@@ -80,7 +80,8 @@ class Video extends PureComponent {
               </section> */}
             </div>
           </div>
-          <aside className="related">
+          <RelatedVideos />
+          {/*          <aside className="related">
             <div className="wrap-container"><h3>Related video</h3></div>
             <ul>
               <li className="clearfix">
@@ -151,7 +152,7 @@ class Video extends PureComponent {
                 </div>
               </li>
             </ul>
-          </aside>
+          </aside> */}
         </div>
       </main>
     );

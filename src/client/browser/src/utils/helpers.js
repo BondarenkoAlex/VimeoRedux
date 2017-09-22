@@ -36,6 +36,21 @@ export const lastSubPath = function lastSubPath(path) {
     : last;
 };
 
+// export const lastTwoSubPath = function lastTwoSubPath(path) {
+//   const pathArray = path.split('/');
+//   const newPathArray = pathArray.slice(-3, -1);
+//   let last = pathArray[pathArray.length - 1];
+//   last = (isInteger(last))
+//     ? parseInt(last, 10)
+//     : last;
+//   let lastTwo = pathArray[pathArray.length - 3];
+//   lastTwo = (isInteger(lastTwo))
+//     ? parseInt(lastTwo, 10)
+//     : lastTwo;
+//
+//   return [lastTwo, last].join('/');
+// };
+
 export const buildKeyVideoStore = function buildKeyVideoStore(obj) {
   let {
         category,

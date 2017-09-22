@@ -9,6 +9,7 @@ import Player from '../../../components/Player';
 import { getVideoIfNeed } from '../../../actions/videoActions';
 import { getParamsFromProps } from '../../../utils/getParams';
 import { getVideo } from '../../../selectors';
+import BreadcrumsFilter from '../../../components/BreadcrumsFilter';
 
 class VideoContainer extends Component {
   constructor(props, context) {
@@ -22,11 +23,10 @@ class VideoContainer extends Component {
   }
 
   render() {
-    const {
-            video,
-          } = this.props;
+    const { video } = this.props;
     return (
       <div>
+        <BreadcrumsFilter />
         <Player video={video} />
         <Video video={video} />
       </div>

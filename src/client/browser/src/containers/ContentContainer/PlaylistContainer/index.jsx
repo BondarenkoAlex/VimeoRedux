@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import autoBind from 'react-autobind';
 import getPlaylistIfNeed from '../../../actions/playlistsActions';
-import Playlist from '../../../components/Content/Playlist';
+import Playlist from '../../../components/Content/CategoryPlaylist/Playlist';
 import {
   getSubcategoryTitle,
   getVideosSubcategory,
@@ -13,7 +13,13 @@ import {
 import {
   getParamsFromProps,
   getQueryFromProps,
+  getSubcategory,
 } from '../../../utils/getParams';
+import { EMPTY_STRING } from '../../../constants/common';
+import Player from '../../../components/Player';
+import BreadcrumsFilter from '../../../components/BreadcrumsFilter';
+import { isEmpty } from '../../../utils/check';
+import { ROOT_URI } from '../../../constants/config';
 
 class PlaylistContainer extends Component {
   constructor(props, context) {
@@ -38,35 +44,48 @@ class PlaylistContainer extends Component {
             title,
             videos,
             isLoading,
+            uri,
           } = this.props;
 
     return (
-      <Playlist
-        title={title}
-        items={videos}
-        isLoading={isLoading}
-      />
+      <div>
+        <Player />
+        <BreadcrumsFilter />
+        <Playlist
+          title={title}
+          items={videos}
+          isLoading={isLoading}
+          uri={uri}
+        />
+      </div>
     );
   }
 }
 
 PlaylistContainer.propTypes = {
   isLoading: PropTypes.bool.isRequired,
-  title: PropTypes.string,
   videos: PropTypes.array.isRequired,
+  uri: PropTypes.string.isRequired,
+  title: PropTypes.string,
   getPlaylistIfNeed: PropTypes.func.isRequired,
 };
 PlaylistContainer.defaultProps = {
-  title: '',
+  title: EMPTY_STRING,
 };
 
 const mapStateToProps = (state, ownProps) => {
   const params = getParamsFromProps(ownProps);
   const query = getQueryFromProps(ownProps);
+  const subcategory = getSubcategory(params);
+  const { location: { pathname } } = ownProps;
+  const uri = isEmpty(subcategory)
+    ? `${ROOT_URI}/videos`
+    : pathname;
   return ({
     isLoading: state.playlists.isFetching,
     title: getSubcategoryTitle(state, params),
     videos: getVideosSubcategory(state, { ...params, ...query }),
+    uri,
   });
 };
 

@@ -1,22 +1,22 @@
 /* eslint-disable react/forbid-prop-types */
-import React, {
-  Component,
-} from 'react';
+import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import autoBind from 'react-autobind';
 import { getSubcategoriesIfNeed } from '../../../actions/subcategoriesActions';
-import Category from '../../../components/Content/Category';
+import Category from '../../../components/Content/CategoryPlaylist/Category';
 import { getParamsFromProps } from '../../../utils/getParams';
 import {
   getCategoryTitle,
   getSubcategoryByCategoryParam,
 } from '../../../selectors';
 import {
+  EMPTY_OBJECT,
   EMPTY_STRING,
-  EMPTY_OBJECT
 } from '../../../constants/common';
+import Player from '../../../components/Player';
+import BreadcrumsFilter from '../../../components/BreadcrumsFilter';
 
 class SubcategoryContainer extends Component {
   constructor(props, context) {
@@ -36,12 +36,16 @@ class SubcategoryContainer extends Component {
             subcategory,
           } = this.props;
     return (
-      <Category
-        title={title}
-        itemsByKey={subcategory.itemsByKey}
-        url={url}
-        isLoading={subcategory.isFetching}
-      />
+      <div>
+        <Player />
+        <BreadcrumsFilter />
+        <Category
+          title={title}
+          itemsByKey={subcategory.itemsByKey}
+          url={url}
+          isLoading={subcategory.isFetching}
+        />
+      </div>
     );
   }
 }

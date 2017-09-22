@@ -2,8 +2,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { lastSubPath } from '../../../utils/helpers';
-import Img from '../../common/Img';
+import { lastSubPath } from '../../../../utils/helpers';
+import Img from '../../../common/Img';
 
 class CategoryItem extends PureComponent {
   render() {
@@ -18,6 +18,10 @@ class CategoryItem extends PureComponent {
             icon,
           } = category;
     const subpath = '/' + lastSubPath(uri);
+    /*
+    path = '/' => ''
+    path = '/animation/' => '/animation'
+    */
     const path = (url.slice(-1) === '/')
       ? url.slice(0, -1)
       : url;

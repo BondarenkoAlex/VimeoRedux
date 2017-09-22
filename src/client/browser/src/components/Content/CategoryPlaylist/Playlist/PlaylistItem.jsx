@@ -1,12 +1,12 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Favorite from '../../common/Favorite';
-import Author from '../../common/Author';
-import TitleVideo from '../../common/TitleVideo';
-import PreviewVideo from '../../common/PreviewVideo';
-import { lastSubPath } from '../../../utils/helpers';
-import { toTime } from '../../../utils/helpers';
+import Favorite from '../../../common/Favorite';
+import Author from '../../../common/Author';
+import TitleVideo from '../../../common/TitleVideo';
+import PreviewVideo from '../../../common/PreviewVideo';
+import { lastSubPath } from '../../../../utils/helpers';
+import { toTime } from '../../../../utils/helpers';
 
 class PlaylistItem extends PureComponent {
   render() {
@@ -18,6 +18,7 @@ class PlaylistItem extends PureComponent {
               pictures,
               duration,
             },
+            uri: path,
           } = this.props;
     const dur = toTime(duration);
     const pictureLink = (pictures && pictures.sizes && pictures.sizes[3].link) || '';
@@ -30,6 +31,7 @@ class PlaylistItem extends PureComponent {
             idVideo={idVideo}
             pictureUrl={pictureLink}
             duration={dur}
+            path={path}
           />
         </div>
         <div className="title-container">
@@ -55,7 +57,7 @@ class PlaylistItem extends PureComponent {
 
 PlaylistItem.propTypes = {
   item: PropTypes.object.isRequired,
-  //url: PropTypes.string.isRequired,
+  uri: PropTypes.string.isRequired,
 };
 PlaylistItem.defaultProps = {};
 

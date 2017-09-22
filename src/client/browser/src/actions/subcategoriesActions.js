@@ -5,7 +5,7 @@ import {
   SUBCATEGORIES_GET_SUCCESS,
   SUBCATEGORIES_GET_FAILURE,
 } from '../constants/categories';
-import { categoryListSchema } from '../normalize';
+import { /*categoryListSchema*/ subcategoryListSchema } from '../normalize';
 import fetchService from '../utils/fetchService';
 import { isEmpty } from '../utils/check';
 import { getCategoriesIfNeed } from './categoriesActions';
@@ -57,10 +57,10 @@ function loadSubcategories(uri, key) {
       fetchService.get(`${uri}/subcategories`)
         .then(
           (data) => {
-            const normalizedData = normalize(data.data, categoryListSchema);
-            const payload = normalizedData.entities.categories;
+            const normalizedData = normalize(data.data, subcategoryListSchema /*categoryListSchema*/);
+            const payload = normalizedData.entities.subcategories;
             dispatch(action(SUBCATEGORIES_GET_SUCCESS, payload, key));
-            resolve(normalizedData.entities.categories);
+            resolve(normalizedData.entities.subcategories);
           },
 
           (error) => {

@@ -7,7 +7,7 @@ class PlaylistListItem extends PureComponent {
   render() {
     const {
             items,
-            //url,
+            uri,
           } = this.props;
     // const keys = Object.keys(items);
     return (
@@ -16,6 +16,7 @@ class PlaylistListItem extends PureComponent {
           <PlaylistItem
             item={item}
             key={item.resource_key}
+            uri={uri}
           />
         ))}
       </div>
@@ -25,7 +26,7 @@ class PlaylistListItem extends PureComponent {
 
 PlaylistListItem.propTypes = {
   items: PropTypes.array.isRequired,
-  //url: PropTypes.string.isRequired,
+  uri: PropTypes.string.isRequired,
 };
 PlaylistListItem.defaultProps = {};
 

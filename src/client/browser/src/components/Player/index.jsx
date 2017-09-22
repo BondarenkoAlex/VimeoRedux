@@ -50,12 +50,6 @@ class Player extends Component {
     this.player = null;
   }
 
-  componentWillReceiveProps(nextProps, nextContext) {
-    debugger;
-    const idVideo = lastSubPath(nextProps.video.uri);
-    this.player.loadVideo(idVideo);
-  }
-
   componentDidMount() {
     const { video } = this.props;
 
@@ -75,6 +69,16 @@ class Player extends Component {
     this.player.on('play', function () {
       console.log('played the video!');
     });
+  }
+
+  componentWillReceiveProps(nextProps, nextContext) {
+    const { video } = nextProps;
+
+    if (!isEmpty(video)) {
+
+      const idVideo = lastSubPath(video.uri);
+      this.player.loadVideo(idVideo);
+    }
   }
 
   render() {

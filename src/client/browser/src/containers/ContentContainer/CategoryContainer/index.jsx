@@ -5,14 +5,16 @@ import React, {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {
-  compose,
-} from 'recompose';
-import { withCategoriesActions } from '../../enhance';
 import autoBind from 'react-autobind';
+// import {
+//   compose,
+// } from 'recompose';
+// import { withCategoriesActions } from '../../enhance';
 import { getCategoriesIfNeed } from '../../../actions';
-import Category from '../../../components/Content/Category';
+import Category from '../../../components/Content/CategoryPlaylist/Category';
 import { CATEGORIES_TITLE } from '../../../constants/common';
+import Player from '../../../components/Player';
+import BreadcrumsFilter from '../../../components/BreadcrumsFilter';
 
 class CategoryContainer extends Component {
   constructor(props, context) {
@@ -21,9 +23,9 @@ class CategoryContainer extends Component {
     this.state = { counter: 1 };
   }
 
-  // componentWillMount() {
-  //   this.props.getCategoriesIfNeed();
-  // }
+  componentWillMount() {
+    this.props.getCategoriesIfNeed();
+  }
 
   onClick() {
     this.setState({
@@ -39,13 +41,17 @@ class CategoryContainer extends Component {
           } = this.props;
     let title1 = title + this.state.counter;
     return (
-      <Category
-        title={title1}
-        itemsByKey={categories.itemsByKey}
-        isLoading={categories.isFetching}
-        url={url}
-        onClick={this.onClick}
-      />
+      <div>
+        <Player />
+        <BreadcrumsFilter />
+        <Category
+          title={title1}
+          itemsByKey={categories.itemsByKey}
+          isLoading={categories.isFetching}
+          url={url}
+          onClick={this.onClick}
+        />
+      </div>
     );
   }
 }
@@ -69,7 +75,8 @@ const mapDispatchToProps = dispatch =>
     getCategoriesIfNeed,
   }, dispatch);
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  withCategoriesActions,
-)(CategoryContainer);
+// export default compose(
+//   connect(mapStateToProps, mapDispatchToProps),
+//   withCategoriesActions,
+// )(CategoryContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryContainer);

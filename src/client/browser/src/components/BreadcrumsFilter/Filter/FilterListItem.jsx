@@ -18,15 +18,19 @@ function FilterListItem(props) {
         {title}
       </a>
       <ul className={`filter-item filter-item-${subClassName}-container`}>
-        {list.map(item => (
-          <FilterItem title={item} subClassName={subClassName}/>
+        {list.map((item, i) => (
+          <FilterItem
+            key={i}
+            title={item}
+            subClassName={subClassName}
+          />
         ))}
       </ul>
     </li>
   );
 }
 
-FilterListItem.propTypes    = {
+FilterListItem.propTypes = {
   list: PropTypes.array,
   title: PropTypes.string,
 };

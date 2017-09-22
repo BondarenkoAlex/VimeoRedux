@@ -9,10 +9,11 @@ class PreviewVideo extends PureComponent {
             pictureUrl,
             duration,
             idVideo,
+            path,
           } = this.props;
 
     return (
-      <Link to={`/videos/${idVideo}`}>
+      <Link to={`${path}/${idVideo}`}>
         <Img
           className="preview"
           src={pictureUrl}
@@ -26,9 +27,10 @@ class PreviewVideo extends PureComponent {
 }
 
 PreviewVideo.propTypes = {
-  idVideo: PropTypes.number,
   pictureUrl: PropTypes.string.isRequired,
   duration: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
+  idVideo: PropTypes.number.isRequired,
 };
 PreviewVideo.defaultProps = {};
 

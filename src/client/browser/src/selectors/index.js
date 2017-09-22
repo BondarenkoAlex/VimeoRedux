@@ -5,6 +5,7 @@ import {
   EMPTY_OBJECT,
 } from '../constants/common';
 import { buildKeyVideoStore } from '../utils/helpers';
+import { isEmpty } from '../utils/check';
 import {
   getCategory,
   getSubcategory,
@@ -13,6 +14,8 @@ import {
   getPeriod,
   getShowby,
 } from '../utils/getParams';
+import { ROOT_URI } from '../constants/config';
+import { CATEGORIES_TITLE } from '../constants/common';
 
 export const getCategoryParam = (_, params) => getCategory(params);
 export const getSubcategoryParam = (_, params) => getSubcategory(params);
@@ -86,5 +89,67 @@ export const getVideo = createSelector(
   (videosState, idVideoParam) => {
     const video = videosState.itemsByKey[idVideoParam];
     return video || EMPTY_OBJECT; // video object or empty object
+  },
+);
+
+export const getBreadcrums = createSelector(
+  [
+    getCategoriesState,
+    getSubcategoriesState,
+    getCategoryParam,
+    getSubcategoryParam,
+    getIdVideoParam,
+  ],
+  (categoriesState,
+   subcategoriesState,
+   categoryParam,
+   subcategoryParam,
+   idVideoParam) => {
+    const pathArray = [];
+    const empty = null//undefined; // unde
+    if (!isEmpty(categoryParam)) {
+      pathArray.push({
+        title: CATEGORIES_TITLE,
+        uri: ROOT_URI,
+      });
+    }
+
+    if (!isEmpty(subcategoryParam)) {
+      const itemsByKey = categoriesState && categoriesState.itemsByKey;
+      const category = itemsByKey && itemsByKey[categoryParam];
+      if (isEmpty(category)) {
+        return empty;
+      }
+
+      const title = category.name;
+      const uri = category.uriLocal;
+      pathArray.push({
+        title,
+        uri,
+      });
+    }
+
+    if (!isEmpty(idVideoParam)) {
+      const category = subcategoriesState && subcategoriesState[categoryParam];
+      const itemsByKey = category && category.itemsByKey;
+      const subcategory = itemsByKey && itemsByKey[subcategoryParam];
+      if (isEmpty(subcategory)) {
+        return empty;
+      }
+
+      const title = subcategory.name;
+      const uri = subcategory.uriLocal;
+      pathArray.push({
+        title,
+        uri,
+      });
+    }
+
+    return isEmpty(pathArray)
+      ? empty
+      : pathArray;
+
+    // const video = videosState.itemsByKey[idVideoParam];
+    // return video || EMPTY_OBJECT; // video object or empty object
   },
 );
