@@ -40,8 +40,8 @@ function ClipStatistics(props) {
 ClipStatistics.propTypes = {
   createdTime: PropTypes.string.isRequired,
   likesTotal: PropTypes.number.isRequired,
-  commentsTotal: PropTypes.string.isRequired,
-  tags: PropTypes.object.isRequired,
+  commentsTotal: PropTypes.number.isRequired,
+  tags: PropTypes.array.isRequired,
 };
 ClipStatistics.defaultProps = {};
 

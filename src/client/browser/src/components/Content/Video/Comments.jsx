@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Comment from './Comment';
 
-function Coments(props) {
+function Comments(props) {
+  const {
+          name,
+        } = props;
   return (
     <section className="comments clearfix"><h2>Comments</h2>
       <article className="comments-container">
@@ -14,7 +18,7 @@ function Coments(props) {
   );
 }
 
-Coments.propTypes = {};
-Coments.defaultProps = {};
+Comments.propTypes = {};
+Comments.defaultProps = {};
 
-export default Coments;
+export default Comments;

@@ -10,11 +10,11 @@ import CalendarTag from './CalendarTag';
 import ViewTag from './ViewTag';
 import CommentTag from './CommentTag';
 import ClipStatistics from './ClipStatistics';
-import Comment from './Comment';
+import Comments from './Comments';
 
 class Video extends PureComponent {
   render() {
-    debugger;
+    //debugger;
     const { video } = this.props;
     if (isEmpty(video)) return null;
     const {
@@ -69,14 +69,15 @@ class Video extends PureComponent {
                               <Favorite />
                             </li>
                           </ul> */}
-              <section className="comments clearfix"><h2>Comments</h2>
+              <Comments />
+              {/* <section className="comments clearfix"><h2>Comments</h2>
                 <article className="comments-container">
                   <Comment
                     name="Пупкин"
                     authorSrc="https://i.vimeocdn.com/portrait/9341504_75x75"
                   />
                 </article>
-              </section>
+              </section> */}
             </div>
           </div>
           <aside className="related">
