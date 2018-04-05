@@ -11,8 +11,6 @@ class HeaderContainer extends Component {
     super(props, context);
   }
 
-
-
   render() {
     return (
       <Header key="header" />
@@ -20,7 +18,7 @@ class HeaderContainer extends Component {
   }
 }
 
-HeaderContainer.propTypes    = {};
+HeaderContainer.propTypes = {};
 HeaderContainer.defaultProps = {};
 
 const mapStateToProps = (state, ownProps) => ({

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Logo as LogoSvg } from '../Svg/Logo';
+import { Logo as LogoSvg } from '../../Svg/Logo';
 //
 // const project = require('../../../../../../webpack/project.config.js');
 //

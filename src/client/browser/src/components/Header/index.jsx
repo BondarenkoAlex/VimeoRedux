@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Logo from './Logo';
-import Account from './Account';
-import Favorite from './Favorite';
-import Search from './Search';
+import Logo from './Logo/Logo';
+import Account from './Account/Account';
+import Favorite from './Favorite/Favorite';
+import Search from './Search/Search';
 
 // заменить на контейнеры т.к. работы будет идти через него
 const Header = (props) => {
