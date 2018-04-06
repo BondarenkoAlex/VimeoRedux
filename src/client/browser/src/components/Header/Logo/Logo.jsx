@@ -12,7 +12,6 @@ const Logo = () => (
     </Link>
   </div>
 );
-
 Logo.propTypes = {};
 Logo.defaultProps = {};
 
