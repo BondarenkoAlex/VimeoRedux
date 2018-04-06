@@ -10,7 +10,7 @@ const extractSass = new ExtractTextPlugin({
 module.exports = {
   module: {
     rules: [{
-      test: /\.scss$/,
+      test: /^((?!\.module).)*scss$/,
       use: extractSass.extract({
         use: [{
           loader: 'css-loader',
