@@ -1,0 +1,22 @@
+// .nav-header-logo-container {
+.navHeaderLogoContainer {
+  float: left;
+  padding: 4px 0;
+  a {
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    display: block;
+  }
+  svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: inline;
+    vertical-align: middle;
+  }
+  span {
+    vertical-align: sub;
+    text-transform: uppercase;
+    padding-left: 0.5rem;
+  }
+}
