@@ -4,14 +4,17 @@ import { Link } from 'react-router-dom';
 import { Logo as LogoSvg } from '../../Svg/Logo';
 import style from './logo.module.scss';
 
-const Logo = () => (
-  <div className={style.navHeaderLogoContainer}>
-    <Link to="/">
-      <LogoSvg />
-      <span>vimeoredux</span>
-    </Link>
-  </div>
-);
+const Logo = () => {
+  return (
+    <div className={style.navHeaderLogoContainer}>
+      <Link to="/">
+        <LogoSvg />
+        <span>vimeoredux</span>
+      </Link>
+    </div>
+  );
+}
+
 Logo.propTypes = {};
 Logo.defaultProps = {};
 

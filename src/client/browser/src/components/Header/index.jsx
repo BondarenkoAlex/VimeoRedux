@@ -4,6 +4,7 @@ import Logo from './Logo/Logo';
 import Account from './Account/Account';
 import Favorite from './Favorite/Favorite';
 import Search from './Search/Search';
+import User from './_new/User/User';
 
 // заменить на контейнеры т.к. работы будет идти через него
 const Header = (props) => {
@@ -23,6 +24,7 @@ const Header = (props) => {
               <Search />
               <Favorite />
               <Account />
+              <User />
             </ul>
           </nav>
         </div>

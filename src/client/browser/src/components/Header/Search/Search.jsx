@@ -1,13 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './search.scss';
+import style from './search.module.scss';
 
 const Search = props => (
-  <li className="nav-header-search-form">
+  <li className={style.navHeaderSearchForm}>
     <form role="search">
-      <input className="nav-header-intut-search" type="search" placeholder="Search" />
-      <button className="nav-header-button-search" type="submit">
+      <input
+        className={style.navHeaderIntutSearch}
+        type="search"
+        placeholder="Search"
+      />
+      <button
+        className={style.navHeaderButtonSearch}
+        type="submit"
+      >
           [*SVG*]
         {/* <svg className="nav-header-search-icon" xmlns="http://www.w3.org/2000/svg"
                viewBox="0 0 50 50" 'enable-background'="new 0 0 20 20" "xml:space"="preserve">

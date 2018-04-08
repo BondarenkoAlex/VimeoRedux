@@ -6,7 +6,7 @@ import { Login } from '../../Svg/Login';
 const Account = (props) => {
   return (
     <li className="nav-header-log-in-out">
-      <Link to="/" className="nav-header-user">
+      <Link to="/" className="">
         <div className="icon-chevron icon-chevron-down">
           <Login />
         </div>

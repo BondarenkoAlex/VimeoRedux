@@ -1,0 +1,21 @@
+//.nav-header-account,
+.nav-header-log-in-out {
+  a {
+    display: block;
+    padding: 2px 2px;
+    margin: 5px 4px;
+    text-decoration: none;
+    position: relative;
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+      display: inline;
+      vertical-align: middle;
+    }
+    &:hover span.nav-header-text {
+      color: $reduxColor;
+      text-decoration: underline;
+    }
+  }
+}

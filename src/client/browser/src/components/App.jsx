@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { renderRoutes } from 'react-router-config';
 
 import '../../../../styles/index.scss';
+import '../../../../styles/index.module.scss';
 
 import HeaderContainer from '../containers/HeaderContainer';
 import Footer from '../components/Footer';
