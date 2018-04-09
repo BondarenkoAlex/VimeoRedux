@@ -1,10 +1,6 @@
 @import '../../../../../../styles/constants.scss';
 
-.nav-header-badge {
-  position: absolute;
-}
-
-li.nav-header-favorite {
+.nav-header-log-in-out {
   float: left;
   list-style: none;
   position: relative;
@@ -15,13 +11,13 @@ li.nav-header-favorite {
     margin: 5px 4px;
     text-decoration: none;
     position: relative;
-    .nav-header-text {
+    span.nav-header-text {
       display: none;
       vertical-align: middle;
       color: $searchTextColor;
       padding: 0 1rem;
     }
-    .nav-header-badge {
+    span.nav-header-badge {
       position: absolute;
       top: 0;
       right: -5px;
@@ -39,11 +35,29 @@ li.nav-header-favorite {
       display: inline;
       vertical-align: middle;
     }
-    &:hover .nav-header-text {
+    &:hover span.nav-header-text {
       color: $reduxColor;
       text-decoration: underline;
     }
   }
+}
+
+.nav-header-log-in-out {
+  a {
+    div {
+      &.icon-chevron:after {
+        color: white;
+        font-size: 0.375rem;
+      }
+    }
+  }
+}
+
+.icon-chevron-up:after {
+  content: "\25B2";
+}
+.icon-chevron-down:after {
+  content: "\25BC";
 }
 
 //menu style for mobile
@@ -51,39 +65,23 @@ li.nav-header-favorite {
   .label-for-checkbox {
     display: block;
   }
-  ul.nav-header-search-favorite {
-    clear: both;
-    float: none;
-    li {
-      display: none;
-    }
-  }
-  .checkbox-for-menu:checked + ul.nav-header-search-favorite {
-    padding-top: 1rem;
 
-    li.nav-header-favorite:first-child {
+  .checkbox-for-menu:checked + ul.nav-header-search-favorite {
+    .nav-header-log-in-out:first-child {
       border-top: none;
     }
 
-    li.nav-header-favorite {
+    .nav-header-log-in-out {
       display: block;
       float: none;
       border-top: 1px solid $menuBorderColor;
       text-align: center;
 
-      .nav-header-badge {
-        top: 0;
-        padding: 5px 4px;
-        font-size: 0.75rem;
-      }
-
-    }
-    li.nav-header-favorite {
       a {
         div {
           display: none;
         }
-        .nav-header-text {
+        span.nav-header-text {
           display: inline;
           padding: 0;
         }
@@ -91,4 +89,3 @@ li.nav-header-favorite {
     }
   }
 }
-

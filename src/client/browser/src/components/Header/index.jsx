@@ -4,27 +4,27 @@ import Logo from './Logo/Logo';
 import Account from './Account/Account';
 import Favorite from './Favorite/Favorite';
 import Search from './Search/Search';
-import User from './_new/User/User';
+
+import style from './header.module.scss';
 
 // заменить на контейнеры т.к. работы будет идти через него
 const Header = (props) => {
   return (
-    <header className="nav-header clearfix">
+    <header className={[style.navHeader, 'clearfix']}>
       <div className="container">
         <div className="wrap-container">
-          <nav className="nav-header-navigation clearfix">
+          <nav className={[style.navHeaderNavigation, 'clearfix']}>
             <Logo />
             <label
-              className="label-for-checkbox"
+              className={style.labelForCheckbox}
               htmlFor="toggle-menu"
               aria-label="Menu">&#9776;
             </label>
-            <input className="checkbox-for-menu" id="toggle-menu" type="checkbox"/>
-            <ul className="nav-header-search-favorite">
+            <input className={style.checkboxForMenu} id="toggle-menu" type="checkbox" />
+            <ul className={style.navHeaderSearchFavorite}>
               <Search />
               <Favorite />
               <Account />
-              <User />
             </ul>
           </nav>
         </div>

@@ -3,14 +3,16 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Login } from '../../Svg/Login';
 
+import style from './account.module.scss';
+
 const Account = (props) => {
   return (
-    <li className="nav-header-log-in-out">
+    <li className={style.navHeaderLogInOut}>
       <Link to="/" className="">
-        <div className="icon-chevron icon-chevron-down">
+        <div className={[style.iconChevron, style.iconChevronDown]}>
           <Login />
         </div>
-        <span className="nav-header-text">Log Out</span>
+        <span className={style.navHeaderText}>Log Out</span>
       </Link>
     </li>
   );

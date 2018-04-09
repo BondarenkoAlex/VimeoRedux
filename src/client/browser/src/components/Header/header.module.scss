@@ -1,0 +1,36 @@
+@import '../../../../../styles/constants.scss';
+
+// nav-header
+// clearfix
+// container
+// wrap-container
+// nav-header-navigation
+// label-for-checkbox
+// checkbox-for-menu
+// nav-header-search-favorite
+
+.nav-header {
+  background-color: $headerBackgroundColor;
+}
+
+ul.nav-header-search-favorite {
+  float: right;
+}
+
+@media (max-width: 500px) {
+  .label-for-checkbox {
+    display: block;
+  }
+
+  ul.nav-header-search-favorite {
+    clear: both;
+    float: none;
+    li {
+      display: none;
+    }
+  }
+
+  .checkbox-for-menu:checked + ul.nav-header-search-favorite {
+    padding-top: 1rem;
+  }
+}
