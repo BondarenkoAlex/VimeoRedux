@@ -5,6 +5,8 @@ import Account from './Account/Account';
 import Favorite from './Favorite/Favorite';
 import Search from './Search/Search';
 
+import BurgerMenu from './BurgerMenu/BurgerMenu';
+
 import style from './header.module.scss';
 
 // заменить на контейнеры т.к. работы будет идти через него
@@ -25,6 +27,14 @@ const Header = (props) => {
               <Search />
               <Favorite />
               <Account />
+
+              <BurgerMenu>
+                <ul>
+                  <li>One</li>
+                  <li>Two</li>
+                  <li>Three</li>
+                </ul>
+              </BurgerMenu>
             </ul>
           </nav>
         </div>

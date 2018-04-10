@@ -1,0 +1,12 @@
+// checkbox hide always
+.checkbox-for-menu {
+  display: none;
+}
+
+.checkbox-for-menu + * {
+  display: none;
+}
+
+.checkbox-for-menu:checked + * {
+  display: block;
+}
