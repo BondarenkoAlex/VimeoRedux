@@ -50,6 +50,7 @@ import Footer from '../components/Footer';
 function AppLayout({ route }) {
   return (
     <div>
+
       <HeaderContainer />
       {renderRoutes(route.routes)}
       <Footer />
