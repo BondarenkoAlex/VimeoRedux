@@ -4,7 +4,7 @@ import Logo from './Logo/Logo';
 import Account from './Account/Account';
 import Favorite from './Favorite/Favorite';
 import Search from './Search/Search';
-import MenuSearch from './Menu/Search/Search';
+import MenuSearch from './Menu/Menu';
 
 import BurgerMenu from './BurgerMenu/BurgerMenu';
 

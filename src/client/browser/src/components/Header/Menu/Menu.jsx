@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Search from './Search/Search';
+import Favorite from './Favorite/Favorite';
 
 function Menu(props) {
   return (
-    <div>[*Func component is Menu*]</div>
+    <div>
+      <Search />
+      <Favorite />
+    </div>
   );
 }
 

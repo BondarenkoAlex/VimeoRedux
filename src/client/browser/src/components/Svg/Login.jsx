@@ -23,6 +23,7 @@ Login.propTypes = {
 };
 Login.defaultProps = {
   fill: '#fff',
+  className: null,
 };
 
 export default Login;
