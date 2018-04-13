@@ -1,6 +1,11 @@
-//.label-for-checkbox {
-//  display: block;
-//}
+.label-for-checkbox {
+  position: absolute;
+  text-align: right;
+  font-size: 2rem;
+  right: 0;
+  top: 6px;
+  color: white;
+}
 // checkbox hide always
 .checkbox-for-menu {
   display: none;
@@ -10,6 +15,6 @@
   display: none;
 }
 
-.checkbox-for-menu:checked + * {
+.checkbox-for-menu:checked  + * {
   display: block;
 }

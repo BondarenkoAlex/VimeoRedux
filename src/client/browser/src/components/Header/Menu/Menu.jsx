@@ -9,7 +9,9 @@ import style from './menu.module.scss';
 function Menu(props) {
   return (
     <div className={style.menu}>
-      <Search />
+      <div className={style.menuSearch}>
+        <Search />
+      </div>
       <Favorite />
       <Account />
     </div>

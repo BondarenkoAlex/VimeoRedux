@@ -5,7 +5,7 @@ import style from './burger-menu.module.scss';
 
 function BurgerMenu({ label, children }) {
   return (
-    <div style={{ color: 'red' }}>
+    <div>
       <label
         className={style.labelForCheckbox}
         htmlFor="toggle-mobile-menu"
@@ -18,7 +18,9 @@ function BurgerMenu({ label, children }) {
         type="checkbox"
       />
 
-      {children}
+      <div>
+        {children}
+      </div>
     </div>
   );
 }

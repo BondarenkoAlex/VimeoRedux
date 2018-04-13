@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Logo from './Logo/Logo';
-import Account from './Account/Account';
-import Favorite from './Favorite/Favorite';
-import Search from './Search/Search';
+// import Account from './Account/Account';
+// import Favorite from './Favorite/Favorite';
+// import Search from './Search/Search';
 import Menu from './Menu/Menu';
 import MenuMobile from './MenuMobile/MenuMobile';
 
@@ -14,16 +14,19 @@ import style from './header.module.scss';
 // заменить на контейнеры т.к. работы будет идти через него
 const Header = (props) => {
   return (
-    <header className={[style.navHeader, 'clearfix']}>
+    <header className={style.header}>
       <div className="container">
         <div className="wrap-container">
           <nav className={style.headerNavigation}>
             <Logo />
-
-            {/*<Menu />*/}
-            <BurgerMenu>
-              <MenuMobile />
-            </BurgerMenu>
+            <div className={style.headerMenu}>
+              <Menu />
+            </div>
+            <div className={style.headerMenuMobile}>
+              <BurgerMenu>
+                <MenuMobile />
+              </BurgerMenu>
+            </div>
           </nav>
         </div>
       </div>

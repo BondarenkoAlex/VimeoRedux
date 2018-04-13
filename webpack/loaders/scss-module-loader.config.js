@@ -18,7 +18,8 @@ module.exports = {
             modules: true,
             camelCase: true, // Class names will be camelized
             //localIdentName: '[name]-[local]--[hash:base64:3]'
-            localIdentName: '[name]-[hash:base64:3]-[local]'
+            //localIdentName: '[name]-[hash:base64:3]-[local]'
+            localIdentName: '[hash:base64:3]-[local]'
             // localIdentName: '[path][name]__[local]--[hash:base64:5]'
           }
         }, {

@@ -17,7 +17,6 @@ const Search = props => (
       className={style.searchButton}
       type="submit"
     >
-      [*SVG*]
       <svg
         className={style.searchIcon}
         viewBox="0 0 50 50"
