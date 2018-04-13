@@ -9,28 +9,35 @@
 // checkbox-for-menu
 // nav-header-search-favorite
 
+.header__navigation {
+  display: flex;
+  align-items: center;
+
+  position: relative;
+}
+
 .nav-header {
   background-color: $headerBackgroundColor;
 }
 
-ul.nav-header-search-favorite {
-  float: right;
-}
+//ul.nav-header-search-favorite {
+//  float: right;
+//}
 
-@media (max-width: 500px) {
-  .label-for-checkbox {
-    display: block;
-  }
-
-  ul.nav-header-search-favorite {
-    clear: both;
-    float: none;
-    li {
-      display: none;
-    }
-  }
-
-  .checkbox-for-menu:checked + ul.nav-header-search-favorite {
-    padding-top: 1rem;
-  }
-}
+//@media (max-width: 500px) {
+//  .label-for-checkbox {
+//    display: block;
+//  }
+//
+//  ul.nav-header-search-favorite {
+//    clear: both;
+//    float: none;
+//    li {
+//      display: none;
+//    }
+//  }
+//
+//  .checkbox-for-menu:checked + ul.nav-header-search-favorite {
+//    padding-top: 1rem;
+//  }
+//}

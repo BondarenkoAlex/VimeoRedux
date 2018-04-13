@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { HeartSvg } from '../../../Svg/Heart';
+import { Heart as HeartSvg } from '../../../Svg/Heart';
 
 import style from './favorite.module.scss';
 
@@ -10,7 +10,7 @@ const Favorite = ({ favoriteCount }) => (
     className={style.favorite}
     to="/"
   >
-    <HeartSvg className={style.favoriteHeart} />
+    <HeartSvg className={style.favoriteHeart} fill={'green'} />
     <span className={style.favoriteBadge}>{favoriteCount}</span>
   </Link>
 );

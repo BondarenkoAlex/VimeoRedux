@@ -1,45 +1,40 @@
-@import '../../../../../../styles/constants.scss';
+@import '../../../../../../../styles/constants.scss';
 
 .account {
-  float: left;
-  list-style: none;
-  position: relative;
+  //float: left;
+  //list-style: none;
+  //position: relative;
 
-  a {
-    display: block;
-    padding: 2px 2px;
-    margin: 5px 4px;
-    text-decoration: none;
-    position: relative;
-
-    svg {
-      width: 2rem;
-      height: 2rem;
-      display: inline;
-      vertical-align: middle;
-    }
-  }
+  //a {
+  //  display: block;
+  //  padding: 2px 2px;
+  //  margin: 5px 4px;
+  //  text-decoration: none;
+  //  position: relative;
+  //
+  //  svg {
+  //    width: 2rem;
+  //    height: 2rem;
+  //    display: inline;
+  //    vertical-align: middle;
+  //  }
+  //}
 }
 
-.favorite__login {
-  width: 2rem;
-  height: 2rem;
-}
-
-.account {
-  a {
-    div {
-      &.icon-chevron:after {
-        color: white;
-        font-size: 0.375rem;
-      }
-    }
-  }
-}
-
-.icon-chevron-up:after {
-  content: "\25B2";
-}
-.icon-chevron-down:after {
-  content: "\25BC";
-}
+//.account {
+//  a {
+//    div {
+//      &.icon-chevron:after {
+//        color: white;
+//        font-size: 0.375rem;
+//      }
+//    }
+//  }
+//}
+//
+//.icon-chevron-up:after {
+//  content: "\25B2";
+//}
+//.icon-chevron-down:after {
+//  content: "\25BC";
+//}

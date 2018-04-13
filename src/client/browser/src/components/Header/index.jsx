@@ -4,7 +4,8 @@ import Logo from './Logo/Logo';
 import Account from './Account/Account';
 import Favorite from './Favorite/Favorite';
 import Search from './Search/Search';
-import MenuSearch from './Menu/Menu';
+import Menu from './Menu/Menu';
+import MenuMobile from './MenuMobile/MenuMobile';
 
 import BurgerMenu from './BurgerMenu/BurgerMenu';
 
@@ -16,28 +17,13 @@ const Header = (props) => {
     <header className={[style.navHeader, 'clearfix']}>
       <div className="container">
         <div className="wrap-container">
-          <nav className={[style.navHeaderNavigation, 'clearfix']}>
+          <nav className={style.headerNavigation}>
             <Logo />
-            <label
-              className={style.labelForCheckbox}
-              htmlFor="toggle-menu"
-              aria-label="Menu">&#9776;
-            </label>
-            <input className={style.checkboxForMenu} id="toggle-menu" type="checkbox" />
-            <ul className={style.navHeaderSearchFavorite}>
-              <Search />
-              <Favorite />
-              <Account />
-              <MenuSearch />
 
-              <BurgerMenu>
-                <ul>
-                  <li>One</li>
-                  <li>Two</li>
-                  <li>Three</li>
-                </ul>
-              </BurgerMenu>
-            </ul>
+            {/*<Menu />*/}
+            <BurgerMenu>
+              <MenuMobile />
+            </BurgerMenu>
           </nav>
         </div>
       </div>

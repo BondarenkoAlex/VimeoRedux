@@ -1,9 +1,17 @@
 @import '../../../../../../../styles/constants.scss';
 
 .user {
-
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
 }
-.user__login {
-  width: 2rem;
-  height: 2rem;
+
+.user__img {
+  width: 100%;
+  height: 100%;
+}
+
+.user__svg {
+  width: 100%;
+  height: 100%;
 }
