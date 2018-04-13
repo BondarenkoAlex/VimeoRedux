@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Search from '../Menu/Search/Search';
 
 import style from './menu-mobile.module.scss';
 
 function MenuMobile(props) {
   return (
     <div className={style.menuMobile}>
-      <div className={style.menuMobileSearch}>[*Search*]</div>
+      <div className={style.menuMobileSearch}>
+        <Search />
+      </div>
       <div className={style.menuMobileFavorite}>
         <Link
           to="/"
