@@ -6,17 +6,19 @@ import style from './burger-menu.module.scss';
 function BurgerMenu({ label, children }) {
   return (
     <div>
+      <input
+        id="toggle-mobile-menu"
+        className={style.checkboxForMenu}
+        type="checkbox"
+      />
+
       <label
         className={style.labelForCheckbox}
         htmlFor="toggle-mobile-menu"
         dangerouslySetInnerHTML={{ __html: label }}
       />
 
-      <input
-        id="toggle-mobile-menu"
-        className={style.checkboxForMenu}
-        type="checkbox"
-      />
+
 
       <div>
         {children}

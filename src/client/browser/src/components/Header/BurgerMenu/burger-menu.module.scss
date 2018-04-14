@@ -11,10 +11,18 @@
   display: none;
 }
 
-.checkbox-for-menu + * {
+.checkbox-for-menu ~ div {
   display: none;
 }
 
-.checkbox-for-menu:checked  + * {
+.checkbox-for-menu:checked  ~ div {
   display: block;
+}
+
+.checkboxForMenu1 {
+  display: none;
+}
+
+.checkbox-for-menu:checked  ~ label {
+  transform: rotateZ(90deg);
 }
