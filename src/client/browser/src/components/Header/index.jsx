@@ -19,14 +19,14 @@ const Header = (props) => {
         <div className="wrap-container">
           <nav className={style.headerNavigation}>
             <Logo />
-            <div className={style.headerMenu}>
+            {/*<div className={style.headerMenu}>*/}
               <Menu />
-            </div>
-            <div className={style.headerMenuMobile}>
+            {/*</div>*/}
+            {/*<div className={style.headerMenuMobile}>*/}
               <BurgerMenu>
                 <MenuMobile />
               </BurgerMenu>
-            </div>
+            {/*</div>*/}
           </nav>
         </div>
       </div>

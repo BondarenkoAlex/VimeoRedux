@@ -1,29 +1,29 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import style from './burger-menu.module.scss';
 
 function BurgerMenu({ label, children }) {
   return (
-    <div>
+    <Fragment>
       <input
         id="toggle-mobile-menu"
-        className={style.checkboxForMenu}
+        className={style.burgerMenuCheckbox}
         type="checkbox"
       />
 
       <label
-        className={style.labelForCheckbox}
+        className={style.burgerMenuLabel}
         htmlFor="toggle-mobile-menu"
         dangerouslySetInnerHTML={{ __html: label }}
       />
 
-
-
-      <div>
-        {children}
+      <div className={style.burgerMedia}>
+        <div className={style.burgerMenuChildren}>
+          {children}
+        </div>
       </div>
-    </div>
+    </Fragment>
   );
 }
 

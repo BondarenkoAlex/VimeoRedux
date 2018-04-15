@@ -37,5 +37,5 @@ export const isEmpty = function isEmpty(obj) {
 };
 
 export const isString = function isString(obj) {
-  return typeof obj == 'string' || (typeof obj == 'object' && obj.constructor === String);
+  return typeof obj === 'string' || (typeof obj === 'object' && obj.constructor === String);
 };
