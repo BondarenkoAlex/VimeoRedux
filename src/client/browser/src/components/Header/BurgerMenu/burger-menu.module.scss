@@ -1,4 +1,4 @@
-.label-for-checkbox {
+.burger-menu-label {
   position: absolute;
   text-align: right;
   font-size: 2rem;
@@ -7,22 +7,18 @@
   color: white;
 }
 // checkbox hide always
-.checkbox-for-menu {
+.burger-menu-checkbox {
   display: none;
 }
 
-.checkbox-for-menu ~ div {
+.burger-menu-checkbox ~ .burger-menu-children {
   display: none;
 }
 
-.checkbox-for-menu:checked  ~ div {
+.burger-menu-checkbox:checked  ~ .burger-menu-children {
   display: block;
 }
 
-.checkboxForMenu1 {
-  display: none;
-}
-
-.checkbox-for-menu:checked  ~ label {
+.burger-menu-checkbox:checked  ~ .burger-menu-label {
   transform: rotateZ(90deg);
 }

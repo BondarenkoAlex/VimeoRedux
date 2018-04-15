@@ -8,17 +8,17 @@ function BurgerMenu({ label, children }) {
     <Fragment>
       <input
         id="toggle-mobile-menu"
-        className={style.checkboxForMenu}
+        className={style.burgerMenuCheckbox}
         type="checkbox"
       />
 
       <label
-        className={style.labelForCheckbox}
+        className={style.burgerMenuLabel}
         htmlFor="toggle-mobile-menu"
         dangerouslySetInnerHTML={{ __html: label }}
       />
 
-      <div>
+      <div className={style.burgerMenuChildren}>
         {children}
       </div>
     </Fragment>
