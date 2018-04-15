@@ -18,8 +18,10 @@ function BurgerMenu({ label, children }) {
         dangerouslySetInnerHTML={{ __html: label }}
       />
 
-      <div className={style.burgerMenuChildren}>
-        {children}
+      <div className={style.burgerMedia}>
+        <div className={style.burgerMenuChildren}>
+          {children}
+        </div>
       </div>
     </Fragment>
   );

@@ -1,9 +1,9 @@
 .burger-menu-label {
-  position: absolute;
-  text-align: right;
+  //position: absolute;
+  //text-align: right;
   font-size: 2rem;
-  right: 0;
-  top: 6px;
+  //right: 0;
+  //top: 6px;
   color: white;
 }
 
@@ -11,14 +11,33 @@
   display: none;
 }
 
-.burger-menu-checkbox ~ .burger-menu-children {
+.burger-media {
+ width: 100%;
+}
+
+.burger-menu-checkbox ~ .burger-media .burger-menu-children {
   display: none;
 }
 
-.burger-menu-checkbox:checked  ~ .burger-menu-children {
+.burger-menu-checkbox:checked ~ .burger-media .burger-menu-children {
   display: block;
 }
 
-.burger-menu-checkbox:checked  ~ .burger-menu-label {
+.burger-menu-checkbox:checked ~ .burger-menu-label {
   transform: rotateZ(90deg);
+}
+
+// hide or show by media query
+@media (max-width: 500px) {
+  .burger-menu-label,
+  .burger-media {
+    display: block;
+  }
+}
+
+@media (min-width: 501px) {
+  .burger-menu-label,
+  .burger-media {
+    display: none;
+  }
 }
