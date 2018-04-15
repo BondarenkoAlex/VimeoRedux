@@ -1,0 +1,25 @@
+@import '../../../../../../../styles/constants.scss';
+
+.filter-entity {
+  &:hover {
+    background-color: $breadcrumsBackgroundColor;
+    cursor: pointer;
+  }
+
+  //&:last-child {
+  //  margin-bottom: 6px;
+  //}
+}
+
+.filter-entity__link {
+  padding: 11px 16px;
+  display: inline-block;
+  color: $breadcrumsTextColor;
+  white-space: nowrap;
+  text-decoration: none;
+
+  .filter-entity:hover & {
+    color: $reduxColor;
+  }
+}
+

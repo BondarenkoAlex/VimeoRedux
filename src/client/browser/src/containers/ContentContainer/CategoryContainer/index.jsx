@@ -13,7 +13,7 @@ import autoBind from 'react-autobind';
 import { getCategoriesIfNeed } from '../../../actions';
 import Category from '../../../components/Content/CategoryPlaylist/Category';
 import { CATEGORIES_TITLE } from '../../../constants/common';
-import Player from '../../../components/Player';
+import Player from '../../../components/PlayerContainer/PlayerContainer';
 import BreadcrumsFilter from '../../../components/BreadcrumsFilter';
 
 class CategoryContainer extends Component {

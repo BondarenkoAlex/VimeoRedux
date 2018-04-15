@@ -1,20 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import style from './filter-item.module.scss';
+
 function FilterItem({ title, subClassName }) {
   return (
-    <li className="filter-entity filter-item-duration">
+    <div className={style.filterEntity}>
       <a
-        className="filter-entity-link"
+        className={style.filterEntityLink}
         href="#"
       >
         {title}
       </a>
-    </li>
+    </div>
   );
 }
 
-FilterItem.propTypes    = {
+FilterItem.propTypes = {
   title: PropTypes.string,
   subClassName: PropTypes.string,
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FilterItem from './FilterItem';
+import FilterItem from '../FilterItem/index';
 
 function FilterListItem(props) {
   let {
@@ -10,7 +10,7 @@ function FilterListItem(props) {
   const subClassName = title.toLowerCase().replace(' ', '');
   // className='filter-items-container-open' у li
   return (
-    <li
+    <div
       className={`filter-items-container filter-items-container-${subClassName} `}>
       <a
         className="filter-items-container-title icon-chevron icon-chevron-down"
@@ -27,7 +27,7 @@ function FilterListItem(props) {
           />
         ))}
       </ul>
-    </li>
+    </div>
   );
 }
 

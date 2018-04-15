@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import autoBind from 'react-autobind';
 import Video from '../../../components/Content/Video';
-import Player from '../../../components/Player';
+import Player from '../../../components/PlayerContainer/PlayerContainer';
 import { getVideoIfNeed } from '../../../actions/videoActions';
 import { getParamsFromProps } from '../../../utils/getParams';
 import { getVideo } from '../../../selectors';

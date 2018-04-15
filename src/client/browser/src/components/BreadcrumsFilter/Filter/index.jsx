@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FilterListItem from './FilterListItem';
+import FilterListItem from './FilterListItem/index';
+import style from './filter.module.scss';
 
 function Filter(props) {
   const listShowby = ['Show by', '10', '24', '100'];
@@ -21,14 +22,14 @@ function Filter(props) {
     },
   ];
   return (
-    <ul className="filter-container clearfix">
+    <div className={style.filterContainer}>
       {list.map((item, i) => (
         <FilterListItem
           key={i}
           {...item}
         />
       ))}
-    </ul>
+    </div>
   );
 }
 
