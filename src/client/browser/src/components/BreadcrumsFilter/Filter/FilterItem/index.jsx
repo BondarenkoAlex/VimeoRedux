@@ -1,28 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import style from './filter-item.module.scss';
 
-function FilterItem({ title, subClassName }) {
+function FilterItem({ title }) {
   return (
     <div className={style.filterEntity}>
-      <a
+      <Link
         className={style.filterEntityLink}
-        href="#"
+        to="#"
       >
         {title}
-      </a>
+      </Link>
     </div>
   );
 }
 
 FilterItem.propTypes = {
   title: PropTypes.string,
-  subClassName: PropTypes.string,
 };
 FilterItem.defaultProps = {
   title: '[*title*]',
-  subClassName: '[subClassName]',
 };
 
 export default FilterItem;
