@@ -1,20 +1,20 @@
 @import '../../../../../../../styles/constants.scss';
 
-.filter-entity {
+.filter-item {
   &:hover {
-    background-color: $breadcrumsBackgroundColor;
+    background-color: $breadcrumsBackgroundColorOpen;
     cursor: pointer;
   }
 }
 
-.filter-entity__link {
-  padding: 11px 16px;
+.filter-item__link {
+  padding: 10px 15px;
   display: inline-block;
   color: $breadcrumsTextColor;
   white-space: nowrap;
   text-decoration: none;
 
-  .filter-entity:hover & {
+  .filter-item:hover & {
     color: $reduxColor;
   }
 }

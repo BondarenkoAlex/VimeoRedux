@@ -6,7 +6,8 @@
 }
 
 .filter-list-item-wrap__title {
-  color: red;
+  color: $breadcrumsTextColor;
+  padding: 10px 15px;
 }
 
 .filter-list-item-wrap__list {

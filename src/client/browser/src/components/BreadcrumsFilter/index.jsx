@@ -8,16 +8,18 @@ function BreadcrumsFilter(props) {
   return (
     <section className={style.breadcrumsFilter}>
       <div className="container">
-        <div className="wrap-container clearfix">
-          <BreadcrumsContainer />
-          <FilterContainer />
+        <div className="wrap-container clearfix" >
+          <div className={style.breadcrumsFilterContainer}>
+            <BreadcrumsContainer />
+            <FilterContainer />
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-BreadcrumsFilter.propTypes    = {};
+BreadcrumsFilter.propTypes = {};
 BreadcrumsFilter.defaultProps = {};
 
 export default BreadcrumsFilter;

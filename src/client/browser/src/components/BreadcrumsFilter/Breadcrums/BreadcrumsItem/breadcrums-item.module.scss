@@ -1,0 +1,29 @@
+@import '../../../../../../../styles/constants.scss';
+
+.breadcrums-item {
+  font-size: 1.125rem;
+
+  &::before {
+    //content: "";
+    color: $breadcrumsTextColor;
+    border-left: 2px solid;
+    border-bottom: 2px solid;
+    width: 0.5rem;
+    height: 0.5rem;
+    display: inline-block;
+    transform: rotateZ(45deg);
+    margin-left: 2px;
+  }
+}
+
+.breadcrums-item__link {
+  //padding: 18px 0.5rem 15px 0.5rem;
+  text-decoration: none;
+  outline: none;
+  color: $breadcrumsTextColor;
+  //display: inline-block;
+
+  .breadcrums-item:hover & {
+    text-decoration: underline;
+  }
+}

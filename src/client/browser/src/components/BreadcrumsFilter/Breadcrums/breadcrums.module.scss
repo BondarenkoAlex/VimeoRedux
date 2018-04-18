@@ -1,0 +1,16 @@
+@import '../../../../../../styles/constants.scss';
+
+.breadcrums-category {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+//@media (max-width: 900px) {
+//  .breadcrums-category {
+//    float: none;
+//    &:after {
+//      clear: both;
+//    }
+//  }
+//}

@@ -6,9 +6,9 @@ import style from './filter-item.module.scss';
 
 function FilterItem({ title }) {
   return (
-    <div className={style.filterEntity}>
+    <div className={style.filterItem}>
       <Link
-        className={style.filterEntityLink}
+        className={style.filterItemLink}
         to="#"
       >
         {title}
