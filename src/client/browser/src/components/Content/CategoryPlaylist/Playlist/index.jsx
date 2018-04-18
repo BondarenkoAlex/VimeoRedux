@@ -1,7 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
-import CategoryPlaylistWrap from '../CategoryPlaylistWrap';
+import CategoryPlaylistWrap from '../CategoryPlaylistWrap/index';
 import PlaylistListItem from './PlaylistListItem';
 import Loading from '../../../Loading';
 

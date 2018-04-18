@@ -27,29 +27,21 @@ class CategoryContainer extends Component {
     this.props.getCategoriesIfNeed();
   }
 
-  onClick() {
-    this.setState({
-      counter: ++this.state.counter,
-    });
-  }
-
   render() {
     const {
             title,
             categories,
             match: { url },
           } = this.props;
-    let title1 = title + this.state.counter;
     return (
       <div>
         <Player />
         <BreadcrumsFilter />
         <Category
-          title={title1}
+          title={title}
           itemsByKey={categories.itemsByKey}
           isLoading={categories.isFetching}
           url={url}
-          onClick={this.onClick}
         />
       </div>
     );

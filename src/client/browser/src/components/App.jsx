@@ -12,7 +12,7 @@ function AppLayout({ route }) {
   return (
     <div>
       <HeaderContainer />
-      {renderRoutes(route.routes)}
+        {renderRoutes(route.routes)}
       <Footer />
     </div>
   );

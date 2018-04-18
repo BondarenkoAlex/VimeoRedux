@@ -6,12 +6,12 @@ import CategoryItem from './CategoryItem';
 class CategoryListItem extends PureComponent {
   render() {
     const {
-            itemsByKey,
-            url,
-          } = this.props;
+      itemsByKey,
+      url,
+    } = this.props;
     const keys = Object.keys(itemsByKey);
     return (
-      <div className="categories-container">
+      <div>
         {keys.map(key => (
           <CategoryItem
             category={itemsByKey[key]}

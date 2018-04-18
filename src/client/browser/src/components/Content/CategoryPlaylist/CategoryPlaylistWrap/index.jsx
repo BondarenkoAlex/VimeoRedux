@@ -2,13 +2,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import style from './category-playlist-wrap.module.scss';
+
 function CategoryPlaylistWrap(props) {
   return (
     <main className="site-main clearfix">
       <div className="container">
         <div className="wrap-container">
-          <div className="categories-title">
-            <h2>{props.title}</h2>
+          <div className={style.categoryPlaylistWrap}>
+            <h2 className={style.categoryPlaylistWrapHeader}>
+              {props.title}
+            </h2>
           </div>
         </div>
         {props.children}
