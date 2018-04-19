@@ -5,7 +5,7 @@ import TagsTag from './TagsTag';
 import CalendarTag from './CalendarTag';
 import ViewTag from './ViewTag';
 import CommentTag from './CommentTag';
-import Favorite from '../../common/Favorite';
+import Favorite from '../../common/Favorite/index';
 
 function ClipStatistics(props) {
   const {

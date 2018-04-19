@@ -1,24 +1,29 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Img from './Img';
+import Img from '../Img';
+
+import style from './preview-video.module.scss';
 
 class PreviewVideo extends PureComponent {
   render() {
     const {
-            pictureUrl,
-            duration,
-            idVideo,
-            path,
-          } = this.props;
+      pictureUrl,
+      duration,
+      idVideo,
+      path,
+    } = this.props;
 
     return (
-      <Link to={`${path}/${idVideo}`}>
+      <Link
+        to={`${path}/${idVideo}`}
+        className={style.previewVideoLink}
+      >
         <Img
-          className="preview"
+          className={style.previewVideoLinkImg}
           src={pictureUrl}
         />
-        <span className="duration">
+        <span className={style.previewVideoLinkDuration}>
           {duration}
         </span>
       </Link>

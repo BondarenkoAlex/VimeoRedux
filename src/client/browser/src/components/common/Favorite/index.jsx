@@ -1,14 +1,18 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Heart } from '../Svg/Heart';
+import { Heart } from '../../Svg/Heart';
+
+import style from './favorite.module.scss';
 
 class Favorite extends PureComponent {
   render() {
     return (
-      <Link to="#">
-        <Heart />
-      </Link>
+      <div className={style.favorite}>
+        <Link to="#">
+          <Heart />
+        </Link>
+      </div>
     );
   }
 }

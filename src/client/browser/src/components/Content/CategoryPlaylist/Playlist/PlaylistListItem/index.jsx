@@ -1,7 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import PlaylistItem from './PlaylistItem';
+import PlaylistItem from '../PlaylistItem/index';
 
 class PlaylistListItem extends PureComponent {
   render() {
@@ -31,4 +31,3 @@ PlaylistListItem.propTypes = {
 PlaylistListItem.defaultProps = {};
 
 export default PlaylistListItem;
-
