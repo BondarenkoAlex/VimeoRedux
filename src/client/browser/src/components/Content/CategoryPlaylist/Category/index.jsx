@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import CategoryPlaylistWrap from '../CategoryPlaylistWrap/index';
-import CategoryListItem from './CategoryListItem';
+import CategoryListItem from './CategoryListItem/index';
 import Loading from '../../../Loading';
 
 function Category({

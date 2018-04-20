@@ -1,7 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import CategoryItem from './CategoryItem';
+import CategoryItem from '../CategoryItem/index';
 
 class CategoryListItem extends PureComponent {
   render() {
