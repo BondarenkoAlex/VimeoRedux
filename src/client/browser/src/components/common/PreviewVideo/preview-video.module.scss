@@ -20,10 +20,10 @@
   min-width: 100%;
   min-height: 100%;
   margin: auto;
-  transition: 0.4s linear;
+  transition: 0.2s linear;
 
   .preview-video-link:hover & {
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
 }
 
@@ -38,4 +38,8 @@
   border-radius: 2px;
   opacity: 0;
   transition: 0.2s linear;
+
+  .preview-video-link:hover & {
+    opacity: 1;
+  }
 }

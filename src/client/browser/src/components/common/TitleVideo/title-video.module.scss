@@ -11,6 +11,9 @@
   font-weight: bold;
   line-height: 2rem;
   font-size: 0.875rem;
+  text-decoration: none;
+  outline: none;
+  color: $categoryTextColor;
 
   .title-video:hover & {
     text-decoration: underline;

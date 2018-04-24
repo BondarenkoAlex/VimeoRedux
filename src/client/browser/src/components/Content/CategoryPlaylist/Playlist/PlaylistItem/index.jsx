@@ -28,19 +28,21 @@ class PlaylistItem extends PureComponent {
     const idVideo = lastSubPath(uri);
     return (
       <div className={style.playlistItem}>
-        <PreviewVideo
-          idVideo={idVideo}
-          pictureUrl={pictureLink}
-          duration={dur}
-          path={path}
-        />
-        <div>
-          <TitleVideo title={name} />
-          <Author
-            src={userPictureLink}
-            name={user.name}
+        <div className={style.playlistItemContent}>
+          <PreviewVideo
+            idVideo={idVideo}
+            pictureUrl={pictureLink}
+            duration={dur}
+            path={path}
           />
-          <Favorite />
+          <TitleVideo title={name} />
+          <div className={style.playlistItemSignature}>
+            <Author
+              src={userPictureLink}
+              name={user.name}
+            />
+            <Favorite />
+          </div>
         </div>
       </div>
     );

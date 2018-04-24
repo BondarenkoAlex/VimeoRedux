@@ -23,7 +23,7 @@ class Author extends PureComponent {
             className={style.authorAvatar}
           />
           <span className={style.authorName}>
-            {name}
+            {name} {name}
           </span>
         </Link>
       </div>
