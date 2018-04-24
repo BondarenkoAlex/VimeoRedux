@@ -3,7 +3,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { lastSubPath } from '../../../../../utils/helpers';
-import Img from '../../../../common/Img';
 import Ratio from '../../../../Ratio/Ratio';
 
 import style from './category-item.module.scss';
@@ -37,14 +36,14 @@ class CategoryItem extends PureComponent {
             className={style.categoryItemLink}
             to={`${path}${subpath}`}
           >
-            <Img
+            <img
               alt={name}
               className={style.categoryItemPreview}
               src={pictureLink}
             />
             <div className={style.categoryItemLogoTitle}>
               {(iconLink !== null) &&
-              <Img
+              <img
                 alt={name}
                 className={style.categoryItemLogo}
                 src={iconLink}

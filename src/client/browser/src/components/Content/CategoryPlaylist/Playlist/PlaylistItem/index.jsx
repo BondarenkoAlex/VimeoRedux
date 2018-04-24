@@ -7,6 +7,7 @@ import TitleVideo from '../../../../common/TitleVideo/index';
 import PreviewVideo from '../../../../common/PreviewVideo/index';
 import { lastSubPath, toTime } from '../../../../../utils/helpers';
 
+
 import style from './playlist-item.module.scss';
 
 class PlaylistItem extends PureComponent {
@@ -35,13 +36,11 @@ class PlaylistItem extends PureComponent {
         />
         <div>
           <TitleVideo title={name} />
-          <div>
-            <Author
-              pictureUrl={userPictureLink}
-              name={user.name}
-            />
-            <Favorite />
-          </div>
+          <Author
+            src={userPictureLink}
+            name={user.name}
+          />
+          <Favorite />
         </div>
       </div>
     );

@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Img from '../Img';
 import { EMPTY_STRING } from '../../../constants/common';
 
 import style from './author.module.scss';
@@ -18,9 +17,10 @@ class Author extends PureComponent {
           to="#"
           className={style.authorLink}
         >
-          <Img
+          <img
             src={src}
-            alt=""
+            alt={name}
+            className={style.authorAvatar}
           />
           <span className={style.authorName}>
             {name}
@@ -36,7 +36,7 @@ Author.propTypes = {
   name: PropTypes.string,
 };
 Author.defaultProps = {
-  pictureUrl: EMPTY_STRING,
+  src: EMPTY_STRING,
   name: EMPTY_STRING,
 };
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Img from '../../common/Img';
 
 function Comment(props) {
   const {
@@ -12,11 +11,10 @@ function Comment(props) {
     <div className="comment clearfix">
       <div className="comment-wrapper clearfix">
         <div className="author-logo">
-          <Img
+          <img
             src={authorSrc}
-            alt="dsdfs"
+            alt=""
           />
-          {/* <img src="/vm/src/images/account-logo.jpg" /> */}
         </div>
         <div className="body-wrapper">
           <div className="body">
@@ -41,10 +39,6 @@ function Comment(props) {
           </div>
         </div>
       </div>
-      {/*<Comment
-        name="Пупкин"
-        authorSrc="https://i.vimeocdn.com/portrait/9341504_75x75"
-      />*/}
     </div>
   );
 }

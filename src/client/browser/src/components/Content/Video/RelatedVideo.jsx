@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Img from '../../common/Img';
 
 function RelatedVideo(props) {
   return (
@@ -9,9 +8,9 @@ function RelatedVideo(props) {
       <div className="preview-wrapper">
         <div className="preview">
           <Link to="#">
-            <Img
+            <img
               src="https://i.vimeocdn.com/video/188703261_640x360.jpg?r=pad"
-              alt="dfdsfds"
+              alt=""
             />
           </Link>
         </div>
