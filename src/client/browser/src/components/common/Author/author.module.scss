@@ -1,9 +1,9 @@
 @import '../../../../../../styles/constants.scss';
 
 .author {
-  list-style: none;
+  display: flex;
   font-size: 1rem;
-  float: left;
+  min-width: 0;
 }
 
 .author__avatar {
@@ -14,15 +14,12 @@
 
 .author__link {
   display: flex;
-  flex-wrap: nowrap;
   align-items: flex-end;
-
   text-decoration: none;
   outline: none;
   color: $categoryTextColor;
-
-  width: 100%;
   box-sizing: border-box;
+  min-width: 0;
 
   .author:hover & {
     text-decoration: underline;
