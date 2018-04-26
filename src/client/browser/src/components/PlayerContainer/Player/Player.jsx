@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Ratio from '../../Ratio/Ratio';
+import Ratio from '../../common/Ratio/Ratio';
 import { EMPTY_OBJECT } from '../../../constants/common';
 import style from './player.module.scss';
 

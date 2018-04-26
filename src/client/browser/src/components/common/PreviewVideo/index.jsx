@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 // import Img from '../Img';
-import Ratio from '../../../components/Ratio/Ratio';
+import Ratio from '../Ratio/Ratio';
 import { EMPTY_STRING } from '../../../constants/common';
 
 import style from './preview-video.module.scss';

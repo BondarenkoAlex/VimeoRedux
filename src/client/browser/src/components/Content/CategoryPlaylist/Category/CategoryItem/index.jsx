@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { lastSubPath } from '../../../../../utils/helpers';
-import Ratio from '../../../../Ratio/Ratio';
+import Ratio from '../../../../common/Ratio/Ratio';
 
 import style from './category-item.module.scss';
 
