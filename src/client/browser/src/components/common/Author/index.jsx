@@ -10,7 +10,10 @@ class Author extends PureComponent {
     const {
       src,
       name,
+      size,
     } = this.props;
+    const classAuthor = size ? style[`author__avatar--${size}`] : style.authorAvatar;
+    const classAuthorName = size ? style[`author__name--${size}`] : style.authorName;
     return (
       <div className={style.author}>
         <Link
@@ -20,10 +23,10 @@ class Author extends PureComponent {
           <img
             src={src}
             alt={name}
-            className={style.authorAvatar}
+            className={classAuthor}
           />
-          <span className={style.authorName}>
-            {name} {name}
+          <span className={classAuthorName}>
+            {name}
           </span>
         </Link>
       </div>
@@ -34,6 +37,7 @@ class Author extends PureComponent {
 Author.propTypes = {
   src: PropTypes.string,
   name: PropTypes.string,
+  size: PropTypes.oneOf(['lg'/* , 'xl' */]),
 };
 Author.defaultProps = {
   src: EMPTY_STRING,

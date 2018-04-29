@@ -10,7 +10,7 @@ class Favorite extends PureComponent {
     return (
       <div className={style.favorite}>
         <Link to="#">
-          <Heart fill="#567"/>
+          <Heart fill="#567" />
         </Link>
       </div>
     );

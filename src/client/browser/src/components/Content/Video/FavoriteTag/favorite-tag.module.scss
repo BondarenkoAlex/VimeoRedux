@@ -1,0 +1,13 @@
+@import '../../../../../../../styles/constants.scss';
+
+.favorite-tag {
+  margin-right: 0.2rem;
+  width: 1rem;
+  height: 1rem;
+
+  cursor: pointer;
+
+  &:hover path {
+    fill: yellow;
+  }
+}

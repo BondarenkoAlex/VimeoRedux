@@ -5,27 +5,28 @@ import { EMPTY_OBJECT } from '../../../constants/common';
 import { isEmpty } from '../../../utils/check';
 import Author from '../../common/Author/index';
 import Favorite from '../../common/Favorite/index';
-import TagsTag from './TagsTag';
-import CalendarTag from './CalendarTag';
-import ViewTag from './ViewTag';
-import CommentTag from './CommentTag';
-import ClipStatistics from './ClipStatistics';
+import TagsTag from './TagsTag/TagsTag';
+import CalendarTag from './CalendarTag/index';
+import ViewTag from './ViewTag/ViewTag';
+import CommentTag from './CommentTag/CommentTag';
+import ClipStatistics from './ClipStatistics/index';
 import Comments from './Comments';
 import RelatedVideos from './RelatedVideos';
+import HeaderVideo from './HeaderVideo';
 
 class Video extends PureComponent {
   render() {
     const { video } = this.props;
     if (isEmpty(video)) return null;
     const {
-            name,
-            user,
-            tags,
-            created_time: createdTime,
-            metadata,
-          } = video;
-    const { name: userName, pictures: userPictures } = user;
-    const userPictureUrl = userPictures && userPictures.sizes && userPictures.sizes[1].link;
+      name: title,
+      user,
+      tags,
+      created_time: createdTime,
+      metadata,
+    } = video;
+    const { name: userName, pictures } = user;
+    const userPictureUrl = pictures && pictures.sizes && pictures.sizes[1].link; // todo
     const { connections: { comments: { total: commentsTotal } } } = metadata;
     const { connections: { likes: { total: likesTotal } } } = metadata;
     return (
@@ -33,23 +34,18 @@ class Video extends PureComponent {
         <div className="container">
           <div className="wrap-container video-clip-wrapper">
             <div className="video-clip">
-              <div className="title">
-                <h1>
-                  {name}
-                </h1>
-              </div>
-              <div className="author">
-                <Author
-                  name={userName}
-                  src={userPictureUrl}
-                />
-              </div>
-              <ClipStatistics
+
+              <HeaderVideo
+                title={title}
+                userName={userName}
+                userPictureUrl={userPictureUrl}
                 tags={tags}
                 commentsTotal={commentsTotal}
                 createdTime={createdTime}
                 likesTotal={likesTotal}
               />
+
+
               {/*                   <ul className="clip-statistics clearfix">
                             <li className="date">
                               <CalendarTag ago={createdTime} />

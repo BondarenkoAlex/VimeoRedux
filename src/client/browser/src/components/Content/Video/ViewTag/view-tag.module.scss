@@ -1,0 +1,20 @@
+@import '../../../../../../../styles/constants.scss';
+
+.view-tag {
+}
+
+.view-tag__common {
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
+.view-tag__label {
+  composes: view-tag__common;
+  margin-right: 0.2rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.view-tag__title {
+  composes: view-tag__common;
+}

@@ -1,0 +1,21 @@
+@import '../../../../../../../styles/constants.scss';
+
+.clip-statistics {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin: 0.25rem 0;
+}
+
+.clip-statistics__item {
+  margin: 0.2rem 0.6rem 0.2rem 0;
+  color: $categoryTextColor;
+  font-size: 0.875rem;
+
+  &:last-child{
+    margin-right: 0;
+  }
+}

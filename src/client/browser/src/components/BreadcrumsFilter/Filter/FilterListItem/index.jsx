@@ -11,8 +11,11 @@ function FilterListItem(props) {
 
   return (
     <div className={style.filterListItem}>
-      {list.map(title => (
-        <FilterItem title={title} />
+      {list.map((title, i) => (
+        <FilterItem
+          key={i}
+          title={title}
+        />
       ))}
     </div>
   );

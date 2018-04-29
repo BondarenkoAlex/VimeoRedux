@@ -10,6 +10,13 @@
   width: 1rem;
   height: 1rem;
   border-radius: 2px;
+
+  &--lg{
+    composes: author__avatar;
+    border-radius: 4px;
+    width: 2rem;
+    height: 2rem;
+  }
 }
 
 .author__link {
@@ -33,4 +40,10 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  &--lg{
+    composes: author__name;
+    font-size: 1rem;
+    font-weight: bold;
+  }
 }

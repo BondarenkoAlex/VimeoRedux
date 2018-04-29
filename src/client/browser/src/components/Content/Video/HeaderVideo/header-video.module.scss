@@ -1,0 +1,20 @@
+@import '../../../../../../../styles/constants.scss';
+
+.header-video {
+  display: block;
+}
+
+.header-video__title {
+  margin: 0.5rem 0;
+  color: $categoryTextColor;
+}
+
+.header-video__author {
+  margin: 0.5rem 0;
+}
+
+.header-video__statistic {
+  margin: 0.5rem 0;
+}
+
+

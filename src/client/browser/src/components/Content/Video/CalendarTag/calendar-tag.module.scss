@@ -1,0 +1,20 @@
+@import '../../../../../../../styles/constants.scss';
+
+.calendar-tag {
+}
+
+.calendar-tag__common {
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
+.calendar-tag__label {
+  composes: calendar-tag__common;
+  margin-right: 0.2rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.calendar-tag__title {
+  composes: calendar-tag__common;
+}

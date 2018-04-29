@@ -20,5 +20,4 @@ Heart.propTypes = {
 };
 Heart.defaultProps = {
   fill: '#fff',
-  className: null,
 };

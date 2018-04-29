@@ -22,11 +22,14 @@ const list = [listShowby, listDuration, listPeriod];
 //   },
 // ];
 
-function Filter(props) {
+function Filter() {
   return (
     <div className={style.filterContainer}>
-      {list.map(item => (
-        <FilterListItemWrap list={item} />
+      {list.map((item, i) => (
+        <FilterListItemWrap
+          key={i}
+          list={item}
+        />
       ))}
     </div>
   );
