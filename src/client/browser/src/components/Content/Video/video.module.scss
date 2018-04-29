@@ -1,0 +1,32 @@
+@import '../../../../../../styles/constants';
+
+.video {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+  }
+}
+
+.video__clip {
+  padding: 0 1rem;
+
+  @media (min-width: 768px) {
+    //margin-right: 384px;
+    //padding: 0 1rem;
+  }
+}
+
+.video__related {
+  padding: 0 1rem;
+
+  @media (min-width: 768px) {
+    //margin-right: 384px;
+  }
+}
+

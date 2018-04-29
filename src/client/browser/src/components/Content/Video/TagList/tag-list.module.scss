@@ -1,15 +1,16 @@
 @import '../../../../../../../styles/constants.scss';
 
-.tags-tag {
+.tag-list {
+  display: block;
 }
 
-.tags-tag__common {
+.tag-list__common {
   display: inline-block;
   vertical-align: text-bottom;
 }
 
-.tags-tag__label {
-  composes: tags-tag__common;
+.tag-list__label {
+  composes: tag-list__common;
   margin-right: 0.2rem;
   width: 1rem;
   height: 1rem;

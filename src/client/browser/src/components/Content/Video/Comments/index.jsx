@@ -1,13 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Comment from './Comment';
+import Comment from './Comment/index';
+
+import style from './comments.module.scss';
 
 function Comments(props) {
   const {
           name,
         } = props;
   return (
-    <section className="comments clearfix"><h2>Comments</h2>
+    <section className={style.comments}>
+      <div className={style.commentsTitle}>
+        <h2>Comments</h2>
+      </div>
       <article className="comments-container">
         <Comment
           name="Пупкин"

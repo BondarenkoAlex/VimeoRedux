@@ -1,7 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
-import TagsTag from '../TagsTag/TagsTag';
+import TagList from '../TagList';
 import CalendarTag from '../CalendarTag/index';
 import ViewTag from '../ViewTag/ViewTag';
 import CommentTag from '../CommentTag/CommentTag';
@@ -28,7 +28,7 @@ function ClipStatistics(props) {
         <CommentTag number={commentsTotal} />
       </div>
       <div className={style.clipStatisticsItem}>
-        <TagsTag tags={tags} />
+        <TagList tags={tags} />
       </div>
       <div className={style.clipStatisticsItem}>
         <FavoriteTag />
