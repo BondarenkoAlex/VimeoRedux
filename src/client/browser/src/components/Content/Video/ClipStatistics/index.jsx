@@ -6,6 +6,7 @@ import CalendarTag from '../CalendarTag/index';
 import ViewTag from '../ViewTag/ViewTag';
 import CommentTag from '../CommentTag/CommentTag';
 import FavoriteTag from '../FavoriteTag';
+import { isEmpty } from '../../../../utils/check';
 
 import style from './clip-statistics.module.scss';
 
@@ -18,18 +19,26 @@ function ClipStatistics(props) {
   } = props;
   return (
     <div className={style.clipStatistics}>
-      <div className={style.clipStatisticsItem}>
-        <CalendarTag ago={createdTime} />
-      </div>
-      <div className={style.clipStatisticsItem}>
-        <ViewTag number={likesTotal} />
-      </div>
-      <div className={style.clipStatisticsItem}>
-        <CommentTag number={commentsTotal} />
-      </div>
-      <div className={style.clipStatisticsItem}>
-        <TagList tags={tags} />
-      </div>
+      {createdTime && (
+        <div className={style.clipStatisticsItem}>
+          <CalendarTag ago={createdTime} />
+        </div>)
+      }
+      {likesTotal && (
+        <div className={style.clipStatisticsItem}>
+          <ViewTag number={likesTotal} />
+        </div>)
+      }
+      {commentsTotal && (
+        <div className={style.clipStatisticsItem}>
+          <CommentTag number={commentsTotal} />
+        </div>)
+      }
+      {!isEmpty(tags) && (
+        <div className={style.clipStatisticsItem}>
+          <TagList tags={tags} />
+        </div>)
+      }
       <div className={style.clipStatisticsItem}>
         <FavoriteTag />
       </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Ratio from '../../../common/Ratio/Ratio';
+import Author from '../../../common/Author';
 
 import style from './related-video.module.scss';
 
@@ -9,7 +10,7 @@ function RelatedVideo(props) {
   return (
     <div className={style.relatedVideo}>
       {[1, 2, 3].map((video, i) => (
-        <div className={style.relatedVideoItem}>
+        <div className={style.relatedVideoItem} key={i}>
           <div className={style.relatedVideoImageContainer}>
             <Ratio ratio="16:9">
               <Link
@@ -31,12 +32,12 @@ function RelatedVideo(props) {
             >
               RUIN AND ROSE Whistler ParkEdit
             </Link>
-            <Link
-              to="#"
-              className={style.relatedVideoAuthor}
-            >
-              Spela Cadez
-            </Link>
+            <div className={style.relatedVideoImage}>
+              <Author
+                src="https://i.vimeocdn.com/video/188703261_640x360.jpg?r=pad"
+                name={'Spela Cadez'}
+              />
+            </div>
           </div>
 
         </div>
