@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { EMPTY_OBJECT } from '../../../constants/common';
 import { isEmpty } from '../../../utils/check';
 import Comments from './Comments/index';
-import RelatedVideos from './RelatedVideoList/RelatedVideoList';
+import RelatedVideoList from './RelatedVideoList/RelatedVideoList';
 import HeaderVideo from './HeaderVideo';
 
 import style from './video.module.scss';
@@ -41,7 +41,7 @@ class Video extends PureComponent {
               <Comments />
             </div>
             <aside className={style.videoRelated}>
-              <RelatedVideos />
+              <RelatedVideoList />
             </aside>
           </div>
         </div>

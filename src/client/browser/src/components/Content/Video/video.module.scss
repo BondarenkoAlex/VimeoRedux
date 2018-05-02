@@ -4,16 +4,15 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: stretch;
   box-sizing: border-box;
 
   @media (max-width: 768px) {
     flex-direction: column;
-
   }
 }
 
 .video__clip {
+  flex: 2 0 0;
   padding: 0 1rem;
 
   @media (min-width: 768px) {
@@ -23,7 +22,8 @@
 }
 
 .video__related {
-  padding: 0 1rem;
+  flex: 1 0 0;
+  //padding: 0 1rem;
 
   @media (min-width: 768px) {
     //margin-right: 384px;

@@ -11,7 +11,7 @@ function Comments(props) {
   return (
     <section className={style.comments}>
       <div className={style.commentsTitle}>
-        <h2>Comments</h2>
+        <h3>Comments</h3>
       </div>
       <article className="comments-container">
         <Comment

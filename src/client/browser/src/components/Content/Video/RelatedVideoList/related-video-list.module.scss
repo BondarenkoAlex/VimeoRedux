@@ -1,7 +1,7 @@
 @import '../../../../../../../styles/constants';
 
 .related-video-list {
-  margin: 1rem 0;
+  //margin: 1rem 0;
   box-sizing: border-box;
   color: $categoryTextColor;
 
@@ -12,14 +12,14 @@
 }
 
 .related-video-list__title {
-
+  margin: 0.875rem 1rem 0.5rem;
 }
-
-.related-video-list__video-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: stretch;
-  flex-wrap: wrap;
-  box-sizing: border-box;
-}
+//
+//.related-video-list__video-list {
+//  display: flex;
+//  flex-direction: row;
+//  justify-content: space-between;
+//  align-items: stretch;
+//  flex-wrap: wrap;
+//  box-sizing: border-box;
+//}

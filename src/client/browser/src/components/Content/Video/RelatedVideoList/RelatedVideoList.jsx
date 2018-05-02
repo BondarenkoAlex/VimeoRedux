@@ -10,11 +10,7 @@ function RelatedVideoList(props) {
       <div className={style.relatedVideoListTitle}>
         <h3>Related video</h3>
       </div>
-      <div className={style.relatedVideoListVideoList}>
-        {[1, 2, 3].map((video, i) => (
-          <RelatedVideo key={i} />
-        ))}
-      </div>
+      <RelatedVideo />
     </div>
   );
 }
