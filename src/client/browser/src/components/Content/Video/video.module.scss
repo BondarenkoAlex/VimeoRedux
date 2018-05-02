@@ -1,28 +1,32 @@
 @import '../../../../../../styles/constants';
 
 .video {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: block;
+}
+
+.video__clip-wrap {
   box-sizing: border-box;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
+  @media (min-width: 768px) {
+    width: 100%;
+    margin-right: -400px;
+    float: left;
   }
 }
 
 .video__clip {
-  flex: 2 0 0;
-  padding: 0 1rem;
-
-  @media (min-width: 768px) {
-    //margin-right: 384px;
-    //padding: 0 1rem;
-  }
+  margin-right: 384px;
 }
 
 .video__related {
-  flex: 1 0 0;
+  margin: 1rem 0;
+  box-sizing: border-box;
+  @media (min-width: 768px) {
+    float: right;
+    width: 400px;
+  }
+
+  //flex: 1 0 0;
   //padding: 0 1rem;
 
   @media (min-width: 768px) {

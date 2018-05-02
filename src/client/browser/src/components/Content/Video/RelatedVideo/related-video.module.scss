@@ -1,9 +1,7 @@
 @import '../../../../../../../styles/constants';
 
 .related-video {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+;
   //flex-wrap: wrap;
   //align-items: flex-start;
   box-sizing: border-box;
@@ -22,18 +20,25 @@
 }
 
 .related-video__item {
-  flex: 1 1 0%;
+  padding: 0 1rem;
+  margin: 1rem 0;
+  box-sizing: border-box;
+  vertical-align: top;
 
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
-  margin: 0.5rem 1rem;
+  @media (max-width: 414px) {
+    padding: 0.5rem;
+  }
+  @media (min-width: 568px) and (max-width: 768px) {
+    width: 50%;
+    display: inline-block;
+  }
+  @media (min-width: 768px) {
+    width: auto;
+  }
 }
 
 .related-video__image-container {
-  flex: 40 1 0;
+  //flex: 40 1 0;
   //float: left;
   //width: 50%;
   //width: 100%;
@@ -50,13 +55,13 @@
 }
 
 .related-video__title-container {
-  flex: 60 1 0;
+  //flex: 60 1 0;
 
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
+  //display: flex;
+  //flex-direction: row;
+  //flex-wrap: wrap;
+  //justify-content: flex-start;
+  //align-items: flex-start;
 
 }
 

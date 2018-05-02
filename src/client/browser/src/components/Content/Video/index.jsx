@@ -28,17 +28,19 @@ class Video extends PureComponent {
       <main className="site-main clearfix">
         <div className="container">
           <div className={style.video}>
-            <div className={style.videoClip}>
-              <HeaderVideo
-                title={title}
-                userName={userName}
-                userPictureUrl={userPictureUrl}
-                tags={tags}
-                commentsTotal={commentsTotal}
-                createdTime={createdTime}
-                likesTotal={likesTotal}
-              />
-              <Comments />
+            <div className={style.videoClipWrap}>
+              <div className={style.videoClip}>
+                <HeaderVideo
+                  title={title}
+                  userName={userName}
+                  userPictureUrl={userPictureUrl}
+                  tags={tags}
+                  commentsTotal={commentsTotal}
+                  createdTime={createdTime}
+                  likesTotal={likesTotal}
+                />
+                <Comments />
+              </div>
             </div>
             <aside className={style.videoRelated}>
               <RelatedVideoList />
