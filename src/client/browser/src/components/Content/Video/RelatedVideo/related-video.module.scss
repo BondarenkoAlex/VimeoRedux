@@ -2,13 +2,19 @@
 
 .related-video {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
   //flex-wrap: wrap;
   //align-items: flex-start;
   box-sizing: border-box;
   //margin: 1rem 0;
   //width: 50%;
+
+  @media (min-width: 768px) {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
 
   //@media (max-width: 414px) {
   //  padding: 0.5rem;
@@ -30,10 +36,15 @@
   justify-content: space-between;
 
   margin: 0.5rem 1rem;
+
+  @media (min-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .related-video__image-container {
   flex: 40 1 0;
+  min-width: 150px;
   //float: left;
   //width: 50%;
   //width: 100%;
