@@ -31,6 +31,7 @@ class AppLayout extends Component {
 
 AppLayout.propTypes = {
   route: PropTypes.object,
+  initEnvironment: PropTypes.func,
 };
 AppLayout.defaultProps = {};
 
