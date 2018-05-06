@@ -21,6 +21,14 @@
   }
 }
 
+.video__description {
+  color: $categoryTextColor;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  //text-indent: 1rem; /* Отступ первой строки */
+  text-align: justify; /* Выравнивание по ширине */
+}
+
 .video__related {
   flex: 1 0 0;
   //padding: 0 1rem;

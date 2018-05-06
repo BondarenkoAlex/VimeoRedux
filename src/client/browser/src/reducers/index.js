@@ -5,6 +5,7 @@ import categories from './categories';
 import subcategories from './subcategories';
 import playlists from './playlists';
 import videos from './videos';
+import users from './users';
 
 const rootReducer = combineReducers({
   router: routerReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   subcategories,
   playlists,
   videos,
+  users,
 });
 
 export default rootReducer;

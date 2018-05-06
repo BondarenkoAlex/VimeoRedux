@@ -7,22 +7,23 @@ import Loading from '../../../Loading';
 
 function Playlist(props) {
   const {
-          items,
-          title,
-          isLoading,
-          uri,
-        } = props;
+    items,
+    title,
+    isLoading,
+    uri,
+  } = props;
   return (
     <CategoryPlaylistWrap title={title}>
-      {{
-        true: (
-          <Loading />),
-        false: (
+      {isLoading
+        ? (
+          <Loading />)
+        : (
           <PlaylistListItem
             items={items}
             uri={uri}
-          />),
-      }[isLoading]}
+          />
+        )
+      }
     </CategoryPlaylistWrap>
   );
 }

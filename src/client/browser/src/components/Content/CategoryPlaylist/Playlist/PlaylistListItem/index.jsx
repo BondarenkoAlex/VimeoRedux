@@ -6,9 +6,9 @@ import PlaylistItem from '../PlaylistItem/index';
 class PlaylistListItem extends PureComponent {
   render() {
     const {
-            items,
-            uri,
-          } = this.props;
+      items,
+      uri,
+    } = this.props;
     // const keys = Object.keys(items);
     return (
       <div className="playlist-container">

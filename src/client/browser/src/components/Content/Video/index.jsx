@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { EMPTY_OBJECT } from '../../../constants/common';
 import { isEmpty } from '../../../utils/check';
+import { getMetadataComments, getMetadataLikes } from '../../../utils/helpers';
 import Comments from './Comments/index';
 import RelatedVideoList from './RelatedVideoList/RelatedVideoList';
 import HeaderVideo from './HeaderVideo';
@@ -15,6 +16,7 @@ class Video extends PureComponent {
     if (isEmpty(video)) return null;
     const {
       name: title,
+      description,
       user,
       tags,
       created_time: createdTime,
@@ -22,8 +24,8 @@ class Video extends PureComponent {
     } = video;
     const { name: userName, pictures } = user;
     const userPictureUrl = pictures && pictures.sizes && pictures.sizes[1].link; // todo
-    const { connections: { comments: { total: commentsTotal } } } = metadata;
-    const { connections: { likes: { total: likesTotal } } } = metadata;
+    const commentsTotal = getMetadataComments(video).total;
+    const likesTotal = getMetadataLikes(video).total;
     return (
       <main className="site-main clearfix">
         <div className="container">
@@ -38,6 +40,7 @@ class Video extends PureComponent {
                 createdTime={createdTime}
                 likesTotal={likesTotal}
               />
+              <div className={style.videoDescription}>{description}</div>
               <Comments />
             </div>
             <aside className={style.videoRelated}>

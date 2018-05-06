@@ -53,12 +53,12 @@ export const lastSubPath = function lastSubPath(path) {
 
 export const buildKeyVideoStore = function buildKeyVideoStore(obj) {
   let {
-        category,
-        subcategory,
-        showby,
-        duration,
-        period,
-      } = obj;
+    category,
+    subcategory,
+    showby,
+    duration,
+    period,
+  } = obj;
   category = category || '';
   subcategory = subcategory || '';
   showby = showby
@@ -69,5 +69,33 @@ export const buildKeyVideoStore = function buildKeyVideoStore(obj) {
     ? parseInt(period, 10)
     : '';
   return (`${category}|${subcategory}|${showby}|${duration}|${period}`);
+};
+
+export const getMetadata = function getMetadata(obj) {
+  return obj.metadata || {};
+};
+
+const getMetadataConnections = function getMetadataConnections(obj) {
+  return getMetadata(obj).connections || {};
+};
+
+export const getMetadataUsers = function getMetadataUsers(obj) {
+  return getMetadataConnections(obj).users || {};
+};
+
+export const getMetadataVideos = function getMetadataVideos(obj) {
+  return getMetadataConnections(obj).videos || {};
+};
+
+export const getMetadataComments = function getMetadataComments(obj) {
+  return getMetadataConnections(obj).comments || {};
+};
+
+export const getMetadataLikes = function getMetadataLikes(obj) {
+  return getMetadataConnections(obj).likes || {};
+};
+
+export const getMetadataPictures = function getMetadataPictures(obj) {
+  return getMetadataConnections(obj).pictures || {};
 };
 

@@ -1,4 +1,5 @@
 export const CHANGE_IS_MOBILE = 'CHANGE_IS_MOBILE';
+export const CHANGE_RESOLUTION = 'CHANGE_RESOLUTION';
 
 export const PARAM = {
   CATEGORY: 'category',
