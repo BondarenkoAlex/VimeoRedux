@@ -18,7 +18,7 @@ class AppLayout extends Component {
   }
 
   componentWillMount() {
-    this.props.initEnvironmentAction();
+    this.props.initEnvironmentAction(); 
   }
 
   componentDidMount() {
