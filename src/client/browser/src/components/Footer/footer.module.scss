@@ -1,0 +1,41 @@
+@import '../../../../../styles/constants.scss';
+
+.footer {
+  background-color: $breadcrumsBackgroundColor;
+  color: $breadcrumsTextColor;
+  font-size: 0.75rem;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  ul {
+    li {
+      list-style: none;
+      padding: 14px 0;
+    }
+    a {
+      color: $breadcrumsTextColor;
+    }
+  }
+}
+
+.footer__copyright {
+  float: left;
+}
+
+.footer__connect {
+  float: right;
+  li {
+    list-style: none;
+    padding: 14px 0;
+    a {
+      text-decoration: none;
+      outline: none;
+      vertical-align: middle;
+      /*padding: 6px 5px;*/
+    }
+    &:hover a {
+      text-decoration: underline;
+    }
+  }
+}

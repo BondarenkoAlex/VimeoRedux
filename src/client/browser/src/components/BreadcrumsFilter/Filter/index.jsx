@@ -1,34 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FilterListItem from './FilterListItem';
+import FilterListItemWrap from './FilterListItemWrap';
+import style from './filter.module.scss';
 
-function Filter(props) {
-  const listShowby = ['Show by', '10', '24', '100'];
-  const listDuration = ['Duration', 'Short', 'Medium', 'Long'];
-  const listPeriod = ['Period', '7days', '30days', '90days'];
-  const list = [
-    {
-      title: 'Show by',
-      list: listShowby,
-    },
-    {
-      title: 'Duration',
-      list: listDuration,
-    },
-    {
-      title: 'Period',
-      list: listPeriod,
-    },
-  ];
+const listShowby = ['Show by', '10', '24', '100'];
+const listDuration = ['Duration', 'Short', 'Medium', 'Long'];
+const listPeriod = ['Period', '7days', '30days', '90days'];
+const list = [listShowby, listDuration, listPeriod];
+// const list = [
+//   {
+//     title: 'Show by',
+//     list: listShowby,
+//   },
+//   {
+//     title: 'Duration',
+//     list: listDuration,
+//   },
+//   {
+//     title: 'Period',
+//     list: listPeriod,
+//   },
+// ];
+
+function Filter() {
   return (
-    <ul className="filter-container clearfix">
+    <div className={style.filterContainer}>
       {list.map((item, i) => (
-        <FilterListItem
+        <FilterListItemWrap
           key={i}
-          {...item}
+          list={item}
         />
       ))}
-    </ul>
+    </div>
   );
 }
 

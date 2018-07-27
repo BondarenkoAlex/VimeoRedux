@@ -21,7 +21,6 @@ export function getVideoIfNeed(params) {
     // const { categories: { itemsByKey } } = getState();
 
     const categoryParam = getCategory(params);
-
     if (!isEmpty(categoryParam)) {
       await dispatch(getSubcategoriesIfNeed(params));
       dispatch(loadVideo(params));
@@ -73,7 +72,7 @@ function loadVideo(params) {
         );
     }
     // });
-  }
+  };
 }
 
 function request(type) {

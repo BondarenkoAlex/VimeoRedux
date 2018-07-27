@@ -10,43 +10,7 @@
       }
     }
   }
-  ul.breadcrums-category {
-    float: left;
-    li {
-      font-size: 1.125rem;
-      list-style: none;
-      float: left;
-      border-bottom: 3px solid transparent;
-      a {
-        padding: 18px 0.5rem 15px 0.5rem;
-        text-decoration: none;
-        outline: none;
-        color: $breadcrumsTextColor;
-        display: inline-block;
-      }
-      &:hover a {
-        text-decoration: underline;
-      }
-      &::before {
-        //content: "\003C";
-        content: " ";
-        color: $breadcrumsTextColor;
-        border-left: 2px solid;
-        border-bottom: 2px solid;
-        width: 0.5rem;
-        height: 0.5rem;
-        display: inline-block;
-        transform: rotateZ(45deg);
-        margin-left: 2px;
-      }
-      /*      &:first-child{
-              padding-left: 0;
-              &:before{
-                display: none;
-              }
-            }*/
-    }
-  }
+
   ul.filter-container {
     border-left: 1px solid $breadcrumsBorderColor;
     position: relative;

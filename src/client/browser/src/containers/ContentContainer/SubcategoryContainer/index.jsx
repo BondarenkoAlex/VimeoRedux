@@ -15,7 +15,7 @@ import {
   EMPTY_OBJECT,
   EMPTY_STRING,
 } from '../../../constants/common';
-import Player from '../../../components/Player';
+import Player from '../../../components/PlayerContainer/PlayerContainer';
 import BreadcrumsFilter from '../../../components/BreadcrumsFilter';
 
 class SubcategoryContainer extends Component {

@@ -13,12 +13,16 @@ body {
   box-sizing: border-box;
 }
 
+//h1 {
+//  font-size: 2rem;
+//}
+
 h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.33rem;
 }
 
 h3 {
@@ -26,14 +30,10 @@ h3 {
 }
 
 h4 {
-  font-size: 1.33rem;
-}
-
-h5 {
   font-size: 0.83rem;
 }
 
-h6 {
+h5 {
   font-size: 0.67rem;
 }
 
@@ -63,11 +63,11 @@ h6 {
   pointer-events: none;
 }
 
-.float-left{
+.float-left {
   float: left;
 }
 
-.float-right{
+.float-right {
   float: right;
 }
 
@@ -86,6 +86,7 @@ h6 {
 .icon-chevron-up:after {
   content: "\25B2";
 }
+
 .icon-chevron-down:after {
   content: "\25BC";
 }
@@ -111,6 +112,7 @@ h6 {
   padding: 8px 0;
   cursor: pointer;
 }
+
 //end ------ label and checkbox for mobile menu
 
 //popover
@@ -173,13 +175,15 @@ h6 {
     text-decoration: underline;
   }
 }
+
 //end ------ popover
 
 //button
 .button-wrapper {
   padding: 0.25rem 0;
 }
-button.btn-default{
+
+button.btn-default {
   position: relative;
   border: none;
   border-radius: 2px;
@@ -191,7 +195,8 @@ button.btn-default{
   cursor: pointer;
   outline: none;
 }
-button.btn-as-text{
+
+button.btn-as-text {
   padding: 0;
   font-size: .875rem;
   border: none;
@@ -201,6 +206,7 @@ button.btn-as-text{
   cursor: pointer;
   color: $categoryTextColor;
 }
+
 //end ----- button
 
 //ratio
@@ -211,18 +217,36 @@ button.btn-as-text{
   display: inline-block;
   //border: 1px solid;
 }
+
 .ratio:before {
   content: '';
   display: block;
 }
-.ratio1-1:before {padding-top: 100%;}
-.ratio2-1:before {padding-top: 50%;}
-.ratio4-3:before {padding-top: 75%;}
-.ratio16-9:before {padding-top: 56.25%;}
+
+.ratio1-1:before {
+  padding-top: 100%;
+}
+
+.ratio2-1:before {
+  padding-top: 50%;
+}
+
+.ratio4-3:before {
+  padding-top: 75%;
+}
+
+.ratio16-9:before {
+  padding-top: 56.25%;
+}
+
 .ratio-content {
   position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
+
 //end ----- ratio
 
 

@@ -16,7 +16,7 @@ import {
   getSubcategory,
 } from '../../../utils/getParams';
 import { EMPTY_STRING } from '../../../constants/common';
-import Player from '../../../components/Player';
+import Player from '../../../components/PlayerContainer/PlayerContainer';
 import BreadcrumsFilter from '../../../components/BreadcrumsFilter';
 import { isEmpty } from '../../../utils/check';
 import { ROOT_URI } from '../../../constants/config';

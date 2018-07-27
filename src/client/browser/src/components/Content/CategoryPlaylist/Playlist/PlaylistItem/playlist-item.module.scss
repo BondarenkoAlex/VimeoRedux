@@ -1,0 +1,40 @@
+@import '../../../../../../../../styles/constants.scss';
+
+.playlist-item {
+  float: left;
+  padding: 1rem;
+  box-sizing: border-box;
+
+  @media (max-width: 414px) {
+    padding: 0.5rem;
+  }
+
+  @media (max-width: 412px) {
+    width: 100%;
+  }
+
+  @media (min-width: 413px) and (max-width: 768px) {
+    width: 50%;
+  }
+
+  @media (min-width: 769px) and (max-width: 991px) {
+    width: 33.33333333%;
+  }
+
+  @media (min-width: 992px) {
+    width: 25%;
+  }
+}
+
+.playlist-item__content {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.playlist-item__signature {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

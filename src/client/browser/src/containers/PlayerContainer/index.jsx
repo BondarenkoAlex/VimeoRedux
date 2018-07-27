@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import autoBind from 'react-autobind';
-import Player  from '../../components/Player';
+import Player from '../../components/PlayerContainer/PlayerContainer';
 
 class PlayerContainer extends Component {
   constructor(props, context) {

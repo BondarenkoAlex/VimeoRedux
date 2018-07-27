@@ -1,0 +1,11 @@
+@import '../../../../../../../../styles/constants';
+
+.tag {
+    text-decoration: none;
+    outline: none;
+    color: $categoryTextColor;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

@@ -1,13 +1,14 @@
 const project = require('./project.config.js');
 
-const babelLoader        = require('./loaders/babel-loader.config.js');
+const babelLoader       = require('./loaders/babel-loader.config.js');
 //const cssLoader          = require('./loaders/css-loader.config.js');
-const scssLoader         = require('./loaders/scss-loader.config.js');
+const scssLoader        = require('./loaders/scss-loader.config.js');
+const scssModuleLoader  = require('./loaders/scss-module-loader.config.js');
 //const imageLoader        = require('./loaders/image-loader.config.js');
 const fileLoader        = require('./loaders/file-loader.config.js');
-const htmlWebpackPlugin  = require('./plugins/htmlWebpackPlugin.config.js');
-const commonsChunkPlugin = require('./plugins/commonsChunkPlugin.config.js');
-const environmentPlugin  = require('./plugins/environmentPlugin.config.js');
+const htmlWebpackPlugin = require('./plugins/htmlWebpackPlugin.config.js');
+const commonsChunkPlugin  = require('./plugins/commonsChunkPlugin.config.js');
+const environmentPlugin   = require('./plugins/environmentPlugin.config.js');
 
 const path    = require('path');
 const webpack = require('webpack');
@@ -48,6 +49,7 @@ module.exports = merge({
   babelLoader,
   //cssLoader,
   scssLoader,
+  scssModuleLoader,
   //imageLoader,
   fileLoader,
   htmlWebpackPlugin,

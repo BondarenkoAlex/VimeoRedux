@@ -1,7 +1,8 @@
-import { CHANGE_IS_MOBILE } from '../constants';
+import { CHANGE_IS_MOBILE, CHANGE_RESOLUTION } from '../constants';
 
 const initialState = {
   isMobile: false,
+  resolution: {},
 };
 
 export default function environment(state = initialState, action) {
@@ -10,6 +11,13 @@ export default function environment(state = initialState, action) {
       return {
         ...state,
         isMobile: action.isMobile,
+      };
+    }
+
+    case CHANGE_RESOLUTION: {
+      return {
+        ...state,
+        resolution: action.payload,
       };
     }
 

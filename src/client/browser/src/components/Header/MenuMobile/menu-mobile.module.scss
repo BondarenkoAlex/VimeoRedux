@@ -1,0 +1,53 @@
+@import '../../../../../../styles/constants.scss';
+
+.menu-mobile {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+
+  position: relative;
+  // width: 10rem;
+  // padding-top: 1rem
+}
+
+.menu-mobile__item {
+  font-size: 1rem;
+  text-align: center;
+
+  &:not(:first-child) {
+    border-top: 1px solid $menuBorderColor;
+  }
+}
+
+.menu-mobile__search {
+  composes: menu-mobile__item;
+  padding: 13px 0;
+}
+
+.menu-mobile__favorite {
+  composes: menu-mobile__item;
+}
+
+.menu-mobile__logout {
+  composes: menu-mobile__item;
+}
+
+.menu-mobile__link {
+  display: block;
+  padding: 2px 2px;
+  margin: 5px 4px;
+  text-decoration: none;
+  position: relative;
+}
+
+.menu-mobile__span {
+  color: $searchTextColor;
+  padding: 0 1rem;
+
+  .menu-mobile__link:hover & {
+    color: $reduxColor;
+    text-decoration: underline;
+  }
+}
+
+

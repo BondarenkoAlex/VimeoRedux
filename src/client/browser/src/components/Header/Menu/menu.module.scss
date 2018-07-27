@@ -1,0 +1,24 @@
+.menu {
+  display: flex;
+  align-items: center;
+
+  position: relative;
+  // width: 10rem;
+}
+
+.menu__search {
+  width: 10rem;
+}
+
+// hide or show by media query
+@media (max-width: 500px) {
+  .menu {
+    display: none;
+  }
+}
+
+@media (min-width: 501px) {
+  .menu {
+    display: flex;
+  }
+}

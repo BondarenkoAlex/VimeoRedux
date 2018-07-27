@@ -3,17 +3,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BreadcrumsItem from './BreadcrumsItem';
 
+import style from './breadcrums.module.scss';
+
 function Breadcrums(props) {
   const { items } = props;
   return (
-    <ul className="breadcrums-category clearfix">
+    <div className={style.breadcrumsCategory}>
       {items.map(item => (
         <BreadcrumsItem
           key={item.title}
           item={item}
         />
       ))}
-    </ul>
+    </div>
   );
 }
 

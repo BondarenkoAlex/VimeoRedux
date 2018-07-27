@@ -31,6 +31,7 @@ export const getCategoriesState = state => state.categories;
 export const getSubcategoriesState = state => state.subcategories;
 export const getPlaylistsState = state => state.playlists;
 export const getVideosState = state => state.videos;
+// export const getUsersState = state => state.users;
 
 export const getCategoryTitle = createSelector(
   [getCategoriesState, getCategoryParam],
@@ -64,13 +65,14 @@ export const getVideosSubcategory = createSelector(
     getPeriodQuery,
     getShowbyQuery,
   ],
-  (playlistsState,
-   videosState,
-   categoryParam,
-   subcategoryParam,
-   duration,
-   period,
-   showby) => {
+  (
+    playlistsState,
+    videosState,
+    categoryParam,
+    subcategoryParam,
+    duration,
+    period,
+    showby) => {
     const key = buildKeyVideoStore({
       [PARAM.CATEGORY]: categoryParam,
       [PARAM.SUBCATEGORY]: subcategoryParam,
@@ -92,6 +94,14 @@ export const getVideo = createSelector(
   },
 );
 
+// export const getUser = createSelector(
+//   [getUsersState, getIdVideoParam],
+//   (videosState, idVideoParam) => {
+//     const video = videosState.itemsByKey[idVideoParam];
+//     return video || EMPTY_OBJECT; // video object or empty object
+//   },
+// );
+
 export const getBreadcrums = createSelector(
   [
     getCategoriesState,
@@ -100,13 +110,14 @@ export const getBreadcrums = createSelector(
     getSubcategoryParam,
     getIdVideoParam,
   ],
-  (categoriesState,
-   subcategoriesState,
-   categoryParam,
-   subcategoryParam,
-   idVideoParam) => {
+  (
+    categoriesState,
+    subcategoriesState,
+    categoryParam,
+    subcategoryParam,
+    idVideoParam) => {
     const pathArray = [];
-    const empty = null//undefined; // unde
+    const empty = null; // undefined;
     if (!isEmpty(categoryParam)) {
       pathArray.push({
         title: CATEGORIES_TITLE,
@@ -148,8 +159,5 @@ export const getBreadcrums = createSelector(
     return isEmpty(pathArray)
       ? empty
       : pathArray;
-
-    // const video = videosState.itemsByKey[idVideoParam];
-    // return video || EMPTY_OBJECT; // video object or empty object
   },
 );
