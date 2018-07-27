@@ -16,7 +16,7 @@ function Comments(props) {
       <article className="comments-container">
         <Comment
           name="Пупкин"
-          authorSrc="https://i.vimeocdn.com/portrait/9341504_75x75"
+          authorSrc="https://i.vimeocdn.com/portrait/6193530_75x75"
         />
       </article>
     </section>

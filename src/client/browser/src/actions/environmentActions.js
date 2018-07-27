@@ -18,18 +18,23 @@ function changeResolution(width, height) {
   };
 }
 
-export function initEnvironment() {
+export function initEnvironmentAction() {
   return (dispatch) => {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
       .test(navigator.userAgent);
-debugger
+
     dispatch(changeIsMobile(isMobile));
+    dispatch(resolutionAction());
+  };
+}
+
+export function resolutionAction() {
+  return (dispatch) => {
     dispatch(changeResolution(getHeight(), getWidth()));
   };
 }
 
 function getWidth() {
-  debugger
   let width = null;
   if (window.screen !== null) {
     width = window.screen.availWidth;

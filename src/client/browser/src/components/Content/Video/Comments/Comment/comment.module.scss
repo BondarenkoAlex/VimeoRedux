@@ -23,11 +23,16 @@
   align-items: flex-start;
 }
 
+.comment__author-logo-container {
+
+}
+
 .comment__author-logo {
   flex: 0 1 0;
   width: 40px;
   height: 40px;
   border-radius: 2px;
+  display: block;
 }
 
 .comment__body {

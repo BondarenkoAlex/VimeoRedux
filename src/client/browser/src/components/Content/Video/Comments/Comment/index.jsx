@@ -12,11 +12,13 @@ function Comment(props) {
   return (
     <div className={style.comment}>
       <div className={style.commentWrapper}>
-        <img
-          className={style.commentAuthorLogo}
-          src={authorSrc}
-          alt=""
-        />
+        <div className={style.commentAuthorLogoContainer}>
+          <img
+            className={style.commentAuthorLogo}
+            src={authorSrc}
+            alt=""
+          />
+        </div>
         <div className={style.commentBody}>
           <header className={style.commentTitle}>
             <Link
@@ -42,11 +44,13 @@ function Comment(props) {
       {/*-----------------------------*/}
       <div className={style.comment}>
         <div className={style.commentWrapper}>
-          <img
-            className={style.commentAuthorLogo}
-            src={authorSrc}
-            alt=""
-          />
+          <div className={style.commentAuthorLogoContainer}>
+            <img
+              className={style.commentAuthorLogo}
+              src={authorSrc}
+              alt=""
+            />
+          </div>
           <div className={style.commentBody}>
             <header className={style.commentTitle}>
               <Link
@@ -72,11 +76,13 @@ function Comment(props) {
         {/*-----------------------------*/}
         <div className={style.comment}>
           <div className={style.commentWrapper}>
-            <img
-              className={style.commentAuthorLogo}
-              src={authorSrc}
-              alt=""
-            />
+            <div className={style.commentAuthorLogoContainer}>
+              <img
+                className={style.commentAuthorLogo}
+                src={authorSrc}
+                alt=""
+              />
+            </div>
             <div className={style.commentBody}>
               <header className={style.commentTitle}>
                 <Link

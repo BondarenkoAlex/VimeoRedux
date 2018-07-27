@@ -34,14 +34,14 @@ function ClipStatistics(props) {
           <CommentTag number={commentsTotal} />
         </div>)
       }
+      <div className={style.clipStatisticsItem}>
+        <FavoriteTag />
+      </div>
       {!isEmpty(tags) && (
         <div className={style.clipStatisticsItem}>
           <TagList tags={tags} />
         </div>)
       }
-      <div className={style.clipStatisticsItem}>
-        <FavoriteTag />
-      </div>
     </div>
   );
 }

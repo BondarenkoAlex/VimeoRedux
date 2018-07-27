@@ -9,12 +9,28 @@ import '../../../../styles/index.module.scss';
 
 import HeaderContainer from '../containers/HeaderContainer';
 import Footer from '../components/Footer';
-import { initEnvironment } from '../actions/environmentActions';
+import { initEnvironmentAction, resolutionAction } from '../actions/environmentActions';
 
 class AppLayout extends Component {
+  constructor(props, context) {
+    super(props, context);
+    this.onResize = this.onResize.bind(this);
+  }
 
   componentWillMount() {
-    this.props.initEnvironment();
+    this.props.initEnvironmentAction();
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.onResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+  }
+
+  onResize() {
+    this.props.resolutionAction();
   }
 
   render() {
@@ -31,13 +47,15 @@ class AppLayout extends Component {
 
 AppLayout.propTypes = {
   route: PropTypes.object,
-  initEnvironment: PropTypes.func,
+  initEnvironmentAction: PropTypes.func,
+  resolutionAction: PropTypes.func,
 };
 AppLayout.defaultProps = {};
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
-    initEnvironment,
+    initEnvironmentAction,
+    resolutionAction,
   }, dispatch)
 );
 
