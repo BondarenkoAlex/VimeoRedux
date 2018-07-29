@@ -41,6 +41,11 @@ module.exports = merge({
         'node_modules',
       ],
       extensions: ['.js', '.jsx', '.json'],
+      alias: {
+        utils: path.resolve(project.basePath, './src/client/browser/src/utils'),
+        root: path.resolve(project.basePath, './src'),
+        src: path.resolve(project.basePath, './src/client/browser/src'),
+      }
     },
     plugins: [
       new webpack.NoEmitOnErrorsPlugin()
@@ -56,4 +61,3 @@ module.exports = merge({
   commonsChunkPlugin,
   environmentPlugin
 );
-

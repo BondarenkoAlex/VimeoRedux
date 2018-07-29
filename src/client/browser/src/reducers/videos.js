@@ -1,11 +1,4 @@
-import {
-  PLAYLISTS_GET_SUCCESS,
-} from '../constants/playlists';
-import {
-  VIDEO_GET_SUCCESS,
-  VIDEO_GET_REQUEST,
-  VIDEO_GET_FAILURE,
-} from '../constants/video';
+import { VIDEO_GET_FAILURE, VIDEO_GET_REQUEST, VIDEO_GET_SUCCESS } from "../constants/video";
 
 const initialState = {
   isFetching: false,
@@ -15,16 +8,6 @@ const initialState = {
 
 export default function videos(state = initialState, action) {
   switch (action.type) {
-    case PLAYLISTS_GET_SUCCESS: {
-      return {
-        ...state,
-        itemsByKey: {
-          ...state.itemsByKey,
-          ...action.payload.videos,
-        },
-      };
-    }
-
     case VIDEO_GET_REQUEST: {
       return {
         ...state,
@@ -56,4 +39,3 @@ export default function videos(state = initialState, action) {
       return state;
   }
 }
-

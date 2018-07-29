@@ -1,15 +1,18 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { renderRoutes } from 'react-router-config';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { renderRoutes } from "react-router-config";
 
-import '../../../../styles/index.scss';
-import '../../../../styles/index.module.scss';
+import "../../../../styles/index.scss";
+import "../../../../styles/index.module.scss";
 
-import HeaderContainer from '../containers/HeaderContainer';
-import Footer from '../components/Footer';
-import { initEnvironmentAction, resolutionAction } from '../actions/environmentActions';
+import HeaderContainer from "../containers/HeaderContainer";
+import Footer from "../components/Footer";
+import {
+  initEnvironmentAction,
+  resolutionAction
+} from "../actions/environmentActions";
 
 class AppLayout extends Component {
   constructor(props, context) {
@@ -22,11 +25,11 @@ class AppLayout extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('resize', this.onResize);
+    window.addEventListener("resize", this.onResize);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener("resize", this.onResize);
   }
 
   onResize() {
@@ -48,15 +51,20 @@ class AppLayout extends Component {
 AppLayout.propTypes = {
   route: PropTypes.object,
   initEnvironmentAction: PropTypes.func,
-  resolutionAction: PropTypes.func,
+  resolutionAction: PropTypes.func
 };
 AppLayout.defaultProps = {};
 
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    initEnvironmentAction,
-    resolutionAction,
-  }, dispatch)
-);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      initEnvironmentAction,
+      resolutionAction
+    },
+    dispatch
+  );
 
-export default connect(null, mapDispatchToProps)(AppLayout);
+export default connect(
+  null,
+  mapDispatchToProps
+)(AppLayout);

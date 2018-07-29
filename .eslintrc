@@ -5,5 +5,10 @@
     "node": true,
     "amd": true,
     "mocha": true
+  },
+  "rules": {
+    "arrow-parens": ["error", "as-needed"],
+    // "quotes": ["error", "double" /*, { "avoidEscape": true }*/],
+    "import/no-unresolved": "off"
   }
 }

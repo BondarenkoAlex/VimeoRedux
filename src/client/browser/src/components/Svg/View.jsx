@@ -1,6 +1,6 @@
 /* jscs:disable maximumLineLength */
 /* eslint-disable max-len, import/prefer-default-export */
-import React from 'react';
+import React from "react";
 
 export function View() {
   return (

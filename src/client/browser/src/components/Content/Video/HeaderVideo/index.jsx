@@ -1,15 +1,14 @@
 /* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Author from '../../../common/Author/index';
+import AuthorContainer from '../../../../containers/AuthorContainer';
 import ClipStatistics from '../ClipStatistics/index';
 
 import style from './header-video.module.scss';
 
 function HeaderVideo({
   title,
-  userPictureUrl,
-  userName,
+  idUser,
   tags,
   createdTime,
   likesTotal,
@@ -21,11 +20,7 @@ function HeaderVideo({
         <h1>{title}</h1>
       </div>
       <div className={style.headerVideoAuthor}>
-        <Author
-          name={userName}
-          src={userPictureUrl}
-          size="lg"
-        />
+        <AuthorContainer idUser={idUser} size="lg" />
       </div>
       <div className={style.headerVideoStatistic}>
         <ClipStatistics
@@ -41,8 +36,7 @@ function HeaderVideo({
 
 HeaderVideo.propTypes = {
   title: PropTypes.string.isRequired,
-  userPictureUrl: PropTypes.string,
-  userName: PropTypes.string,
+  idUser: PropTypes.number,
   tags: PropTypes.array.isRequired,
   createdTime: PropTypes.string.isRequired,
   likesTotal: PropTypes.number.isRequired,

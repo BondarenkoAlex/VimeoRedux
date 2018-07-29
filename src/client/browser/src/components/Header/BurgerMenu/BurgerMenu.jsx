@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable jsx-a11y/label-has-for */
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 
-import style from './burger-menu.module.scss';
+import style from "./burger-menu.module.scss";
 
 function BurgerMenu({ label, children }) {
   return (
@@ -19,9 +20,7 @@ function BurgerMenu({ label, children }) {
       />
 
       <div className={style.burgerMedia}>
-        <div className={style.burgerMenuChildren}>
-          {children}
-        </div>
+        <div className={style.burgerMenuChildren}>{children}</div>
       </div>
     </Fragment>
   );
@@ -35,7 +34,7 @@ BurgerMenu.propTypes = {
   ]).isRequired,
 };
 BurgerMenu.defaultProps = {
-  label: '&#9776;',
+  label: "&#9776;",
 };
 
 export default BurgerMenu;

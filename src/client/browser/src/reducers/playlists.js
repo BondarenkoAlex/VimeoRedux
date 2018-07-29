@@ -2,7 +2,7 @@ import {
   PLAYLISTS_GET_FAILURE,
   PLAYLISTS_GET_REQUEST,
   PLAYLISTS_GET_SUCCESS,
-} from '../constants/playlists';
+} from "../constants/playlists";
 
 const initialState = {
   isFetching: false,
@@ -20,9 +20,9 @@ export default function playlists(state = initialState, action) {
     }
 
     case PLAYLISTS_GET_SUCCESS: {
-      const { key } = action.payload.playlist;
+      const { key } = action.payload;
 
-      const data = action.payload.playlist[key];
+      const data = action.payload[key];
       const items = data.data;
       delete data.data;
 
@@ -56,4 +56,3 @@ export default function playlists(state = initialState, action) {
       return state;
   }
 }
-

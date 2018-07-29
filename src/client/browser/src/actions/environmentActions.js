@@ -19,7 +19,7 @@ function changeResolution(width, height) {
 }
 
 export function initEnvironmentAction() {
-  return (dispatch) => {
+  return dispatch => {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
       .test(navigator.userAgent);
 
@@ -29,7 +29,7 @@ export function initEnvironmentAction() {
 }
 
 export function resolutionAction() {
-  return (dispatch) => {
+  return dispatch => {
     dispatch(changeResolution(getHeight(), getWidth()));
   };
 }
@@ -67,4 +67,3 @@ function getHeight() {
 
   return height;
 }
-

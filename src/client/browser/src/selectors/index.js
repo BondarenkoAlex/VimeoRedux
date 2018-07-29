@@ -1,21 +1,18 @@
-import { createSelector } from 'reselect';
+import { createSelector } from "reselect";
 import {
-  PARAM,
-  PARAM_QUERY,
-  EMPTY_OBJECT,
-} from '../constants/common';
-import { buildKeyVideoStore } from '../utils/helpers';
-import { isEmpty } from '../utils/check';
+  CATEGORIES_TITLE, EMPTY_OBJECT, PARAM, PARAM_QUERY,
+} from "../constants/common";
+import { buildKeyVideoStore } from "../utils/helpers";
+import { isEmpty } from "../utils/check";
 import {
   getCategory,
-  getSubcategory,
-  getIdVideo,
   getDuration,
+  getIdVideo,
   getPeriod,
   getShowby,
-} from '../utils/getParams';
-import { ROOT_URI } from '../constants/config';
-import { CATEGORIES_TITLE } from '../constants/common';
+  getSubcategory,
+} from "../utils/getParams";
+import { ROOT_URI } from "../constants/config";
 
 export const getCategoryParam = (_, params) => getCategory(params);
 export const getSubcategoryParam = (_, params) => getSubcategory(params);
@@ -31,7 +28,7 @@ export const getCategoriesState = state => state.categories;
 export const getSubcategoriesState = state => state.subcategories;
 export const getPlaylistsState = state => state.playlists;
 export const getVideosState = state => state.videos;
-// export const getUsersState = state => state.users;
+export const getUsersState = state => state.users;
 
 export const getCategoryTitle = createSelector(
   [getCategoriesState, getCategoryParam],
@@ -72,7 +69,8 @@ export const getVideosSubcategory = createSelector(
     subcategoryParam,
     duration,
     period,
-    showby) => {
+    showby,
+  ) => {
     const key = buildKeyVideoStore({
       [PARAM.CATEGORY]: categoryParam,
       [PARAM.SUBCATEGORY]: subcategoryParam,
@@ -115,7 +113,8 @@ export const getBreadcrums = createSelector(
     subcategoriesState,
     categoryParam,
     subcategoryParam,
-    idVideoParam) => {
+    idVideoParam,
+  ) => {
     const pathArray = [];
     const empty = null; // undefined;
     if (!isEmpty(categoryParam)) {
