@@ -1,0 +1,45 @@
+@import '../../../../../../styles/constants.scss';
+
+.preview-video-link {
+  background-color: black;
+  width: 100%;
+  padding-top: 56.25%;
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.preview-video-link__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  margin: auto;
+  transition: 0.2s linear;
+
+  .preview-video-link:hover & {
+    transform: scale(1.02);
+  }
+}
+
+.preview-video-link__duration {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  background-color: $videoPreviewDurationTextColor;
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.25rem;
+  border-radius: 2px;
+  opacity: 0;
+  transition: 0.2s linear;
+
+  .preview-video-link:hover & {
+    opacity: 1;
+  }
+}

@@ -1,8 +1,8 @@
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const extractSass = new ExtractTextPlugin({
-  filename: process.env.NODE_ENV === "development"
-    ? "styles/[name].[contenthash].css"
+  filename: process.env.NODE_ENV === 'development'
+    ? 'styles/[name].[contenthash].css'
     : 'styles/[name].css',
   allChunks: true,
 });
@@ -10,19 +10,19 @@ const extractSass = new ExtractTextPlugin({
 module.exports = {
   module: {
     rules: [{
-      test: /\.scss$/,
+      test: /^((?!\.module).)*scss$/,
       use: extractSass.extract({
         use: [{
-          loader: "css-loader"
+          loader: 'css-loader',
         }, {
-          loader: "sass-loader"
-        }],
+          loader: 'sass-loader',
+        },],
         // use style-loader in development
-        fallback: "style-loader"
-      })
-    }]
+        fallback: 'style-loader',
+      }),
+    },],
   },
   plugins: [
-    extractSass
-  ]
+    extractSass,
+  ],
 };

@@ -1,63 +1,62 @@
-/*
-import React, {
-  Component,
-} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { renderRoutes } from 'react-router-config';
 
 import '../../../../styles/index.scss';
+import '../../../../styles/index.module.scss';
 
-import Header from '../components/Header';
-import Player from '../components/Player';
-import BreadcrumsFilter from '../components/BreadcrumsFilter';
-import Content from '../components/Content';
+import HeaderContainer from '../containers/HeaderContainer';
 import Footer from '../components/Footer';
+import { initEnvironmentAction, resolutionAction } from '../actions/environmentActions';
 
-class App extends Component {
+class AppLayout extends Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {};
+    this.onResize = this.onResize.bind(this);
+  }
+
+  componentWillMount() {
+    this.props.initEnvironmentAction();
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.onResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+  }
+
+  onResize() {
+    this.props.resolutionAction();
   }
 
   render() {
+    const { route } = this.props;
     return (
       <div>
-        <Header />
-        <Player />
-        <BreadcrumsFilter />
-        <Content />
+        <HeaderContainer />
+        {renderRoutes(route.routes)}
         <Footer />
       </div>
     );
   }
 }
 
-App.propTypes = {};
-App.defaultProps = {};
-
-export default App;
-
-*/
-
-import React from 'react';
-import PropTypes from 'prop-types';
-import { renderRoutes } from 'react-router-config';
-
-import '../../../../styles/index.scss';
-
-import HeaderContainer from '../containers/HeaderContainer';
-import Footer from '../components/Footer';
-
-function AppLayout({ route }) {
-  return (
-    <div>
-      <HeaderContainer />
-      {renderRoutes(route.routes)}
-      <Footer />
-    </div>
-  );
-}
-
-AppLayout.propTypes = {};
+AppLayout.propTypes = {
+  route: PropTypes.object,
+  initEnvironmentAction: PropTypes.func,
+  resolutionAction: PropTypes.func,
+};
 AppLayout.defaultProps = {};
 
-export default AppLayout;
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    initEnvironmentAction,
+    resolutionAction,
+  }, dispatch)
+);
+
+export default connect(null, mapDispatchToProps)(AppLayout);

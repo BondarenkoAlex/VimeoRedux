@@ -1,0 +1,29 @@
+@import '../../../../../../styles/constants.scss';
+
+.filter-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+
+  //border-left: 1px solid $breadcrumsBorderColor;
+  //position: relative;
+  //float: right;
+  //border-top-width: 1px;
+  //border-top-style: solid;
+  //border-top-color: transparent;
+  //
+  //&:before {
+  //  content: url("../../../../../../images/filter.png");
+  //  float: left;
+  //  margin: 15px 0.5rem;
+  //}
+}
+
+@media (max-width: 900px) {
+  .filter-container {
+    //float: none;
+    //border-left: none;
+    //border-top-color: $breadcrumsBorderColor;
+  }
+}

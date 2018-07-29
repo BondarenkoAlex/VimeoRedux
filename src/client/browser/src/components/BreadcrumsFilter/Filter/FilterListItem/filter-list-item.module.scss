@@ -1,0 +1,12 @@
+@import '../../../../../../../styles/constants.scss';
+
+.filter-list-item {
+  display: flex;
+  flex-direction: column;
+  background-color: $breadcrumsBackgroundColor;
+  //min-width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+
+

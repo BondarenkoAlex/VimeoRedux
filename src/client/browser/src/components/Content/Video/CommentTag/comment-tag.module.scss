@@ -1,0 +1,20 @@
+@import '../../../../../../../styles/constants.scss';
+
+.comment-tag {
+}
+
+.comment-tag__common {
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
+.comment-tag__label {
+  composes: comment-tag__common;
+  margin-right: 0.2rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.comment-tag__title {
+  composes: comment-tag__common;
+}

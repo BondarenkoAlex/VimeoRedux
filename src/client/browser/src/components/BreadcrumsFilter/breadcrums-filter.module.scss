@@ -1,0 +1,15 @@
+@import '../../../../../styles/constants.scss';
+
+.breadcrums-filter {
+  background-color: $breadcrumsBackgroundColor;
+}
+
+.breadcrums-filter__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  //min-height: 50px;
+}

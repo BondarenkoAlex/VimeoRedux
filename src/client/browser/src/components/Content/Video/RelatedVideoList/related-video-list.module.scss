@@ -1,0 +1,14 @@
+@import '../../../../../../../styles/constants';
+
+.related-video-list {
+  box-sizing: border-box;
+  color: $categoryTextColor;
+}
+
+.related-video-list__title {
+  padding: 0.875rem 1rem 0.5rem;
+
+  @media (max-width: 414px) {
+    padding: 0.875rem 0.5rem 0.5rem;
+  }
+}

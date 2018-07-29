@@ -1,0 +1,21 @@
+@import '../../../../../../../styles/constants.scss';
+
+.filter-item {
+  &:hover {
+    background-color: $breadcrumsBackgroundColorOpen;
+    cursor: pointer;
+  }
+}
+
+.filter-item__link {
+  padding: 10px 15px;
+  display: inline-block;
+  color: $breadcrumsTextColor;
+  white-space: nowrap;
+  text-decoration: none;
+
+  .filter-item:hover & {
+    color: $reduxColor;
+  }
+}
+

@@ -5,9 +5,7 @@ export function addSeparatorToNumber(number, separator) {
     throw new Error('The "number" is not numeric`s type"');
   }
 
-  const sep = (separator === undefined)
-    ? ','
-    : separator;
+  const sep = separator || ',';
 
   return number
     .toString()

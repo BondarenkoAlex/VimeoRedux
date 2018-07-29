@@ -1,0 +1,28 @@
+@import '../../../../../../../styles/constants.scss';
+
+.favorite {
+  display: flex;
+  align-items: center;
+
+  position: relative;
+  width: 3rem;
+}
+
+.favorite__heart {
+  width: 2rem;
+  height: 2rem;
+}
+
+.favorite__badge {
+  position: absolute;
+  top: 0;
+  right: -5px;
+  padding: 1px 2px 2px 1px;
+  border-radius: 100px;
+  background: $badgeBackgroundColor;
+  -webkit-background-clip: padding-box;
+  font-size: 0.5625rem;
+  color: white;
+  //text-decoration: none;
+}
+

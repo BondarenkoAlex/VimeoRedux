@@ -1,0 +1,40 @@
+@import '../../../../../../styles/constants';
+
+.video {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.video__clip {
+  flex: 2 0 0;
+  padding: 0 1rem;
+
+  @media (min-width: 768px) {
+    //margin-right: 384px;
+    //padding: 0 1rem;
+  }
+}
+
+.video__description {
+  color: $categoryTextColor;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  //text-indent: 1rem; /* Отступ первой строки */
+  text-align: justify; /* Выравнивание по ширине */
+}
+
+.video__related {
+  flex: 1 0 0;
+  //padding: 0 1rem;
+
+  @media (min-width: 768px) {
+    //margin-right: 384px;
+  }
+}
+

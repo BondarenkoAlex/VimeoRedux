@@ -13,7 +13,7 @@ import autoBind from 'react-autobind';
 import { getCategoriesIfNeed } from '../../../actions';
 import Category from '../../../components/Content/CategoryPlaylist/Category';
 import { CATEGORIES_TITLE } from '../../../constants/common';
-import Player from '../../../components/Player';
+import Player from '../../../components/PlayerContainer/PlayerContainer';
 import BreadcrumsFilter from '../../../components/BreadcrumsFilter';
 
 class CategoryContainer extends Component {
@@ -27,29 +27,21 @@ class CategoryContainer extends Component {
     this.props.getCategoriesIfNeed();
   }
 
-  onClick() {
-    this.setState({
-      counter: ++this.state.counter,
-    });
-  }
-
   render() {
     const {
             title,
             categories,
             match: { url },
           } = this.props;
-    let title1 = title + this.state.counter;
     return (
       <div>
         <Player />
         <BreadcrumsFilter />
         <Category
-          title={title1}
+          title={title}
           itemsByKey={categories.itemsByKey}
           isLoading={categories.isFetching}
           url={url}
-          onClick={this.onClick}
         />
       </div>
     );
